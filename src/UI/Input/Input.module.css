@@ -1,0 +1,16 @@
+.Input {
+    background-color: #dbe8ff;
+    /* background-color: #99b3ff; */
+    border: none;
+    outline:none;
+    border-bottom: 1px solid  #008000;
+    display:block;
+    margin: 0 auto;
+    padding: 0.5em;
+    width: 15em;
+    height: 3em;
+}
+input:focus {
+    /* background-color: #99b3ff; */
+    border-bottom: 3px solid  #008000;
+  }
