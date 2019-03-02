@@ -1,0 +1,30 @@
+.RegErr{
+    color: #e74c3c;
+    font-size: 16px;
+  }
+
+  .pswdBox{
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+  }
+  .Pswd {
+    height: 6px;
+    flex: 1;
+    visibility: hidden;
+  }
+  
+  .pswdWeak {
+    background-color: red;
+  }
+  
+  .pswdMedium {
+    background-color: #3498db;
+  }
+  
+  .pswdStrong {
+    background-color: #2ecc71;
+  }
+  .showPswd {
+    visibility: visible;
+  }  
