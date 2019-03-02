@@ -1,49 +1,55 @@
-.loginNav{
-    display:flex;
-  }
+.loginNav {
+    display: flex;
+}
 
 .Header {
+    /* top and position - needed for sticky header */
+    top: 0px;
+    position: sticky;
     width: 100%;
     height: 4em;
     background-color: #659bf2;
-  }
+}
 
-  
-  .login {
+.login {
     width: 18em;
     box-sizing: border-box;
     margin: 0 auto;
-  }
-  
-.lighter{
-   box-shadow:0 0 0 1600px rgba(0,0,0,0.65);/*dark around it*/
-  }  
-  .controller {
+}
+
+.lighter {
+    box-shadow: 0 0 0 1600px rgba(0, 0, 0, 0.65);
+    /*dark around it*/
+}
+
+.controller {
     box-sizing: border-box;
     flex: 1;
     text-align: center;
     height: 100%;
     line-height: 2;
     cursor: pointer
-      
-  }
-  .notselected{
-    background-color:rgba(0,0,0,0.65);
-  }
-  
-  .selectedController {
+}
+
+.notselected {
+    background-color: rgba(0, 0, 0, 0.65);
+}
+
+.selectedController {
     transition: border 0.5s ease-out;
     background-image: linear-gradient(#99b3ff, #dbe8ff);
-    width:120%;
+    width: 120%;
     z-index: 101;
-  }
-  .form{
+}
+
+.form {
     visibility: visible;
-    background-color:#dbe8ff;
+    background-color: #dbe8ff;
     /* border-radius: 10px; */
     z-index: 500;
     height: 17em;
-  }  
-  .formHidden {
+}
+
+.formHidden {
     visibility: hidden
-  }
+}
