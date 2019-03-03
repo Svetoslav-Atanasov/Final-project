@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+// must be ontop
+import { BrowserRouter, Route } from "react-router-dom";
 import "./App.css";
 import { Link } from "react-router-dom";
 import Header from "./Header/Header";
@@ -33,7 +35,12 @@ class App extends Component {
         <SideMenu show={this.state.sideMenuOpen} />
         {backShadow}
         {/* добавих временен примерен параграф */}
-        <Home />
+
+        <BrowserRouter>
+          <React.Fragment>
+            <Route path="/" component={Home} />
+          </React.Fragment>
+        </BrowserRouter>
       </div>
     );
   }
