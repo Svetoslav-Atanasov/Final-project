@@ -8,5 +8,17 @@
 .logo {
     font-family: 'Break';
     font-size: 50px;
-    color: #F67280
+    color: #F67280;
+    margin-left: 50px;
+}
+
+.logoMainImage {
+    height: 54px;
+    /* margin-top: 5px;
+    margin-left: 10px; */
+    border-radius: 2px;
+    border: 1px solid #F67280;
+    position: relative;
+    top: 4px;
+    left: 30px;
 }

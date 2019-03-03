@@ -2,15 +2,17 @@ import React, { Component } from "react";
 // must be ontop
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
+
 // import { Link } from "react-router-dom";
-import Header from "./Header/Header";
-import MenuToggleButton from "./SideMenu/MenuToggleButton";
-import SideMenu from "./SideMenu/SideMenu";
-import BackShadow from "./BackShadow/BackShadow";
-import Home from "./Home/Home";
-import Culture from "./SideMenuDetails/Culture/Culture";
-import Eating from "./SideMenuDetails/Eating/Eating";
-import Vacations from "./SideMenuDetails/Vacations/Vacations";
+import Header from "../Header/Header";
+import MenuToggleButton from "../SideMenu/MenuToggleButton";
+import SideMenu from "../SideMenu/SideMenu";
+import BackShadow from "../BackShadow/BackShadow";
+import Home from "../Home/Home";
+import Culture from "../SideMenuDetails/Culture/Culture";
+import Eating from "../SideMenuDetails/Eating/Eating";
+import Vacations from "../SideMenuDetails/Vacations/Vacations";
+// import { NavLink} from "react-router-dom";
 
 class App extends Component {
   state = {
@@ -43,6 +45,10 @@ class App extends Component {
             <Route exact path="/culture" component={Culture} />
             <Route exact path="/eating" component={Eating} />
             <Route exact path="/vacations" component={Vacations} />
+            {/* Page Not Found */}
+            <Route
+              render={() => <p className="pageNotFound"> Page Not Found</p>}
+            />
           </Switch>
         </div>
       </BrowserRouter>
