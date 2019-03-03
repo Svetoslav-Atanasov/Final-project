@@ -10,13 +10,13 @@ const sideMenu = props => {
     <nav className={classes.join(" ")}>
       <ul>
         <li>
-          <p> Хапване </p>
+          <p> Култура </p>
         </li>
         <li>
           <p> Почивки </p>
         </li>
         <li>
-          <p> Култура </p>
+          <p> Хапване </p>
         </li>
       </ul>
     </nav>

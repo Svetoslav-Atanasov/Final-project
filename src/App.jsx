@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // must be ontop
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
 import { Link } from "react-router-dom";
 import Header from "./Header/Header";
@@ -31,15 +31,14 @@ class App extends Component {
       <div>
         <Header />
         <MenuToggleButton onClick={this.sideMenuToggleOnClick} />
-        {/* dobavqme si sv-vo show - true/false na baza nego shte dvijim meniuto s css */}
         <SideMenu show={this.state.sideMenuOpen} />
         {backShadow}
         {/* добавих временен примерен параграф */}
 
         <BrowserRouter>
-          <React.Fragment>
-            <Route path="/" component={Home} />
-          </React.Fragment>
+          <Switch>
+            <Route exact path="/" component={Home} />
+          </Switch>
         </BrowserRouter>
       </div>
     );
