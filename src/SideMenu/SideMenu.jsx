@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./SideMenu.module.css";
+import { Link } from "react-router-dom";
 
 const sideMenu = props => {
   let classes = [styles.sideMenu];
@@ -10,13 +11,13 @@ const sideMenu = props => {
     <nav className={classes.join(" ")}>
       <ul>
         <li>
-          <p> Култура </p>
+          <Link to="/culture"> Culture </Link>
         </li>
         <li>
-          <p> Почивки </p>
+          <Link to="/eating"> Eating Out</Link>
         </li>
         <li>
-          <p> Хапване </p>
+          <Link to="/vacations"> Vacations </Link>
         </li>
       </ul>
     </nav>

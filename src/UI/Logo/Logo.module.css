@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'Break';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Break'), url(../Fonts/LogoFont/break\ regular.ttf);
+}
+
+.logo {
+    font-family: 'Break';
+    font-size: 50px;
+    color: #F67280
+}

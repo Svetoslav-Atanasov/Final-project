@@ -24,11 +24,3 @@ ul {
 .open {
     transform: translateX(0)
 }
-
-
-/* sidemenu paragraphs */
-
-ul p {
-    cursor: pointer;
-    outline: none;
-}
