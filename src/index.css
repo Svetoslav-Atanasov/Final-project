@@ -1,11 +1,38 @@
+@font-face {
+    font-family: 'Coves';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Coves'), url(./UI/Fonts/MainFont/Coves\ Light.otf) format('opentype');
+}
+
+@font-face {
+    font-family: 'Coves Bold';
+    font-style: normal;
+    font-weight: bold;
+    src: local('Coves Bold'), url(./UI/Fonts/MainFont/Coves\ Bold.otf) format('opentype');
+}
+
+html {
+    font-family: "Coves Bold";
+}
+
 body {
     margin: 0;
     padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    color: #6C5B7B;
+    background-color: #F8B195;
 }
 
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+
+/* all anchor elements */
+
+a {
+    outline: none;
+    text-decoration: none;
 }

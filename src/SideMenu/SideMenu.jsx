@@ -14,13 +14,13 @@ const sideMenu = props => {
     <nav className={classes.join(" ")}>
       <ul>
         <li>
-          <NavLink to="/"> Култура </NavLink><span><img  width="30" height="30" src={theatre} /></span>
+          <NavLink to="/culture"> Култура </NavLink><span><img  width="30" height="30" src={theatre} /></span>
         </li>
         <li>
-          <NavLink to="/"> Почивки </NavLink><span><img  width="30" height="30" src={pochivki} /></span>
+          <NavLink to="/vacations"> Почивки </NavLink><span><img  width="30" height="30" src={pochivki} /></span>
         </li>
         <li>
-          <NavLink to="/"> Хапване </NavLink><span><img  width="30" height="30" src={meal} /></span>
+          <NavLink to="/eating"> Хапване </NavLink><span><img  width="30" height="30" src={meal} /></span>
         </li>
       </ul>
     </nav>

@@ -11,10 +11,11 @@ body{
     position: sticky;
     width: 100%;
     height: 4em;
-    background-color: #659bf2;
+    background-color: #355C7D;
+    /* makes all divs in one line */
     /* opacity: 0.99; */
     z-index: 100;
-    
+    display: flex;
 }
 
 .login {
@@ -59,4 +60,8 @@ body{
 
 .formHidden {
     visibility: hidden
+}
+
+.navPanelButtons {
+    color: #C06C84
 }
