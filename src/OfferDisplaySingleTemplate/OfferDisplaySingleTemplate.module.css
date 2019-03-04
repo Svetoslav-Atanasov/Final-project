@@ -1,0 +1,11 @@
+.singleDiv {
+    border: 2px solid black;
+    text-align: center;
+    border-radius: 1px;
+    margin-bottom: 5px;
+}
+
+.singleDisplayImage {
+    width: 300px;
+    border-radius: 1px;
+}
