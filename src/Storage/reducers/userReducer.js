@@ -2,8 +2,7 @@ import {
     ADD_USER,
     LET_USER_BE_LOGGED,
     DID_USER_REGISTERED,
-    SHOW_ALL_USER_VAUCHERS,
-    SHOW_ALL_VAUCHER
+    REMOVE_LOGGED_USER
 } from '../actions/actionTypes';
 import { User } from '../Constructors/UserConstructor'
 
@@ -30,6 +29,11 @@ const reducer = (state = initialState, action) => {
         case DID_USER_REGISTERED : {
             return(
                 {...state, didUserRegisterd : action.is }
+            )
+        }
+        case REMOVE_LOGGED_USER : {
+            return(
+                {...state, currentUser: null}
             )
         }
         default: return state;

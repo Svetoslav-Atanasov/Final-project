@@ -97,14 +97,11 @@ class RegisterBox extends Component{
       }
 
       makeNewUser = () =>{
-        // console.log(this.state.errors)
-        // if (this.state.errors.length === 0){
         this.state.newUser.id = ++id;
         this.props.addUser(this.state.newUser)
         
         const newUser = {email:"", password:""}
         this.setState({ newUser:newUser})
-        // this.props.history.goBack();
         console.log(this.props.history)
         this.props.history.push('/loginPage')
       }

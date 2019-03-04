@@ -51,17 +51,26 @@ body{
 }
 
 .form {
-    position:relaive;
-    visibility: visible;
+    position: relative ;
+    display: block;
     background-color: #dbe8ff;
     height: 17em;
 
 }
 
 .formHidden {
-    visibility: hidden
+    display: none
 }
 
 .navPanelButtons {
     color: #C06C84
+}
+.ulNav {
+    display: flex;
+    flex-direction: row;
+}
+.liNav >a {
+color: #C06C84;
+display: flex;
+width: 7em;
 }

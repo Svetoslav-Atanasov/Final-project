@@ -2,8 +2,7 @@ import {
     ADD_USER,
     LET_USER_BE_LOGGED,
     DID_USER_REGISTERED,
-    SHOW_ALL_USER_VAUCHERS,
-    SHOW_ALL_VAUCHER
+    REMOVE_LOGGED_USER
 } from './actionTypes';
 
 export const addUser = user => {
@@ -18,9 +17,15 @@ export const setCurrentUser = user => {
         user
     }
 }
-export const didUserRegisterd = () =>{
+export const didUserRegisterd = () => {
     return {
         type: DID_USER_REGISTERED,
         is:true
+    }
+}
+export const removeCurrentUser = () => {
+    return {
+        type: REMOVE_LOGGED_USER
+       
     }
 }

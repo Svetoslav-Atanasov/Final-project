@@ -61,7 +61,7 @@ class LoginBox extends Component {
       this.showValidationErr("password", "Грешна или забравена парола");
     } else {
       //ако съществува такъв регистриран юзер, го вкарваме в сториджа, като текущ
-      console.log(user);
+      // console.log(user);
       this.props.setCurrentUser(user);
 
       sessionStorage.setItem("currentUser", user.email);
@@ -70,6 +70,7 @@ class LoginBox extends Component {
   };
 
   render() {
+  
     let emailErr = null;
     let passwordErr = null;
 
