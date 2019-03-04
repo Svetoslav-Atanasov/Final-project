@@ -1,0 +1,24 @@
+li {
+    display : flex;
+    padding: 0.3em 0.5em;
+    font-size: 1.5em;
+    box-sizing: border-box;
+    justify-content: space-between;
+    cursor:pointer;
+    width:100%;
+}
+
+.ActiveLink{
+    border-bottom:3px solid purple;
+}
+
+.categoryName{
+    margin: 0 0 5px 0;
+}
+
+li > a {
+    display:flex;
+    width:100%;
+    justify-content: space-between;
+    padding: 0.5em 0;
+}

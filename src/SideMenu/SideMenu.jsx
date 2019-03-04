@@ -4,6 +4,8 @@ import styles from "./SideMenu.module.css";
 import theatre from "../assets/images/theatre.png";
 import pochivki from "../assets/images/pochivki.png";
 import meal from "../assets/images/meal.png";
+import all from '../assets/images/all.png'
+import LiNavLink from '../UI/Li-NavLink/LiNavLink'
 
 const sideMenu = props => {
   let classes = [styles.sideMenu];
@@ -11,28 +13,20 @@ const sideMenu = props => {
     classes.push(styles.open);
   }
   return (
-    <nav className={classes.join(" ")}>
+    <aside>
+<nav className={classes.join(" ")} onClick={props.onClick} >
       <ul>
-        <li>
-          <NavLink to="/culture"> Culture </NavLink>
-          <span>
-            <img width="30" height="30" src={theatre} />
-          </span>
-        </li>
-        <li>
-          <NavLink to="/eating"> Eating Out </NavLink>
-          <span>
-            <img width="30" height="30" src={meal} />
-          </span>
-        </li>
-        <li>
-          <NavLink to="/vacations"> Vacations </NavLink>
-          <span>
-            <img width="30" height="30" src={pochivki} />
-          </span>
-        </li>
+        <LiNavLink to="/" title="ALL" src={all}/>
+        <LiNavLink to="/culture" title="Culture" src={theatre}/>
+        <LiNavLink to="/eating" title="Eating Out" src={meal}/>
+        <LiNavLink to="/vacations" title="Vacations" src={pochivki}/>
+
+      
+      
       </ul>
     </nav>
+    </aside>
+    
   );
 };
 

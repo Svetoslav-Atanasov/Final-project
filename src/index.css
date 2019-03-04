@@ -21,8 +21,8 @@ body {
     padding: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    color: #6C5B7B;
-    background-color: #F8B195;
+    color:black
+    /* background-color: #F8B195; */
 }
 
 code {

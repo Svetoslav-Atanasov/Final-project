@@ -4,3 +4,7 @@
     vertical-align: middle;
     /* line-height: 90px; */
 }
+.wrapper {
+    margin: 3em auto;
+    width: 85em;
+}

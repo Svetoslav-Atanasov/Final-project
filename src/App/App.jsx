@@ -13,6 +13,10 @@ import LoginPage from "../LoginPage/LoginPage"
 import Culture from "../SideMenuDetails/Culture/Culture";
 import Eating from "../SideMenuDetails/Eating/Eating";
 import Vacations from "../SideMenuDetails/Vacations/Vacations";
+import MyVouchers from '../MyVouchers/MyVouchers'
+import Profile from '../Profile/profile'
+import Footer from '../Footer/Footer'
+
 // import { NavLink} from "react-router-dom";
 
 
@@ -41,22 +45,28 @@ class App extends Component {
       <BrowserRouter>
         <div>
           <Header />
-          <MenuToggleButton onClick={this.sideMenuToggleOnClick} />
+          {/* <MenuToggleButton onClick={this.sideMenuToggleOnClick} /> */}
             {/* <SideMenu show={this.state.sideMenuOpen} onMouseOver={() => this.sideMenuToggleOnClick()} onMouseLeave={() => this.sideMenuToggleOnClick()} /> */}
-          <SideMenu show={this.state.sideMenuOpen} />
-          {backShadow}
+          <div className="wrapper">
+            <SideMenu show={this.state.sideMenuOpen} onClick={this.sideMenuToggleOnClick} />
+            {backShadow}
 
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/loginPage" component={LoginPage} />
-            <Route exact path="/culture" component={Culture} />
-            <Route exact path="/eating" component={Eating} />
-            <Route exact path="/vacations" component={Vacations} />
-            {/* Page Not Found */}
-            <Route
-              render={() => <p className="pageNotFound"> Page Not Found</p>}
-            />
-          </Switch>
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/loginPage" component={LoginPage} />
+              <Route exact path="/culture" component={Culture} />
+              <Route exact path="/eating" component={Eating} />
+              <Route exact path="/vacations" component={Vacations} />
+              <Route exact path="/myProfile" component={Profile} />
+              <Route exact path="/myVouchers" component={MyVouchers} />
+              {/* Page Not Found */}
+              <Route
+                render={() => <p className="pageNotFound"> Page Not Found</p>}
+              />
+            </Switch>
+            
+          </div>
+          <Footer />
         </div>
       </BrowserRouter>
     );
