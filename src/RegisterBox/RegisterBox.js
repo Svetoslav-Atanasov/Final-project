@@ -2,16 +2,22 @@ import React, { Component } from 'react';
 import Button from '../UI/Button/Button'
 import styles from './RegisterBox.module.css'
 import Input from '../UI/Input/Input'
+import { withRouter } from "react-router";
+import { connect } from 'react-redux'
+import { addUser } from '../Storage/actions/users'
 
-export default class RegisterBox extends Component{
 
+var id = 1;
+class RegisterBox extends Component{
+  
     state={
       newUser:{
         email:"",
         password:""
       },
     errors: [],
-    pswdStrength:""
+    pswdStrength:"",
+    isOk: true
   
     }
     setEmail = (e) =>{
@@ -39,30 +45,74 @@ export default class RegisterBox extends Component{
     }
   
     showValidationErr = (elm,msg) => {
-      this.setState((prevState) => ({errors:[  ...prevState.errors, {
+    //  const errors = [...this.state.errors]
+
+    //  errors.push({elm, msg})
+    //  console.log('noviq masiv  '+ errors.length)
+    //  this.setState({ errors })
+      this.setState((prevState) => (
+        {errors:[  ...prevState.errors, {
         elm,
         msg
         }]
       }));
+      console.log('noviq state  '+ this.state.errors.length)
+     
     }
     hideValidationErr = (elm) => {
       const errors = this.state.errors.filter(err => err.elm!==elm)
       this.setState({ errors })
   
-    }
-    submitRegister = (e) =>{
-      e.preventDefault();
-      if(this.state.newUser.email.trim() === ""){
-        this.showValidationErr("email","Email can not be empty")
-      }
-      if(!this.validateEmail(this.state.newUser.email)){
-        this.showValidationErr("email","Email not valid")
-      }
-      if(this.state.newUser.password.trim() === ""){
-        this.showValidationErr("password","Password can not be empty")
-      }
   
     }
+
+    
+
+    submitRegister = (e) =>{
+
+      e.preventDefault();
+        
+        if(this.state.newUser.email.trim() === ""){
+          this.showValidationErr("email","Email не може да бъде празен")
+          return;
+        } else {
+          if(!this.validateEmail(this.state.newUser.email)){
+            this.showValidationErr("email","Невалиден email")
+            return;
+          }
+        }
+  
+        if(this.state.newUser.password.trim() === ""){
+          this.showValidationErr("password","Паролата не може да бъде празна")
+          return;  
+        }
+        if(this.state.pswdStrength === "week"){
+          this.showValidationErr("password","Паролата e прекалено слаба")
+          return;  
+        } 
+        
+          this.makeNewUser();
+        
+       
+      }
+
+      makeNewUser = () =>{
+        // console.log(this.state.errors)
+        // if (this.state.errors.length === 0){
+        this.state.newUser.id = ++id;
+        this.props.addUser(this.state.newUser)
+        
+        const newUser = {email:"", password:""}
+        this.setState({ newUser:newUser})
+        // this.props.history.goBack();
+        console.log(this.props.history)
+        this.props.history.push('/loginPage')
+      }
+  
+    
+
+    
+
     validateEmail = (email) => {
       var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       return re.test(String(email).toLowerCase());
@@ -156,4 +206,10 @@ export default class RegisterBox extends Component{
     }
   }
   
+  const mapDispatchToProps = dispatch => {
+    return {
+      addUser: newUser => dispatch(addUser(newUser))
+    }
+}
   
+export default connect(null, mapDispatchToProps)(withRouter(RegisterBox));

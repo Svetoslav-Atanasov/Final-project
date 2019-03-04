@@ -7,9 +7,9 @@
     /* to stay in one place when scrolled */
     position: sticky;
     top: 9em;
-    left: 0;
+    left: 0em;
     z-index: 101;
-    transform: translateX(-100%);
+    transform: translateX(-70%);
     /* kazvame che iskame da animirame transform i definirame kolko bavna da e animaciqta, ease-out za da zapochne byrzo i spre bavno */
     transition: transform 0.3s ease-out;
 }
@@ -31,4 +31,10 @@ ul {
 ul p {
     cursor: pointer;
     outline: none;
+}
+li {
+    display : flex;
+    padding: 0.3em 2em;
+    box-sizing: border-box;
+    justify-content: space-between;
 }

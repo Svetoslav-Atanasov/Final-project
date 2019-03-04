@@ -2,9 +2,13 @@ import React, { Component } from 'react';
 import LoginBox from '../LoginBox/LoginBox'
 import RegisterBox from '../RegisterBox/RegisterBox'
 import styles from './Header.module.css'
+import { withRouter } from "react-router";
+import { connect } from 'react-redux'
+import { didUserRegisterd } from '../Storage/actions/users'
+import BackShadow from "../BackShadow/BackShadow";
 
 
-export default class Header extends Component{
+class Header extends Component{
     state={
       isLoginOpen:false,
       isRegisterOpen:false,
@@ -14,7 +18,10 @@ export default class Header extends Component{
   
   
     showRegisterBox = () => {
-    
+      if(this.props.history.location.pathname === "/loginPage"){
+        this.setState({ isOpen:false }) 
+        return;
+      }
       this.setState({ isLoginOpen:false , isRegisterOpen:true })
     
       if (this.state.commingFrom === 'login' || !this.state.isOpen){
@@ -28,6 +35,10 @@ export default class Header extends Component{
     
     showLoginBox = () => {
   
+      if(this.props.history.location.pathname === "/loginPage"){
+        this.setState({ isOpen:false }) 
+        return;
+      }
       this.setState({ isLoginOpen:true, isRegisterOpen:false })
     
       if (this.state.commingFrom === 'register' || !this.state.isOpen){
@@ -39,7 +50,7 @@ export default class Header extends Component{
     }
     
     hideForm = () => {
-      this.props.lightBackground()
+      // this.props.lightBackground()
       this.setState({ isLoginOpen:false , isRegisterOpen:false, isOpen:false })
     
     }
@@ -50,18 +61,22 @@ export default class Header extends Component{
         let classesForControllerLogin = [styles.controller]
         let classesForControllerReg = [styles.controller]
         let notSelectedControler = null
-        if (this.state.isOpen){
-            notSelectedControler = styles.notselected
+        // if (this.state.isOpen){
+        //     notSelectedControler = styles.notselected
+        // }
+        if (this.props.didUserRegisterd){
+          this.setState({ isOpen:false })
         }
         
 
-        classesWhenOpen.push(this.state.isOpen ? styles.lighter : null)
+        // classesWhenOpen.push(this.state.isOpen ? styles.lighter : null)
         classesForControllerLogin.push(this.state.isLoginOpen && this.state.isOpen ? styles.selectedController : notSelectedControler)
         classesForControllerReg.push(this.state.isRegisterOpen && this.state.isOpen ? styles.selectedController : notSelectedControler)
      
 
       return (
         <>
+        {this.state.isOpen ? <BackShadow onClick={this.hideForm}/> : null}
         <nav className={styles.Header}>
       
         
@@ -78,11 +93,12 @@ export default class Header extends Component{
 
           <div className={(this.state.isOpen ? styles.form : styles.formHidden)} >
           {this.state.isLoginOpen ? <LoginBox/> : <RegisterBox/> }
+          
           </div>
         
         </div>
             {/* <li><Link to="/">1</Link></li>
-            <li><Link to="/">2</Link></li>
+            <li><Link to="/">styles.form2</Link></li>
             <li><Link to="/">3</Link></li> */}
   
         </nav>
@@ -90,3 +106,13 @@ export default class Header extends Component{
       )
     }
   }
+
+  
+  const mapStateToProps = (state) => {
+    return {
+      didUserRegisterd: state.didUserRegisterd,
+    }
+  }
+
+
+export default connect( mapStateToProps )(withRouter(Header));

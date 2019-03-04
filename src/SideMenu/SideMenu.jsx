@@ -1,5 +1,9 @@
 import React from "react";
+import { NavLink } from 'react-router-dom';
 import styles from "./SideMenu.module.css";
+import theatre from '../assets/images/theatre.png';
+import pochivki from '../assets/images/pochivki.png';
+import meal from '../assets/images/meal.png';
 
 const sideMenu = props => {
   let classes = [styles.sideMenu];
@@ -10,13 +14,13 @@ const sideMenu = props => {
     <nav className={classes.join(" ")}>
       <ul>
         <li>
-          <p> Култура </p>
+          <NavLink to="/"> Култура </NavLink><span><img  width="30" height="30" src={theatre} /></span>
         </li>
         <li>
-          <p> Почивки </p>
+          <NavLink to="/"> Почивки </NavLink><span><img  width="30" height="30" src={pochivki} /></span>
         </li>
         <li>
-          <p> Хапване </p>
+          <NavLink to="/"> Хапване </NavLink><span><img  width="30" height="30" src={meal} /></span>
         </li>
       </ul>
     </nav>
