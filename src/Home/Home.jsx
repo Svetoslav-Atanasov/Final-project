@@ -1,22 +1,11 @@
 import React from "react";
 import styles from "./Home.module.css";
+import Offers from "../Offers/Offers";
 
-// stateful - create class
-// export накуп със създаването на класа е възможно (вместо на последния ред)
 export default class Home extends React.Component {
-  //   state = {
-  //     newAlcohol: {
-  //       name: "",
-  //       info: ""
-  //     }
-  //   };
-
-  //   setName = event => {
-  //     const value = event.target.value;
-  //     // copy object [...object]
-
   render() {
     return (
+<<<<<<< HEAD
       // всичко трябва да се намира в 1 контейнер - form в случая; иначе гърми
       <p className={styles.mainDiv}>
         
@@ -201,6 +190,11 @@ export default class Home extends React.Component {
         ligula vel, imperdiet gravida eros. Integer metus dolor, sagittis id
         pulvinar ac, suscipit at tellus. Duis imperdiet ex id est rutrum
       </p>
+=======
+      <div className={styles.mainDiv}>
+        <Offers />
+      </div>
+>>>>>>> 9f632443ec05bffcd6a255e95360dc392511b57a
     );
   }
 }
