@@ -19,11 +19,11 @@ const OffersDisplay = props => {
 };
 
 
-// const mapStateToProps = (state) => {
-//   return {
-//     allOffers: state.offer.offerList
-//   }
-// }
+const mapStateToProps = (state) => {
+  return {
+    allOffers: state.offer.offerList
+  }
+}
 
-// export default connect(mapStateToProps, null)(OffersDisplay);
-export default OffersDisplay;
+export default connect(mapStateToProps, null)(OffersDisplay);
+// export default OffersDisplay;
