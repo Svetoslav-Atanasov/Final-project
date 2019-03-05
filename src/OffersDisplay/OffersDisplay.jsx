@@ -1,6 +1,8 @@
 import React from "react";
 import SingleOfferTemp from "../OfferDisplaySingleTemplate/OfferDisplaySingleTemplate";
 import { connect } from "react-redux";
+import { withRouter } from "react-router";
+
 
 // OffersDisplay priema masiv s oferti i vika renderirane za vsqka edna
 const OffersDisplay = props => {
@@ -25,5 +27,5 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, null)(OffersDisplay);
+export default connect(mapStateToProps, null)(withRouter(OffersDisplay));
 // export default OffersDisplay;

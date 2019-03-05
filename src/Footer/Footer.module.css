@@ -3,14 +3,18 @@
     height: 4em;
     color: #C06C84;
     background-color: #355C7D;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
 }
 
 .footerContent {
     text-align: right;
-    margin-right: 50px;
+    margin-right: 45px;
     font-size: 1.1em;
     position: relative;
-    top: 40px;
+    top: 20px;
 }
 
 .githubLinks {

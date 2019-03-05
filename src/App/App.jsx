@@ -9,19 +9,16 @@ import MenuToggleButton from "../SideMenu/MenuToggleButton";
 import SideMenu from "../SideMenu/SideMenu";
 import BackShadow from "../BackShadow/BackShadow";
 import Home from "../Home/Home";
-import LoginPage from "../LoginPage/LoginPage"
+import LoginPage from "../LoginPage/LoginPage";
 import Culture from "../SideMenuDetails/Culture/Culture";
 import Eating from "../SideMenuDetails/Eating/Eating";
 import Vacations from "../SideMenuDetails/Vacations/Vacations";
-import MyVouchers from '../MyVouchers/MyVouchers'
-import Profile from '../Profile/profile'
-import Footer from '../Footer/Footer'
+import MyVouchers from "../MyVouchers/MyVouchers";
+import Profile from "../Profile/profile";
+import Footer from "../Footer/Footer";
+import OfferDetails from "../OfferDetails/OfferDetails";
 
 // import { NavLink} from "react-router-dom";
-
-
-
-
 
 class App extends Component {
   state = {
@@ -46,33 +43,40 @@ class App extends Component {
         <div>
           <Header />
           {/* <MenuToggleButton onClick={this.sideMenuToggleOnClick} /> */}
-            {/* <SideMenu show={this.state.sideMenuOpen} onMouseOver={() => this.sideMenuToggleOnClick()} onMouseLeave={() => this.sideMenuToggleOnClick()} /> */}
+          {/* <SideMenu show={this.state.sideMenuOpen} onMouseOver={() => this.sideMenuToggleOnClick()} onMouseLeave={() => this.sideMenuToggleOnClick()} /> */}
           <div className="wrapper">
-            <SideMenu show={this.state.sideMenuOpen} onClick={this.sideMenuToggleOnClick} />
+            <SideMenu
+              show={this.state.sideMenuOpen}
+              onClick={this.sideMenuToggleOnClick}
+            />
             {backShadow}
 
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/loginPage" component={LoginPage} />
-            <Route exact path="/category/culture" component={Culture} />
-            <Route exact path="/category/eating-оut" component={Eating} />
-            <Route exact path="/category/vacations" component={Vacations} />
-            {/* <Route exact path="/category/:categoryType" component={Home} /> */}
-            <Route exact path="/myProfile" component={Profile} />
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/loginPage" component={LoginPage} />
+              <Route exact path="/category/culture" component={Culture} />
+              <Route exact path="/category/eating-оut" component={Eating} />
+              <Route exact path="/category/vacations" component={Vacations} />
+              {/* <Route exact path="/category/:categoryType" component={Home} /> */}
+              <Route exact path="/myProfile" component={Profile} />
               <Route exact path="/myVouchers" component={MyVouchers} />
-            {/* Page Not Found */}
-            <Route
-              render={() => <p className="pageNotFound"> Page Not Found</p>}
-            />
-          </Switch>
-            
+
+
+              {/* here */}
+              <Route exact path="/offerDetails/:id" component={OfferDetails} />
+
+              {/* Page Not Found */}
+              <Route
+                render={() => <p className="pageNotFound"> Page Not Found</p>}
+              />
+            </Switch>
           </div>
+
           <Footer />
         </div>
       </BrowserRouter>
     );
   }
 }
-
 
 export default App;
