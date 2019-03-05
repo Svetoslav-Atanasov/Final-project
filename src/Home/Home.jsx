@@ -1,10 +1,15 @@
 import React from "react";
 import styles from "./Home.module.css";
 import Offers from "../Offers/Offers";
+// import { withRouter } from "react-router";
+import { connect } from "react-redux";
 
-export default class Home extends React.Component {
+class Home extends React.Component {
+  
   render() {
-    console.log(this.props);
+    // neka vsichki oferi sa ravni na oferite, koito se namirat v stora
+    let offerList = this.props.offerList
+
 
     return (
       <div className={styles.mainDiv}>
@@ -13,3 +18,12 @@ export default class Home extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    offerList: state.offer.offerList
+  };
+};
+
+
+export default connect( mapStateToProps, null)(Home)

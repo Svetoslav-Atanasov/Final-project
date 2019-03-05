@@ -54,7 +54,10 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/loginPage" component={LoginPage} />
-            <Route exact path="/category/:categoryType" component={Home} />
+            <Route exact path="/category/culture" component={Culture} />
+            <Route exact path="/category/eating-оut" component={Eating} />
+            <Route exact path="/category/vacations" component={Vacations} />
+            {/* <Route exact path="/category/:categoryType" component={Home} /> */}
             <Route exact path="/myProfile" component={Profile} />
               <Route exact path="/myVouchers" component={MyVouchers} />
             {/* Page Not Found */}

@@ -4,7 +4,7 @@ import {
     DID_USER_REGISTERED,
     REMOVE_LOGGED_USER
 } from '../actions/actionTypes';
-import { User } from '../Constructors/UserConstructor'
+// import { User } from '../Constructors/UserConstructor'
 
 const initialState =  {
     currentUser : null,
@@ -14,7 +14,7 @@ const initialState =  {
     didUserRegisterd : false
 };
 
-const reducer = (state = initialState, action) => {
+const userReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_USER: {
             return (
@@ -40,5 +40,5 @@ const reducer = (state = initialState, action) => {
     }
 }
 
-export default reducer;
+export default userReducer;
         

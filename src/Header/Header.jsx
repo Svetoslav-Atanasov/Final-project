@@ -4,7 +4,6 @@ import RegisterBox from "../RegisterBox/RegisterBox";
 import styles from "./Header.module.css";
 import { withRouter } from 'react-router-dom';
 import { connect } from "react-redux";
-import { NavLink } from "react-router-dom";
 import { removeCurrentUser } from "../Storage/actions/users"
 import BackShadow from "../BackShadow/BackShadow";
 import Logo from "../UI/Logo/Logo";
@@ -152,7 +151,7 @@ class Header extends Component {
 
 const mapStateToProps = state => {
   return {
-    current: state.currentUser
+    current: state.user.currentUser
   };
 };
 const mapDispatchToProps = dispatch => {

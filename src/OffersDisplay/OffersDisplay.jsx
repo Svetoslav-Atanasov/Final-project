@@ -1,22 +1,29 @@
 import React from "react";
 import SingleOfferTemp from "../OfferDisplaySingleTemplate/OfferDisplaySingleTemplate";
+import { connect } from "react-redux";
 
+// OffersDisplay priema masiv s oferti i vika renderirane za vsqka edna
 const OffersDisplay = props => {
   console.log(props);
   return (
     <React.Fragment>
       {props.allOffers.map(offer => (
+
         <SingleOfferTemp
           key={offer.id}
-          name={offer.name}
-          image={offer.image}
-          category={offer.category}
-          description={offer.description}
-          price={offer.price}
+          {...offer}
         />
       ))}
     </React.Fragment>
   );
 };
 
+
+// const mapStateToProps = (state) => {
+//   return {
+//     allOffers: state.offer.offerList
+//   }
+// }
+
+// export default connect(mapStateToProps, null)(OffersDisplay);
 export default OffersDisplay;

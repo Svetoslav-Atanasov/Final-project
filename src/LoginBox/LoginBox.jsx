@@ -123,8 +123,8 @@ class LoginBox extends Component {
 
 const mapStateToProps = state => {
   return {
-    userList: state.userList,
-    current: state.currentUser
+    userList: state.user.userList,
+    current: state.user.currentUser
   };
 };
 const mapDispatchToProps = dispatch => {

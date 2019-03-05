@@ -16,31 +16,10 @@ const sideMenu = props => {
     <aside>
 <nav className={classes.join(" ")} onClick={props.onClick} >
       <ul>
-        {/* <li>
-          <NavLink to="/category/culture"> Culture </NavLink>
-          <span>
-            <img width="30" height="30" src={theatre} />
-          </span>
-        </li>
-        <li>
-          <NavLink to="/category/eating out"> Eating Out </NavLink>
-          <span>
-            <img width="30" height="30" src={meal} />
-          </span>
-        </li>
-        <li>
-          <NavLink to="/category/vacations"> Vacations </NavLink>
-          <span>
-            <img width="30" height="30" src={pochivki} />
-          </span>
-        </li> */}
         <LiNavLink to="/" title="ALL" src={all}/>
         <LiNavLink to="/category/culture" title="Culture" src={theatre}/>
-        <LiNavLink to="/category/eating out" title="Eating Out" src={meal}/>
+        <LiNavLink to="/category/eating-оut" title="Eating-оut" src={meal}/>
         <LiNavLink to="/category/vacations" title="Vacations" src={pochivki}/>
-
-      
-      
       </ul>
     </nav>
     </aside>
