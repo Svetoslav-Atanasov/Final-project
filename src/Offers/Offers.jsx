@@ -52,7 +52,7 @@ class Offers extends Component {
       {
         id: 6,
         name: "Salad",
-        description: "Healty salad for your healthy diet",
+        description: "A proper salad for your healthy diet",
         price: 8,
         category: "Eating Out",
         image:
@@ -79,7 +79,7 @@ class Offers extends Component {
         id: 9,
         name: "Tokyo",
         description:
-          "The home of technology giants, ancient cultures and manga for a special prize",
+          "The home of technology giants, ancient culture and manga for a special prize",
         price: 1256,
         category: "Vacations",
         image:
