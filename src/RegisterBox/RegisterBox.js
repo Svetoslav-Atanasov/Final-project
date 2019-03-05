@@ -203,6 +203,8 @@ class RegisterBox extends Component{
     }
   }
   
+  
+
   const mapDispatchToProps = dispatch => {
     return {
       addUser: newUser => dispatch(addUser(newUser))

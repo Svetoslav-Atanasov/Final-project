@@ -2,12 +2,18 @@ import React, { Component } from "react";
 import LoginBox from "../LoginBox/LoginBox";
 import RegisterBox from "../RegisterBox/RegisterBox";
 import styles from "./Header.module.css";
-import { withRouter } from "react-router";
+import { withRouter } from 'react-router-dom';
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { removeCurrentUser } from "../Storage/actions/users"
 import BackShadow from "../BackShadow/BackShadow";
 import Logo from "../UI/Logo/Logo";
+import LiNavLink from '../UI/Li-NavLink/LiNavLink'
+import exit from '../assets/images/exit.png'
+import UserProfile from '../assets/images/UserProfile.png'
+import voucher from '../assets/images/voucher.png'
+import shoppingCart from '../assets/images/shoppingCart.png'
+
 
 class Header extends Component {
   state = {
@@ -66,7 +72,7 @@ class Header extends Component {
     // Zashto, kato si go vikna ot props gyrmi ??????? - mai ne gyrmi ???
  
     let currentUser = this.props.current;
-    let classesWhenOpen = [styles.login];
+    let classesWhenOpenLogReg = [styles.login];
     let classesForControllerLogin = [styles.controller];
     let classesForControllerReg = [styles.controller];
     let notSelectedControler = null;
@@ -99,9 +105,10 @@ class Header extends Component {
                         </div>)
   const whenHasUser = <>    
          <ul className={styles.ulNav}>
-           <li className={styles.liNav}><NavLink to="/myProfile"> MY PROFILE </NavLink></li>
-           <li className={styles.liNav}><NavLink to="/myVouchers"> MY VOUCHERS</NavLink></li>
-           <li className={styles.liNav}><NavLink onClick={()=>this.logOut()} to="/" > EXIT </NavLink></li>
+          <LiNavLink to="/myProfile" src={UserProfile}/>
+          <LiNavLink to="/myVouchers"  src={voucher}/>
+          <LiNavLink to="/"  src={shoppingCart}/>
+          <LiNavLink to="/"  src={exit} onClick={()=>this.logOut()}/>
          </ul>
       </>
     return (
@@ -111,7 +118,7 @@ class Header extends Component {
         <nav className={styles.Header}>
         <Logo />
 
-          <div className={classesWhenOpen.join(" ")}>
+          <div className={classesWhenOpenLogReg.join(" ")}>
             <div className={styles.loginNav}>
               
               {!loginPage && !currentUser ? 
