@@ -2,6 +2,7 @@ import React from "react";
 import SingleOfferTemp from "../OfferDisplaySingleTemplate/OfferDisplaySingleTemplate";
 
 const OffersDisplay = props => {
+  console.log(props);
   return (
     <React.Fragment>
       {props.allOffers.map(offer => (

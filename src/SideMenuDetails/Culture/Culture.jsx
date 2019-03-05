@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import CultureDisplay from "./CultureDisplay";
 
 class Culture extends Component {
   // state = {
@@ -7,7 +7,11 @@ class Culture extends Component {
   // };
 
   render() {
-    return <h1>Culture</h1>;
+    return (
+      <div>
+        <CultureDisplay />
+      </div>
+    );
   }
 }
 

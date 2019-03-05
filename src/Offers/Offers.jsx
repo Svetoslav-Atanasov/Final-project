@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import OffersDisplay from "../OffersDisplay/OffersDisplay";
+import { withRouter } from "react-router";
 
 class Offers extends Component {
   state = {
@@ -54,7 +55,8 @@ class Offers extends Component {
         description: "Healty salad for your healthy diet",
         price: 8,
         category: "Eating Out",
-        image: "https://assets.bonappetit.com/photos/5ad51b07ff795274c43a0f58/16:9/w_1200,c_limit/20180403_Basically_122.jpg"
+        image:
+          "https://assets.bonappetit.com/photos/5ad51b07ff795274c43a0f58/16:9/w_1200,c_limit/20180403_Basically_122.jpg"
       },
       {
         id: 7,
@@ -87,7 +89,15 @@ class Offers extends Component {
   };
 
   render() {
-    return (
+    console.log(this.props);
+    console.log(this.state.offers);
+    return this.props.match.params && this.props.match.params.categoryType ? (
+      <div>
+        <OffersDisplay
+          allOffers={this.state.offers.filter(offer => offer.category.toLowerCase() == this.props.match.params.categoryType.toLowerCase())}
+        />
+      </div>
+    ) : (
       <div>
         <OffersDisplay allOffers={this.state.offers} />
       </div>
@@ -95,4 +105,4 @@ class Offers extends Component {
   }
 }
 
-export default Offers;
+export default withRouter(Offers);
