@@ -4,7 +4,6 @@ import RegisterBox from "../RegisterBox/RegisterBox";
 import styles from "./Header.module.css";
 import { withRouter } from 'react-router-dom';
 import { connect } from "react-redux";
-import { NavLink } from "react-router-dom";
 import { removeCurrentUser } from "../Storage/actions/users"
 import BackShadow from "../BackShadow/BackShadow";
 import Logo from "../UI/Logo/Logo";
@@ -12,7 +11,6 @@ import LiNavLink from '../UI/Li-NavLink/LiNavLink'
 import exit from '../assets/images/exit.png'
 import UserProfile from '../assets/images/UserProfile.png'
 import voucher from '../assets/images/voucher.png'
-// import shoppingCart from '../assets/images/shoppingCart.png'
 import ShoppingCart from "../UI/ShoppingCart/ShoppingCart"
 
 
@@ -67,13 +65,10 @@ class Header extends Component {
     this.resetState()
    this.props.removeCurrentUser();
    this.props.history.push("/")
-   
-   
   }
 
   render() {
-    // Zashto, kato si go vikna ot props gyrmi ??????? - mai ne gyrmi ???
- 
+    
     let currentUser = this.props.current;
     let classesWhenOpenLogReg = [styles.login];
     let classesForControllerLogin = [styles.controller];
@@ -81,7 +76,7 @@ class Header extends Component {
     let notSelectedControler = null;
     let loginPage = this.props.history.location.pathname === "/loginPage" ? true : false ;
     
-
+ 
     classesForControllerLogin.push(
       this.state.isLoginOpen && this.state.isOpen
         ? styles.selectedController
@@ -108,10 +103,9 @@ class Header extends Component {
                         </div>)
   const whenHasUser = <>    
          <ul className={styles.ulNav}>
-          <LiNavLink to="/myProfile" src={UserProfile}/>
+          <LiNavLink to="/myProfile" src={UserProfile} />
           <LiNavLink to="/myVouchers"  src={voucher}/>
           <LiNavLink to="/" otherComponent = {<ShoppingCart />}></LiNavLink>
-          {/* <NavLink to="/"></NavLink> */}
           <LiNavLink to="/"  src={exit} onClick={()=>this.logOut()}/>
          </ul>
       </>
@@ -129,7 +123,8 @@ class Header extends Component {
                 <>
                 {loginBar} 
                 {RegisterBar}
-                </> : null }
+                </> 
+                : null }
               {currentUser ?
               <>
               {whenHasUser}

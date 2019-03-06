@@ -10,7 +10,7 @@ import {
 const initialState =  {
     currentUser : null,
     userList : [
-        {id:0 , email:'test@abv.bg', password:'test', vouchersInCart : [1,2]}
+        {id:0 , email:'test@abv.bg', password:'test', vouchersInCart : []}
     ],
     didUserRegisterd : false
 };
