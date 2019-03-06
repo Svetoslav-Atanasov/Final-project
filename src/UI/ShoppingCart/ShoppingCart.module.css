@@ -1,9 +1,10 @@
 .number {
     position: relative;
     color: #6C5B7B;
-    size: 10px;
-    top: -1.4em;
-    left: 0.5em;
+    font-size: 11px;
+    top: -22.5px;
+    left: 4px;
+    ;
     color: black;
     font-size: 1;
 }
