@@ -14,8 +14,9 @@ const linavlink = props => {
                 <span className={styles.categoryName}>
                     {props.title}
                 </span>
+                {props.src ? <img width="40" height="40" src={props.src} /> : null}
+                {props.otherComponent ? props.otherComponent : null}
                 
-                <img width="40" height="40" src={props.src} />
                 
             </NavLink>
         </li>

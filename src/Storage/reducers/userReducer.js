@@ -10,7 +10,7 @@ import {
 const initialState =  {
     currentUser : null,
     userList : [
-        {id:0 , email:'test@abv.bg', password:'test', vouchersInCart : []}
+        {id:0 , email:'test@abv.bg', password:'test', vouchersInCart : [1,2]}
     ],
     didUserRegisterd : false
 };
@@ -42,10 +42,13 @@ const userReducer = (state = initialState, action) => {
             const newUserList=[...newState.userList];
             const index = newUserList.findIndex(user=>user.id === action.id);
             const newUser = newUserList[index];
+
             
-            newUser.vouchersInCart.push(action.voucher);          
+            newUser.vouchersInCart.push(action.voucher);         
             newUserList[index] = newUser;
             newState.userList = newUserList;
+            // const newCurrentUser = newUser; 
+            newState.currentUser = newUser;
             return newState
         }
         default: return state;

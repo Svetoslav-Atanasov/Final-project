@@ -4,6 +4,7 @@ import RegisterBox from "../RegisterBox/RegisterBox";
 import styles from "./Header.module.css";
 import { withRouter } from 'react-router-dom';
 import { connect } from "react-redux";
+import { NavLink } from "react-router-dom";
 import { removeCurrentUser } from "../Storage/actions/users"
 import BackShadow from "../BackShadow/BackShadow";
 import Logo from "../UI/Logo/Logo";
@@ -11,7 +12,8 @@ import LiNavLink from '../UI/Li-NavLink/LiNavLink'
 import exit from '../assets/images/exit.png'
 import UserProfile from '../assets/images/UserProfile.png'
 import voucher from '../assets/images/voucher.png'
-import shoppingCart from '../assets/images/shoppingCart.png'
+// import shoppingCart from '../assets/images/shoppingCart.png'
+import ShoppingCart from "../UI/ShoppingCart/ShoppingCart"
 
 
 class Header extends Component {
@@ -108,7 +110,8 @@ class Header extends Component {
          <ul className={styles.ulNav}>
           <LiNavLink to="/myProfile" src={UserProfile}/>
           <LiNavLink to="/myVouchers"  src={voucher}/>
-          <LiNavLink to="/"  src={shoppingCart}/>
+          <LiNavLink to="/" otherComponent = {<ShoppingCart />}></LiNavLink>
+          {/* <NavLink to="/"></NavLink> */}
           <LiNavLink to="/"  src={exit} onClick={()=>this.logOut()}/>
          </ul>
       </>

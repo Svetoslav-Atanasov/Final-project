@@ -27,10 +27,5 @@ const OffersDisplay = props => {
 //   }
 // }
 
-<<<<<<< HEAD
-// export default connect(mapStateToProps, null)(OffersDisplay);
-export default OffersDisplay;
-=======
-export default connect(mapStateToProps, null)(withRouter(OffersDisplay));
+export default (withRouter(OffersDisplay));
 // export default OffersDisplay;
->>>>>>> f0a98d2753d46fb0a7683eb9a53dd7f9d628e63c
