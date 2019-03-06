@@ -1,32 +1,36 @@
-.RegErr{
-  color: #e74c3c;
-  font-size: 0.8em;
-  margin: 0 auto;
-  width: 17em;
-  }
+.RegErr {
+    color: #F67280;
+    font-size: 0.8em;
+    margin: 0 auto;
+    width: 17em;
+}
 
-  .pswdBox{
+.pswdBox {
     display: flex;
     flex-direction: row;
     margin-top: 20px;
-  }
-  .Pswd {
+}
+
+.Pswd {
     height: 6px;
     flex: 1;
     visibility: hidden;
-  }
-  
-  .pswdWeak {
-    background-color: red;
-  }
-  
-  .pswdMedium {
-    background-color: #3498db;
-  }
-  
-  .pswdStrong {
-    background-color: #2ecc71;
-  }
-  .showPswd {
+}
+
+.pswdWeak {
+    background-color: #FECEAB;
+    margin-left: 37px;
+}
+
+.pswdMedium {
+    background-color: #FF847C;
+}
+
+.pswdStrong {
+    background-color: #E84A5F;
+    margin-right: 37px;
+}
+
+.showPswd {
     visibility: visible;
-  }  
+}

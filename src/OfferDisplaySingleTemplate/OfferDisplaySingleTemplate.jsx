@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { getToCart } from '../Storage/actions/users';
 import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
+import Select from "../UI/Select/Select"
 
 
 
@@ -49,19 +50,20 @@ class Offer extends Component {
         <div>{this.props.price} BGN</div>
         <div>{this.props.category}</div>
         {/* dobavqm select i buton, neobhodimi sa za zakupuvaneto na waucheri */}
-        <select onChange={this.change} value={this.state.value}>
+        {/* <select onChange={this.change} value={this.state.value}>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
           <option value="4">4</option>
-        </select>
+        </select> */}
+        <Select onChange={this.change} value={this.state.value}/>
+
+
         <Button
         //tuk proverqvam dali ima lognat user -> ako nqma - da go preprashta na login stranicata
         // ako ima da gi sloji v kolichkata
             onClick={()=> !this.props.current ? this.props.history.push('/loginPage') : this.toGetToCart(this.props.current.id, this.props.name)}
-            style={{
-              width: "8em"
-            }}
+
             title="GET VOUCHER"
           />
         </div>
