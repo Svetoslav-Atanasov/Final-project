@@ -59,8 +59,8 @@ class LoginBox extends Component {
     );
     //ako nqma pokazvame syobshtenie za greshka
     if (!user) {
-      this.showValidationErr("email", "Грешен e-mail");
-      this.showValidationErr("password", "Грешна или забравена парола");
+      this.showValidationErr("email", "Invalid e-mail");
+      this.showValidationErr("password", "Wrong or forgotten password");
     } else {
       //ако съществува такъв регистриран юзер, го вкарваме в сториджа, като текущ
       console.log(user);
@@ -87,11 +87,17 @@ class LoginBox extends Component {
       }
     }
 
+    // const additionalButtonStyle= {marginTop: "20px", marginLeft: "80px"}
+    const additionalButtonStyle= {margin: "20px auto", display: "block"};
+
+
+
+
     return (
+
       <div className="innerContainer">
-        <div className="boxHeader">Login </div>{" "}
+        <div className="boxHeader"> </div>{" "}
         <div className="inputGroup">
-          <label> Email: </label>{" "}
           <Input
             type="text"
             placeholder="Email"
@@ -102,7 +108,6 @@ class LoginBox extends Component {
         </div>{" "}
         <div className="inputGroup">
           {" "}
-          {/* <label>Password:</label> */}{" "}
           <Input
             type="password"
             placeholder="Password"
@@ -113,10 +118,7 @@ class LoginBox extends Component {
         </div>{" "}
         <Button
           onClick={this.submitLogin}
-          style={{
-            width: "8em"
-          }}
-          title="Влез"
+          title="Login" style={additionalButtonStyle}
         />
       </div>
     );

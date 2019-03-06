@@ -1,15 +1,15 @@
 .number {
     position: relative;
-    color: purple;
+    color: #6C5B7B;
     size: 10px;
     top: -1.4em;
     left: 0.5em;
     color: black;
     font-size: 1;
 }
-.orangeDot{
+
+.orangeDot {
     position: relative;
     left: 1.05em;
     top: -2em;
-    
 }

@@ -40,3 +40,8 @@ a {
     outline: none;
     text-decoration: none;
 }
+
+::placeholder {
+    color: #C06C84;
+    font-family: "Coves Bold";
+}

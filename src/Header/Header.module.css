@@ -1,6 +1,7 @@
-body{
-   opacity: 0.99;
+body {
+    opacity: 0.99;
 }
+
 .loginNav {
     display: flex;
     align-items: center;
@@ -27,7 +28,8 @@ body{
 }
 
 .lighter {
-    box-shadow: 0 0 0 1600px rgba(0, 0, 0, 0.65);
+    box-shadow: 40px 40px 300px 45px rgba(192, 108, 132, 0.7);
+    /* box-shadow: 0 0 0 1600px rgba(0, 0, 0, 0.65); */
     /*dark around it*/
 }
 
@@ -47,17 +49,15 @@ body{
 .selectedController {
     position: relative;
     transition: border 0.5s ease-out;
-    background-image: linear-gradient(#99b3ff, #dbe8ff);
+    background-image: linear-gradient(#F8B195, #F8B195);
     width: 120%;
-
 }
 
 .form {
-    position: relative ;
+    position: relative;
     display: block;
-    background-color: #dbe8ff;
-    height: 17em;
-
+    background-color: #F8B195;
+    height: 14em;
 }
 
 .formHidden {
@@ -67,19 +67,19 @@ body{
 .navPanelButtons {
     color: #C06C84
 }
+
 .ulNav {
     display: flex;
     flex-direction: row;
-
 }
+
 .liNav {
-
-color: #C06C84;
-display: flex;
-width: 7em;
+    color: #C06C84;
+    display: flex;
+    width: 7em;
 }
 
-.linkNav{
+.linkNav {
     color: #3a3e47;
     display: inline-block;
     height: 100%;
@@ -90,9 +90,11 @@ width: 7em;
     align-items: center;
     padding: 0 3px;
 }
+
 .linkNav:hover {
     color: #ffaa3b;
 }
+
 .linkNav:active {
     color: #ffaa3b;
     border-top: 4px solid #ffaa3b;
