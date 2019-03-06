@@ -17,6 +17,8 @@ import MyVouchers from "../MyVouchers/MyVouchers";
 import Profile from "../Profile/profile";
 import Footer from "../Footer/Footer";
 import OfferDetails from "../OfferDetails/OfferDetails";
+import ShoppingCart from '../ShoppingCartPage/ShoppingCart'
+
 
 // import { NavLink} from "react-router-dom";
 
@@ -60,6 +62,7 @@ class App extends Component {
               {/* <Route exact path="/category/:categoryType" component={Home} /> */}
               <Route exact path="/myProfile" component={Profile} />
               <Route exact path="/myVouchers" component={MyVouchers} />
+              <Route exact path="/myShoppingCart" component={ShoppingCart} />
 
 
               {/* here */}

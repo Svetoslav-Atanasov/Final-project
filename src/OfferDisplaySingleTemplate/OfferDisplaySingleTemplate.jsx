@@ -18,14 +18,14 @@ class Offer extends Component {
     }
 
     //tazi funkciq - vzima id na potrebitelq  i slaga v koshnicata mu - vaucher 
-    toGetToCart = (id,title) => {
+    toGetToCart = (id,offerId) => {
         // number shte e unikalen nomer na vauchera
         const number = Math.ceil(Math.random()*10000);
         const broi  =this.state.broi;
         
         console.log('broikata e ' + broi)
         // pravq nov obekt vaucher i go slagam v kolickata na tekushtiq potrebitel
-        const voucher = {broi, number, title};
+        const voucher = {broi, number, offerId};
         this.props.getToCart(id,voucher);
       } 
 
@@ -58,7 +58,7 @@ class Offer extends Component {
         <Button
         //tuk proverqvam dali ima lognat user -> ako nqma - da go preprashta na login stranicata
         // ako ima da gi sloji v kolichkata
-            onClick={()=> !this.props.current ? this.props.history.push('/loginPage') : this.toGetToCart(this.props.current.id, this.props.name)}
+            onClick={()=> !this.props.current ? this.props.history.push('/loginPage') : this.toGetToCart(this.props.current.id, this.props.id)}
             style={{
               width: "8em"
             }}
