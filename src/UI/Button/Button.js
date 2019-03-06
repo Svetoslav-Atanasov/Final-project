@@ -7,7 +7,7 @@ const button = props => {
             onClick={props.onClick} 
             className={classes.Button}
             style={props.style}
-            //za dopylnitelen stil, mojem da gi zadadem, kato js obekti
+            disabled={ props.diabled || false }
             >
             {props.title}
         </button>

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 // must be ontop
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
+import { connect } from "react-redux";
 
 // import { Link } from "react-router-dom";
 import Header from "../Header/Header";
@@ -60,11 +61,14 @@ class App extends Component {
               <Route exact path="/category/eating-оut" component={Eating} />
               <Route exact path="/category/vacations" component={Vacations} />
               {/* <Route exact path="/category/:categoryType" component={Home} /> */}
-              <Route exact path="/myProfile" component={Profile} />
-              <Route exact path="/myVouchers" component={MyVouchers} />
-              <Route exact path="/myShoppingCart" component={ShoppingCart} />
-
-
+              {this.props.currentUser ? 
+                <>
+                  <Route exact path="/myProfile" component={Profile} />
+                  <Route exact path="/myVouchers" component={MyVouchers} />
+                  <Route exact path="/myShoppingCart" component={ShoppingCart} />
+                </>
+                :null}
+              }
               {/* here */}
               <Route exact path="/offerDetails/:id" component={OfferDetails} />
 
@@ -82,4 +86,10 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    currentUser: state.user.currentUser
+  };
+};
+
+export default connect(mapStateToProps,null)(App);

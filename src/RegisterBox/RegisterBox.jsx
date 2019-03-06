@@ -12,7 +12,8 @@ class RegisterBox extends Component {
     newUser: {
       email: "",
       password: "",
-      vouchersInCart: []
+      vouchersInCart: [],
+      bought : []
     },
     errors: [],
     pswdStrength: "",

@@ -19,12 +19,8 @@ const shoppingCart = props => {
                 />)}
         </>
     )
-        
-   
-    
+            
 }
-
-
 
 const mapStateToProps = state => {
     return {

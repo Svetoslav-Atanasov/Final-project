@@ -26,7 +26,7 @@ class Offer extends Component {
         
         console.log('broikata e ' + broi)
         // pravq nov obekt vaucher i go slagam v kolickata na tekushtiq potrebitel
-        const voucher = {broi, number, offerId};
+        const voucher = {broi, number, offerId, isUsed:false};
         this.props.getToCart(id,voucher);
       } 
 

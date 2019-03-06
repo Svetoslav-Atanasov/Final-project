@@ -3,7 +3,10 @@ import {
     LET_USER_BE_LOGGED,
     DID_USER_REGISTERED,
     REMOVE_LOGGED_USER,
-    VOUCHER_TO_CART
+    VOUCHER_TO_CART,
+    REMOVE_VOUCHER_FROM_SHOPPING_CART,
+    BUY,
+    MARK_AS_USED
 } from './actionTypes';
 
 export const addUser = user => {
@@ -38,5 +41,24 @@ export const getToCart = (id,voucher) =>{
        
     }
 }
+export const removeFromCart = voucherNumber => {
+    return {
+        type: REMOVE_VOUCHER_FROM_SHOPPING_CART,
+        voucherNumber
+    }
+}
+export const buy = voucherNumber => {
+    return {
+        type: BUY,
+        voucherNumber
+    }
+}
+export const markAsUsed = voucherNumber => {
+    return {
+        type: MARK_AS_USED,
+        voucherNumber
+    }
+}
+
 
 
