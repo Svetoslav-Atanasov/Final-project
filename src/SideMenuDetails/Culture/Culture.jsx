@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import CultureDisplay from "./CultureDisplay";
 import SingleOfferTemp from '../../OfferDisplaySingleTemplate/OfferDisplaySingleTemplate'
 import { connect } from "react-redux";
 
