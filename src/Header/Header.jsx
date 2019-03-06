@@ -105,7 +105,7 @@ class Header extends Component {
          <ul className={styles.ulNav}>
           <LiNavLink to="/myProfile" src={UserProfile} />
           <LiNavLink to="/myVouchers"  src={voucher}/>
-          <LiNavLink to="/" otherComponent = {<ShoppingCart />}></LiNavLink>
+          <LiNavLink to="/myShoppingCart" otherComponent = {<ShoppingCart />}></LiNavLink>
           <LiNavLink to="/"  src={exit} onClick={()=>this.logOut()}/>
          </ul>
       </>

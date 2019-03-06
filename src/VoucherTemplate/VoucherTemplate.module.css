@@ -1,0 +1,13 @@
+.BorderTemplate{
+    border: 2px solid red
+}
+.Contend {
+    border : 2px solid purple;
+    flex-direction:row;
+}
+.VoucherTitle {
+    margin: 0 auto;
+}
+.More{
+    
+}
