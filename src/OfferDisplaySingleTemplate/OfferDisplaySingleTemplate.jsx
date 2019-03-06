@@ -62,7 +62,7 @@ class Offer extends Component {
         <Button
         //tuk proverqvam dali ima lognat user -> ako nqma - da go preprashta na login stranicata
         // ako ima da gi sloji v kolichkata
-            onClick={()=> !this.props.current ? this.props.history.push('/loginPage') : this.toGetToCart(this.props.current.id, this.props.name)}
+            onClick={()=> !this.props.current ? this.props.history.push('/loginPage') : this.toGetToCart(this.props.current.id, this.props.id)}
 
             title="GET VOUCHER"
           />

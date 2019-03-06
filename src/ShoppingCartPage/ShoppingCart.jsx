@@ -1,9 +1,7 @@
 import React from "react";
 import styles from "./ShoppingCart.module.css";
-import Offers from "../Offers/Offers";
 import { connect } from "react-redux";
 import { withRouter } from 'react-router-dom';
-import voucherTemplate from "../VoucherTemplate/VoucherTemplate"
 import VoucherTemplate from "../VoucherTemplate/VoucherTemplate";
 
 const shoppingCart = props => {
