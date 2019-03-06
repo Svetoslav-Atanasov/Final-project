@@ -18,7 +18,7 @@ const sideMenu = props => {
       <ul>
         <LiNavLink to="/" title="ALL" src={all}/>
         <LiNavLink to="/category/culture" title="Culture" src={theatre}/>
-        <LiNavLink to="/category/eating-оut" title="Eating-оut" src={meal}/>
+        <LiNavLink to="/category/eating-оut" title="Eating Out" src={meal}/>
         <LiNavLink to="/category/vacations" title="Vacations" src={pochivki}/>
       </ul>
     </nav>
