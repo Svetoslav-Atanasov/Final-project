@@ -21,7 +21,7 @@ render(){
             </div>
             <div className={styles.orangeDot}>
             {/* ako e razlichno ot 0  pokaji krygcheto  */}
-                {this.props.current.vouchersInCart.length!==0 ? <img width="30" height="30" src={orangeCircle}/> : null }
+                {this.props.current.vouchersInCart.length!==0 ? <img width="20" height="20" src={orangeCircle}/> : null }
             {/* v krygcheto sloji broikata - koqto e dyljinata na vaucherite v kolichkata/kartata */}
                 <div className={styles.number}>{this.props.current.vouchersInCart.length}</div>
             </div>

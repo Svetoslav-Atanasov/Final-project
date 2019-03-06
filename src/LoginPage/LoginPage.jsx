@@ -7,6 +7,7 @@ import { withRouter } from 'react-router-dom';;
 //
 // export накуп със създаването на класа е възможно (вместо на последния ред)
 
+const additionalRegisterButtonStyling = {marginLeft: "105px"}
 
 const loginPage = props => {
 
@@ -16,7 +17,7 @@ const loginPage = props => {
         return (
             <div className={styles.login}>
                 <LoginBox/>
-                <Button title ="REGISTER" onClick={()=>props.history.push('/Register')}/>
+                <Button style={additionalRegisterButtonStyling} title ="Register" onClick={()=>props.history.push('/Register')}/>
             </div>
         )
     }
