@@ -2,7 +2,8 @@ import {
     ADD_USER,
     LET_USER_BE_LOGGED,
     DID_USER_REGISTERED,
-    REMOVE_LOGGED_USER
+    REMOVE_LOGGED_USER,
+    VOUCHER_TO_CART
 } from './actionTypes';
 
 export const addUser = user => {
@@ -29,3 +30,13 @@ export const removeCurrentUser = () => {
        
     }
 }
+export const getToCart = (id,voucher) =>{
+    return {
+        type: VOUCHER_TO_CART,
+        id,
+        voucher
+       
+    }
+}
+
+

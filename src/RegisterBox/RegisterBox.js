@@ -13,7 +13,8 @@ class RegisterBox extends Component{
     state={
       newUser:{
         email:"",
-        password:""
+        password:"",
+        vouchersInCart:[]
       },
     errors: [],
     pswdStrength:"",

@@ -49,7 +49,9 @@ class LoginBox extends Component {
   };
   submitLogin = e => {
     e.preventDefault();
-
+    // console.log('tekushtiq userList e:')
+    // console.log(this.props.userList)
+  
     //proverqvame v storidja dali ima takyv user
     let user = this.props.userList.find(
       user =>
@@ -61,10 +63,10 @@ class LoginBox extends Component {
       this.showValidationErr("password", "Грешна или забравена парола");
     } else {
       //ако съществува такъв регистриран юзер, го вкарваме в сториджа, като текущ
-      // console.log(user);
+      console.log(user);
       this.props.setCurrentUser(user);
 
-      sessionStorage.setItem("currentUser", user.email);
+      // sessionStorage.setItem("currentUser", user.email);
       this.props.history.push("/");
     }
   };

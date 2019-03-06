@@ -2,14 +2,15 @@ import {
     ADD_USER,
     LET_USER_BE_LOGGED,
     DID_USER_REGISTERED,
-    REMOVE_LOGGED_USER
+    REMOVE_LOGGED_USER,
+    VOUCHER_TO_CART
 } from '../actions/actionTypes';
 // import { User } from '../Constructors/UserConstructor'
 
 const initialState =  {
     currentUser : null,
     userList : [
-        {id:0 , email:'test@abv.bg', password:'test'}
+        {id:0 , email:'test@abv.bg', password:'test', vouchersInCart : []}
     ],
     didUserRegisterd : false
 };
@@ -32,13 +33,25 @@ const userReducer = (state = initialState, action) => {
             )
         }
         case REMOVE_LOGGED_USER : {
-            return(
-                {...state, currentUser: null}
-            )
+            
+                const newState = {...state, currentUser:null}
+                return newState;
+        }
+        case VOUCHER_TO_CART :{
+            const newState = {...state};
+            const newUserList=[...newState.userList];
+            const index = newUserList.findIndex(user=>user.id === action.id);
+            const newUser = newUserList[index];
+            
+            newUser.vouchersInCart.push(action.voucher);          
+            newUserList[index] = newUser;
+            newState.userList = newUserList;
+            return newState
         }
         default: return state;
     }
 }
+
 
 export default userReducer;
         

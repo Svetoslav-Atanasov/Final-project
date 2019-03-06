@@ -64,6 +64,8 @@ class Header extends Component {
   logOut = () => {
     this.resetState()
    this.props.removeCurrentUser();
+   this.props.history.push("/")
+   
    
   }
 
