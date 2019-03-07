@@ -12,7 +12,9 @@ const culture = props =>{
   return (
     <div>
      { offersCulture.map( offer =>
-        <SingleOfferTemp key={offer.id} {...offer}/>
+        // <SingleOfferTemp key={offer.id} {...offer}/>
+        <SingleOfferTemp key={offer.id} id={offer.id} name={offer.name} image={offer.image} description={offer.description} price={offer.price+" BGN"} category={offer.category} />
+
         )}
     </div>
   );

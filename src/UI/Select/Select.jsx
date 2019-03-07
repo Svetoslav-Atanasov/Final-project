@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./Select.module.css";
 
-const Select = () => {
+const Select = props => {
   return (
-    <select className={styles.quantitySelect}>
+    <select className={`${styles.quantitySelect} ${props.className}`}>
       <option value="1">1</option>
       <option value="2">2</option>
       <option value="3">3</option>

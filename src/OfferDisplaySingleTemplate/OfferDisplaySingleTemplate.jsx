@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import styles from "./OfferDisplaySingleTemplate.module.css";
 import Button from "../UI/Button/Button";
 import { connect } from "react-redux";
@@ -40,22 +39,16 @@ class Offer extends Component {
   render(){
     return (
       <div className={styles.singleDiv}>
-        <h1>{this.props.name}</h1>
+        <h1 className={styles.titleMainScreen}>{this.props.name}</h1>
         <div>
           <Link to={"/offerDetails/" + this.props.id}>
             <img src={this.props.image} className={styles.singleDisplayImage} />
           </Link>
         </div>
         <div>{this.props.description}</div>
-        <div>{this.props.price} BGN</div>
+        <div>{this.props.price}</div>
         <div>{this.props.category}</div>
-        {/* dobavqm select i buton, neobhodimi sa za zakupuvaneto na waucheri */}
-        {/* <select onChange={this.change} value={this.state.value}>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-        </select> */}
+
         <Select onChange={this.change} value={this.state.value}/>
 
 
