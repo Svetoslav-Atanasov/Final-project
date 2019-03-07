@@ -74,12 +74,12 @@ const initialState = {
             price: 654,
             fullDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris gravida pellentesque arcu vitae luctus. Vivamus eget tellus tristique, gravida quam at, bibendum mauris. Donec accumsan magna vitae lacinia semper. Curabitur aliquam, turpis a ullamcorper viverra, leo dolor hendrerit erat, sit amet maximus nisi dui at ex. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce dapibus diam quis sapien iaculis tempor. Nam eleifend orci vitae turpis aliquam, ac fringilla tellus aliquam. Nunc vitae est eros. Ut at risus massa.",
             category: "Vacations",
-            image: "https://www.thebalancecareers.com/thmb/CiTDz6Wil7NCP66UF5d1_pZgoRI=/3865x2576/filters:no_upscale()/high-angle-view-of-lower-east-side-manhattan-downtown--new-york-city--usa-640006562-5ae52a273de423003776ae2e.jpg"
+            image: "https://static1.mansionglobal.com/production/media/article-images/5e8a465afae84d510ec9c38a43c2b935/large_GettyImages-640006562-1.jpg"
         },
         {
             id: 9,
             name: "Tokyo",
-            description: "The home of technology giants, ancient culture and manga for a special prize",
+            description: "Technology giants, ancient culture and manga",
             price: 1256,
             fullDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris gravida pellentesque arcu vitae luctus. Vivamus eget tellus tristique, gravida quam at, bibendum mauris. Donec accumsan magna vitae lacinia semper. Curabitur aliquam, turpis a ullamcorper viverra, leo dolor hendrerit erat, sit amet maximus nisi dui at ex. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce dapibus diam quis sapien iaculis tempor. Nam eleifend orci vitae turpis aliquam, ac fringilla tellus aliquam. Nunc vitae est eros. Ut at risus massa.",
             category: "Vacations",

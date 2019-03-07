@@ -1,6 +1,8 @@
 import React from "react";
 import SingleOfferTemp from '../../OfferDisplaySingleTemplate/OfferDisplaySingleTemplate'
 import { connect } from "react-redux";
+import styles from "../../OffersDisplay/OffersDisplay.module.css"
+
 
 // filtrirame masiva po kategoriqta i izkarvam samo filtriranite oferti
 const vacations = props =>{
@@ -9,7 +11,7 @@ const vacations = props =>{
 
   
   return (
-    <div>
+    <div  className={styles.theDiv}>
      { offersCulture.map( offer =>
         // <SingleOfferTemp key={offer.id} {...offer}/>
         <SingleOfferTemp key={offer.id} id={offer.id} name={offer.name} image={offer.image} description={offer.description} price={offer.price+" BGN"} category={offer.category} />
