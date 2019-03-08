@@ -12,6 +12,7 @@ import exit from '../assets/images/exit.png'
 import UserProfile from '../assets/images/UserProfile.png'
 import voucher from '../assets/images/voucher.png'
 import ShoppingCart from "../UI/ShoppingCart/ShoppingCart"
+import SearchBox from "../UI/SearchBox/SearchBox"
 
 
 class Header extends Component {
@@ -143,6 +144,7 @@ class Header extends Component {
                 </> : null }
             </div>
           </div>{" "}
+          <SearchBox  whereToSearch="AllOffers" />
         </nav>{" "}
       </>
     );

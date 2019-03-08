@@ -19,14 +19,16 @@ class Offer extends Component {
     }
 
     //tazi funkciq - vzima id na potrebitelq  i slaga v koshnicata mu - vaucher 
-    toGetToCart = (id,offerId) => {
+    toGetToCart = (id, offerId, name) => {
         // number shte e unikalen nomer na vauchera
         const number = Math.ceil(Math.random()*10000);
         const broi  =this.state.broi;
         
         console.log('broikata e ' + broi)
         // pravq nov obekt vaucher i go slagam v kolickata na tekushtiq potrebitel
-        const voucher = {broi, number, offerId, isUsed:false};
+        const voucher = {broi, number, offerId, isUsed:false, name};
+        //vauchera shte si pazi v sebe si - za kolko broq e, unikalen nomer,
+        //id na ofertata i ime na ofertata, za da moje da se izpolzva pri tyrsene
         this.props.getToCart(id,voucher);
       } 
 
@@ -38,6 +40,7 @@ class Offer extends Component {
     }
 
   render(){
+  
     return (
       <div className={styles.singleDiv}>
         <h1>{this.props.name}</h1>
@@ -49,20 +52,14 @@ class Offer extends Component {
         <div>{this.props.description}</div>
         <div>{this.props.price} BGN</div>
         <div>{this.props.category}</div>
-        {/* dobavqm select i buton, neobhodimi sa za zakupuvaneto na waucheri */}
-        {/* <select onChange={this.change} value={this.state.value}>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-        </select> */}
+    
         <Select onChange={this.change} value={this.state.value}/>
 
 
         <Button
         //tuk proverqvam dali ima lognat user -> ako nqma - da go preprashta na login stranicata
         // ako ima da gi sloji v kolichkata
-            onClick={()=> !this.props.current ? this.props.history.push('/loginPage') : this.toGetToCart(this.props.current.id, this.props.id)}
+            onClick={()=> !this.props.current ? this.props.history.push('/loginPage') : this.toGetToCart(this.props.current.id, this.props.id, this.props.name)}
 
             title="GET VOUCHER"
           />

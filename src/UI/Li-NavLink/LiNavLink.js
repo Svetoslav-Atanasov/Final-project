@@ -13,7 +13,7 @@ class LiNavlink extends Component {
                     exact to={this.props.to} 
                     className={styles.ordinaryLink} 
                     activeClassName={styles.ActiveLink}
-                    onClick={this.props.onClick} >
+                     >
                     
                     <span className={styles.categoryName}>
                         {this.props.title}

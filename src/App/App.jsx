@@ -18,7 +18,8 @@ import MyVouchers from "../MyVouchers/MyVouchers";
 import Profile from "../Profile/profile";
 import Footer from "../Footer/Footer";
 import OfferDetails from "../OfferDetails/OfferDetails";
-import ShoppingCart from '../ShoppingCartPage/ShoppingCart'
+import ShoppingCart from '../ShoppingCartPage/ShoppingCart';
+import Serched from "../Serched/Serched"
 
 
 // import { NavLink} from "react-router-dom";
@@ -71,6 +72,7 @@ class App extends Component {
               }
               {/* here */}
               <Route exact path="/offerDetails/:id" component={OfferDetails} />
+              <Route path="/Search/:param" component={Serched} />
 
               {/* Page Not Found */}
               <Route

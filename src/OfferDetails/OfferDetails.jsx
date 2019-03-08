@@ -7,9 +7,12 @@ class OfferDetails extends React.Component {
   state = {};
 
   render() {
-    const id = this.props.match.params.id;
-    console.log(id);
+    console.log('detaili za ofertata')
     console.log(this.props);
+    const id = this.props.match.params.id;
+    console.log('detaili za ofertata')
+    console.log(id);
+    
 
     var offer = this.props.offerList.find(o => o.id == id);
     console.log(offer);
