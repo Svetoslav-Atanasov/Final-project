@@ -7,6 +7,7 @@ import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
 import Select from "../UI/Select/Select";
 import Image from "../Image/Image";
+import Countdown from 'react-countdown-now'
 
 class Offer extends Component {
   //ot stateless go pravq na statefull component,
@@ -36,20 +37,46 @@ class Offer extends Component {
     this.setState({ broi: e.target.value });
   };
 
+  renderer = ({ days, hours, minutes, seconds, completed }) => {
+    if (completed) {
+      // Render a complete state
+      return (
+        <span>
+        Offer expired
+       </span>);
+    } else {
+      // Render a countdown
+      return (
+        <span>
+         {days}:{hours}:{minutes}:{seconds}
+        </span>
+      );
+    }
+  };
+
+
+
   render() {
+    const dayRandom = Math.floor(Math.random() * 29 + 1);
+    // const monthRandom = Math.floor(Math.random() * 8 + 4);
+    var expDate = new Date(2019, 2, dayRandom);
+    console.log(expDate);
+
+
     return (
       <div className={styles.singleDiv}>
         <h1 className={styles.titleMainScreen}>{this.props.name}</h1>
         <div>
           <Link to={"/offerDetails/" + this.props.id}>
-            {/* <img src={this.props.image} className={styles.singleDisplayImage} /> */}
             <Image image={this.props.image} />
           </Link>
         </div>
         <div>{this.props.description}</div>
         <div>{this.props.price}</div>
         <div>{this.props.category}</div>
+        <div>{`${expDate.getDate()}.${expDate.getMonth()}.${expDate.getFullYear()}`}</div>
         <div>
+          <Countdown date={expDate} renderer={this.renderer}/>
           <Select onChange={this.change} value={this.state.value} />
 
           <Button
