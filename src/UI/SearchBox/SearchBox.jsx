@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styles from './SearchBox.module.css'
 import search from '../../assets/images/search.png'
 import { withRouter } from "react-router";
+import ReactTooltip from 'react-tooltip'
 
 //tova tuk shte vzima samo vytreshnoto sydyrjanie na sercha i shte go predade prez url
 //na stranicata za tyrsene
@@ -16,8 +17,9 @@ import { withRouter } from "react-router";
 
 class SearchBox extends Component {
 
-    state ={
+    state = {
         searchingFor : '',
+        focus : false
     }
 
     setSearch = e =>{
@@ -26,7 +28,15 @@ class SearchBox extends Component {
         this.setState({ searchingFor })
     }
 
-    submitSearch = () => {
+    onFocus = () =>{
+        let focus = false;
+        if (!this.state.focus){
+            focus = true;
+        }
+        this.setState({ focus })
+    }
+
+    submitSearch = () => {    
 
         //pri tyrseneto pravim vsichko s malki bukvi, zashtoto malkite i golemite ne sa ==
         const searchingFor = this.state.searchingFor
@@ -45,16 +55,28 @@ class SearchBox extends Component {
 
     render(){
 
-    return(
-        <div className={styles.SearchBox}>
-            <input type = "text" maxLength ="20"  placeholder='Tyrsi vuv vsichki oferti' onChange={this.setSearch} value = {this.state.searchingFor}></input>
-            <img width="40" height="40" src={search} onClick={()=>this.submitSearch()} />
-        </div>
-    )
+        return(
+            <div className={styles.SearchBox}>            
+            <span data-tip=" Only words separated with space"> 
+                <input 
+                    type = "text" 
+                    maxLength ="20"  
+                    placeholder='Tyrsi vuv vsichki oferti' 
+                    onChange={this.setSearch} 
+                    value = {this.state.searchingFor}
+                    onClick={this.onFocus}
+                    className ={styles.SearchInput}
+                    >
+                </input>
+            </span>
+            <ReactTooltip place="bottom" type="light" effect="float" />
+                <img width="40" height="40" src={search} onClick={()=>this.submitSearch()} />
+            </div>
+        )
     
     }
-
 }
 
 
-export default withRouter(SearchBox);
+
+export default withRouter(SearchBox)

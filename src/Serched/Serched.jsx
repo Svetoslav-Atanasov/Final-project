@@ -6,16 +6,11 @@ import { withRouter } from "react-router";
 // byrkame v stora i si vzimame kakvoto ni trqbva
 const searched = props => {
 
-
-
-    //razdelqme propsowwete
+    //razdelqme url
     const keyWords = props.match.params.param.split('-')
-    // console.log('tova sa keywords na stranicata za tyrsene')
-    // console.log(keyWords)
-    // console.log('tova sa vsichki oferti')
+
     const offersSet = new Set();
     const allOffers = props.allOffers;
-    // console.log(allOffers)
 
     for(let index = 0; index < allOffers.length ; index++){
         for(let i=0; i< keyWords.length; i++ ){
@@ -24,13 +19,8 @@ const searched = props => {
              }
         }
     }
-    // console.log('set e po id ')
-    // console.log(offersSet)
-    
-
+   
     let filteredOffers =[]
-
-
 
     for (var id of offersSet) {
       const index = allOffers.findIndex(offer => offer.id === id)

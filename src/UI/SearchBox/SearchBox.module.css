@@ -1,0 +1,20 @@
+.SearchInput{
+    padding: 10px 18px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    border-radius: 8px;
+    border:none;
+    outline: none;
+    
+}
+
+.SearchBox{
+    display: flex;
+    justify-content: space-between;
+    margin: auo 0;
+    margin: auto 0;
+}
+
+.SearchBox > img {
+    cursor:pointer;
+}
