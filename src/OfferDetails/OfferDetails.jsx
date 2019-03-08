@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 import Select from "../UI/Select/Select";
 import Button from "../UI/Button/Button";
 import Countdown, { zeroPad } from "react-countdown-now";
+import Zoom from "react-reveal/Zoom";
 
 class OfferDetails extends React.Component {
   state = {
@@ -31,25 +32,25 @@ class OfferDetails extends React.Component {
     this.setState({ broi: e.target.value });
   };
 
-      // function - shows format of timer + message after it has reached 0
-      renderer = ({ days, hours, minutes, seconds, completed }) => {
-        var daysFormatted = zeroPad(days, 2);
-        var hoursFormatted = zeroPad(hours, 2);
-        var minutesFormatted = zeroPad(minutes, 2);
-        var secondsFormatted = zeroPad(seconds, 2);
-        if (completed) {
-          // Render a complete state
-          return <span>Offer expired </span>;
-        } else {
-          // Render a countdown
-          return (
-            <span>
-              {daysFormatted} day/s {hoursFormatted}:{minutesFormatted}:
-              {secondsFormatted}{" "}
-            </span>
-          );
-        }
-      };
+  // function - shows format of timer + message after it has reached 0
+  renderer = ({ days, hours, minutes, seconds, completed }) => {
+    var daysFormatted = zeroPad(days, 2);
+    var hoursFormatted = zeroPad(hours, 2);
+    var minutesFormatted = zeroPad(minutes, 2);
+    var secondsFormatted = zeroPad(seconds, 2);
+    if (completed) {
+      // Render a complete state
+      return <span>Offer expired </span>;
+    } else {
+      // Render a countdown
+      return (
+        <span>
+          {daysFormatted} day/s {hoursFormatted}:{minutesFormatted}:
+          {secondsFormatted}{" "}
+        </span>
+      );
+    }
+  };
 
   render() {
     const id = this.props.match.params.id;
@@ -68,72 +69,74 @@ class OfferDetails extends React.Component {
     );
 
     return (
-      <div className={styles.singleDiv}>
-        <div className={styles.topFlex}>
-          <div>
-            <img
-              src={require("../assets/images/voucherRibbon.png")}
-              className={styles.voucherImage}
-            />
+      <Zoom>
+        <div className={styles.singleDiv}>
+          <div className={styles.topFlex}>
+            <div>
+              <img
+                src={require("../assets/images/voucherRibbon.png")}
+                className={styles.voucherImage}
+              />
+            </div>
+            <div>
+              <h1 className={styles.title}>{offer.name}</h1>
+            </div>
           </div>
-          <div>
-            <h1 className={styles.title}>{offer.name}</h1>
+          <div className={styles.upperFlex}>
+            <div>
+              <img src={offer.image} className={styles.singleDisplayImage} />
+            </div>
+            <div>
+              <p className={styles.fullDescriptionDetails}>
+                {offer.fullDescription}
+              </p>
+            </div>
           </div>
-        </div>
-        <div className={styles.upperFlex}>
-          <div>
-            <img src={offer.image} className={styles.singleDisplayImage} />
+          <div className={styles.middleFlex}>
+            <span className={styles.titleDetails}>Offer terms</span>
+            <ul className={styles.terms}>
+              <li>
+                {" "}
+                - Expires:{" "}
+                {`${expDate.getDate()}.${expDate.getMonth() +
+                  1}.${expDate.getFullYear()}`}
+              </li>
+              <li> - The voucher is valid for one person only</li>
+              <li> - Prior reservation required</li>
+              <li> - Each client can use an unlimited number of voucher</li>
+            </ul>
           </div>
-          <div>
-            <p className={styles.fullDescriptionDetails}>
-              {offer.fullDescription}
-            </p>
-          </div>
-        </div>
-        <div className={styles.middleFlex}>
-          <span className={styles.titleDetails}>Offer terms</span>
-          <ul className={styles.terms}>
-            <li>
+          <div className={styles.bottomFlex}>
+            <div className={styles.priceDetails}>{offer.price} BGN</div>
+
+            <div>
+              <Button
+                //tuk proverqvam dali ima lognat user -> ako nqma - da go preprashta na login stranicata
+                // ako ima da gi sloji v kolichkata
+                className={styles.buttonMod}
+                onClick={() =>
+                  !this.props.current
+                    ? this.props.history.push("/loginPage")
+                    : this.toGetToCart(this.props.current.id, this.props.id)
+                }
+                title="GET VOUCHER"
+              />
+            </div>
+            <div>
               {" "}
-              - Expires:{" "}
-              {`${expDate.getDate()}.${expDate.getMonth() +
-                1}.${expDate.getFullYear()}`}
-            </li>
-            <li> - The voucher is valid for one person only</li>
-            <li> - Prior reservation required</li>
-            <li> - Each client can use an unlimited number of voucher</li>
-          </ul>
-        </div>
-        <div className={styles.bottomFlex}>
-          <div className={styles.priceDetails}>{offer.price} BGN</div>
-
-          <div>
-            <Button
-              //tuk proverqvam dali ima lognat user -> ako nqma - da go preprashta na login stranicata
-              // ako ima da gi sloji v kolichkata
-              className={styles.buttonMod}
-              onClick={() =>
-                !this.props.current
-                  ? this.props.history.push("/loginPage")
-                  : this.toGetToCart(this.props.current.id, this.props.id)
-              }
-              title="GET VOUCHER"
-            />
+              <Select
+                className={styles.selectMod}
+                onChange={this.change}
+                value={this.state.value}
+              />
+            </div>
           </div>
-          <div>
-            {" "}
-            <Select
-              className={styles.selectMod}
-              onChange={this.change}
-              value={this.state.value}
-            />
+
+          <div className={styles.timer}>
+            Time left: <Countdown date={expDate} renderer={this.renderer} />
           </div>
         </div>
-
-        <div className={styles.timer}>
-          Time left: <Countdown date={expDate} renderer={this.renderer} />
-        </div>
-      </div>
+      </Zoom>
     );
   }
 }

@@ -10,6 +10,9 @@ const button = props => {
       //className={classes.Button}
       style={props.style}
       disabled={props.diabled || false}
+      // timerOut={props.timerOut}
+      moreStyles={props.moreStyles}
+      timerOut={props.timerOut}
     >
       {" "}
       {props.title}{" "}
