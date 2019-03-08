@@ -12,6 +12,7 @@
     transform: translateX(-70%);
     /* kazvame che iskame da animirame transform i definirame kolko bavna da e animaciqta, ease-out za da zapochne byrzo i spre bavno */
     transition: transform 0.3s ease-out;
+    border-radius: 5px;
 }
 
 ul {

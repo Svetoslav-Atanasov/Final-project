@@ -58,6 +58,8 @@ body {
     display: block;
     background-color: #F8B195;
     height: 14em;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 .formHidden {

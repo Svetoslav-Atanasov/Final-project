@@ -1,0 +1,90 @@
+    .singleDiv {
+        border: 2px solid #2E3F51;
+        border-radius: 5px;
+        margin-bottom: 5px;
+        box-sizing: border-box;
+    }
+    
+    .singleDisplayImage {
+        width: 500px;
+        border-radius: 30px/10px;
+        border: 2px solid #2E3F51;
+        margin-left: 20px;
+        margin-right: 10px;
+    }
+    
+    .title {
+        text-align: center;
+        font-size: 4em;
+        color: #2E3F51
+    }
+    
+    .fullDescriptionDetails {
+        text-align: justify;
+        font-size: 1.2em;
+        padding-left: 10px;
+        padding-right: 20px;
+    }
+    
+    .topFlex {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* border-bottom: 2px solid black; */
+        padding-bottom: 20px;
+    }
+    
+    .upperFlex {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        border-bottom: 2px solid #2E3F51;
+        padding-bottom: 20px;
+    }
+    
+    .middleFlex {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        border-bottom: 2px solid #2E3F51;
+    }
+    
+    .bottomFlex {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-items: center;
+        /* border-bottom: 2px solid black; */
+    }
+    
+    .priceDetails {
+        font-size: 2em;
+    }
+    
+    .selectMod {
+        height: 3em;
+        width: 3em;
+        font-size: 1.1em;
+    }
+    
+    .buttonMod {
+        height: 3em;
+        width: 10em;
+        font-size: 1.1em;
+    }
+    
+    .terms {
+        font-size: 1.1em;
+    }
+    
+    .titleDetails {
+        margin-left: 50px;
+        margin-top: 20px;
+        font-size: 1.5em;
+    }
+    
+    .voucherImage {
+        /* border-radius: 200px; */
+        width: 100px;
+    }
