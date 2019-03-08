@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 
 import Select from "../UI/Select/Select";
 import Button from "../UI/Button/Button";
+import Countdown, { zeroPad } from "react-countdown-now";
 
 class OfferDetails extends React.Component {
   state = {
@@ -30,23 +31,50 @@ class OfferDetails extends React.Component {
     this.setState({ broi: e.target.value });
   };
 
-  render() {
-    const dayRandom = Math.floor(Math.random() * 29 + 1);
-    const monthRandom = Math.floor(Math.random() * 8 + 4);
+      // function - shows format of timer + message after it has reached 0
+      renderer = ({ days, hours, minutes, seconds, completed }) => {
+        var daysFormatted = zeroPad(days, 2);
+        var hoursFormatted = zeroPad(hours, 2);
+        var minutesFormatted = zeroPad(minutes, 2);
+        var secondsFormatted = zeroPad(seconds, 2);
+        if (completed) {
+          // Render a complete state
+          return <span>Offer expired </span>;
+        } else {
+          // Render a countdown
+          return (
+            <span>
+              {daysFormatted} day/s {hoursFormatted}:{minutesFormatted}:
+              {secondsFormatted}{" "}
+            </span>
+          );
+        }
+      };
 
+  render() {
     const id = this.props.match.params.id;
-    console.log('detaili za ofertata')
+    console.log("detaili za ofertata");
     console.log(id);
-    
 
     var offer = this.props.offerList.find(o => o.id == id);
     console.log(offer);
+
+    // used in - Expires:
+    var formattedDate = offer.expirationDate.split(".");
+    var expDate = new Date(
+      formattedDate[0],
+      formattedDate[1] - 1,
+      formattedDate[2]
+    );
 
     return (
       <div className={styles.singleDiv}>
         <div className={styles.topFlex}>
           <div>
-            <img src={require("../assets/images/voucherRibbon.png")} className={styles.voucherImage} />
+            <img
+              src={require("../assets/images/voucherRibbon.png")}
+              className={styles.voucherImage}
+            />
           </div>
           <div>
             <h1 className={styles.title}>{offer.name}</h1>
@@ -67,7 +95,9 @@ class OfferDetails extends React.Component {
           <ul className={styles.terms}>
             <li>
               {" "}
-              - Expires: {dayRandom}.{monthRandom}.2019
+              - Expires:{" "}
+              {`${expDate.getDate()}.${expDate.getMonth() +
+                1}.${expDate.getFullYear()}`}
             </li>
             <li> - The voucher is valid for one person only</li>
             <li> - Prior reservation required</li>
@@ -98,6 +128,10 @@ class OfferDetails extends React.Component {
               value={this.state.value}
             />
           </div>
+        </div>
+
+        <div className={styles.timer}>
+          Time left: <Countdown date={expDate} renderer={this.renderer} />
         </div>
       </div>
     );
