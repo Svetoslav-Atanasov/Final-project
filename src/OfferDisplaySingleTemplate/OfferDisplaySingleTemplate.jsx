@@ -7,7 +7,9 @@ import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
 import Select from "../UI/Select/Select";
 import Image from "../Image/Image";
-import Countdown from 'react-countdown-now'
+import Countdown, {
+  zeroPad
+} from "react-countdown-now";
 
 class Offer extends Component {
   //ot stateless go pravq na statefull component,
@@ -17,19 +19,19 @@ class Offer extends Component {
     broi: "1"
   };
 
-    //tazi funkciq - vzima id na potrebitelq  i slaga v koshnicata mu - vaucher 
-    toGetToCart = (id, offerId, name) => {
-        // number shte e unikalen nomer na vauchera
-        const number = Math.ceil(Math.random()*10000);
-        const broi  =this.state.broi;
-        
-        console.log('broikata e ' + broi)
-        // pravq nov obekt vaucher i go slagam v kolickata na tekushtiq potrebitel
-        const voucher = {broi, number, offerId, isUsed:false, name};
-        //vauchera shte si pazi v sebe si - za kolko broq e, unikalen nomer,
-        //id na ofertata i ime na ofertata, za da moje da se izpolzva pri tyrsene
-        this.props.getToCart(id,voucher);
-      } 
+  //tazi funkciq - vzima id na potrebitelq  i slaga v koshnicata mu - vaucher
+  toGetToCart = (id, offerId, name) => {
+    // number shte e unikalen nomer na vauchera
+    const number = Math.ceil(Math.random() * 10000);
+    const broi = this.state.broi;
+
+    // console.log('broikata e ' + broi)
+    // pravq nov obekt vaucher i go slagam v kolickata na tekushtiq potrebitel
+    const voucher = { broi, number, offerId, isUsed: false, name };
+    //vauchera shte si pazi v sebe si - za kolko broq e, unikalen nomer,
+    //id na ofertata i ime na ofertata, za da moje da se izpolzva pri tyrsene
+    this.props.getToCart(id, voucher);
+  };
 
   //tazi funkciq change() - shte vzima value ot inputa i shte go slaga v state, za da se zapzi
   // i da moje da byde izprateno
@@ -37,31 +39,36 @@ class Offer extends Component {
     this.setState({ broi: e.target.value });
   };
 
+  // function - shows format of timer + message after it has reached 0
   renderer = ({ days, hours, minutes, seconds, completed }) => {
+    var daysFormatted = zeroPad(days, 2);
+    var hoursFormatted = zeroPad(hours, 2);
+    var minutesFormatted = zeroPad(minutes, 2);
+    var secondsFormatted = zeroPad(seconds, 2);
     if (completed) {
       // Render a complete state
-      return (
-        <span>
-        Offer expired
-       </span>);
+      return <span>Offer expired </span>;
     } else {
       // Render a countdown
       return (
         <span>
-         {days}:{hours}:{minutes}:{seconds}
+          {daysFormatted} day/s {hoursFormatted}:{minutesFormatted}:{secondsFormatted}{" "}
         </span>
       );
     }
   };
 
-
-
   render() {
     const dayRandom = Math.floor(Math.random() * 29 + 1);
-    // const monthRandom = Math.floor(Math.random() * 8 + 4);
-    var expDate = new Date(2019, 2, dayRandom);
-    console.log(expDate);
+    // var expDate = new Date(2019, 2, dayRandom);
+    // // console.log(expDate);
+    // console.log(this.props.expDate);
+    // console.log(this.props);
 
+    // takes date from userReducer's offerList
+    var formattedDate = this.props.expDate.split('.');
+    var expDate = new Date (formattedDate[0], formattedDate[1]-1, formattedDate[2]);
+    console.log(expDate);
 
     return (
       <div className={styles.singleDiv}>
@@ -74,11 +81,15 @@ class Offer extends Component {
         <div>{this.props.description}</div>
         <div>{this.props.price}</div>
         <div>{this.props.category}</div>
-        <div>{`${expDate.getDate()}.${expDate.getMonth()}.${expDate.getFullYear()}`}</div>
+        {/* months are counted from 0-11; +1 to start from the month of March */}
         <div>
-          <Countdown date={expDate} renderer={this.renderer}/>
-          <Select onChange={this.change} value={this.state.value} />
+          Offer expires:{" "}
+          {`${expDate.getDate()}.${expDate.getMonth() +
+            1}.${expDate.getFullYear()}`}
+        </div>
 
+        <div>
+          <Select onChange={this.change} value={this.state.value} />
           <Button
             //tuk proverqvam dali ima lognat user -> ako nqma - da go preprashta na login stranicata
             // ako ima da gi sloji v kolichkata
@@ -89,6 +100,10 @@ class Offer extends Component {
             }
             title="GET VOUCHER"
           />
+        </div>
+
+        <div className={styles.timer}>
+          Time left: <Countdown date={expDate} renderer={this.renderer} />
         </div>
       </div>
     );
