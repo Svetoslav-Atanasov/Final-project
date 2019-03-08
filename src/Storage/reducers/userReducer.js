@@ -7,7 +7,9 @@ import {
     REMOVE_VOUCHER_FROM_SHOPPING_CART,
     BUY,
     MARK_AS_USED,
-    SET_FILTERED
+    SET_FILTERED,
+    ADD_VOUCHER,
+    ORDERD
 } from '../actions/actionTypes';
 
 const initialStateUser =  {
@@ -45,14 +47,14 @@ export const userReducer = (state = initialStateUser, action) => {
         case VOUCHER_TO_CART :{
             const newState = {...state};
             const newUserList=[...newState.userList];
-            const index = newUserList.findIndex(user=>user.id === action.id);
+
+            const index = newUserList.findIndex(user=>user.id === action.idUser);
             const newUser = newUserList[index];
 
             
-            newUser.vouchersInCart.push(action.voucher);         
+            newUser.vouchersInCart.push(action.orderdVoucher);     
             newUserList[index] = newUser;
             newState.userList = newUserList;
-            // const newCurrentUser = newUser; 
             newState.currentUser = newUser;
             return newState;
         }
@@ -79,9 +81,10 @@ export const userReducer = (state = initialStateUser, action) => {
             const indexUser = newUserList.findIndex(user => user.id === newCurrentUser.id);
             let newVouchersInCart = [...newCurrentUser.vouchersInCart];
             let newBought = [...newCurrentUser.bought]
-            const indexVoucher = newVouchersInCart.findIndex(v=>v.number === action.voucherNumber);
-            const boughtVoucher = newVouchersInCart[indexVoucher];
+            const indexVoucher = newVouchersInCart.findIndex(v=>v.number === action.orderedVoucherNumber);
+            const boughtVoucher = newVouchersInCart[indexVoucher];      
             
+
             newVouchersInCart.splice(indexVoucher,1);
             newBought.push(boughtVoucher);
             newCurrentUser.vouchersInCart = newVouchersInCart;
@@ -93,25 +96,7 @@ export const userReducer = (state = initialStateUser, action) => {
             //put into session storage
             return newState;
         }
-        case MARK_AS_USED : {
-            console.log('vliza v tazi funkciq disatchnata')
-            const newState = {...state};
-            const newCurrentUser = {...newState.currentUser};
-            const newUserList = [...newState.userList];
-            const indexUser = newUserList.findIndex(user => user.id === newCurrentUser.id);
-            const newBought = [...newCurrentUser.bought]
-            const indexVoucher = newBought.findIndex(v=> v.number === action.voucherNumber)
-            
-            newBought[indexVoucher].isUsed = true;
-            console.log('newBought[indexVoucher].isUsed')
-            console.log(newBought[indexVoucher].isUsed)
-            newCurrentUser.bought = newBought;
-            newUserList[indexUser]=newCurrentUser;
-            newState.userList = newUserList;
-            newState.currentUser = newCurrentUser;
-            return newState;
-
-        }
+       
         default: return state;
     }
 }
@@ -120,13 +105,13 @@ export const userReducer = (state = initialStateUser, action) => {
 
 const initialStateOffers = {
     offerList: [{
-            id: 1,
-            name: "Saglasie theatre play",
-            description: "A tragedy of love",
-            price: 10,
-            category: "Culture",
-            image: "https://scontent.fsof3-1.fna.fbcdn.net/v/t1.0-9/cp0/e15/q65/p960x960/51794288_10157216040984548_6390627658153066496_o.jpg?_nc_cat=101&efg=eyJpIjoidCJ9&_nc_ht=scontent.fsof3-1.fna&oh=a0d2751197940e5b20073a5ec3cbef1f&oe=5CDAE943"
-        },
+        id: 1,
+        name: "Saglasie theatre play",
+        description: "A tragedy of love",
+        price: 10,
+        category: "Culture",
+        image: "https://scontent.fsof3-1.fna.fbcdn.net/v/t1.0-9/cp0/e15/q65/p960x960/51794288_10157216040984548_6390627658153066496_o.jpg?_nc_cat=101&efg=eyJpIjoidCJ9&_nc_ht=scontent.fsof3-1.fna&oh=a0d2751197940e5b20073a5ec3cbef1f&oe=5CDAE943"
+    },
         {
             id: 2,
             name: "Leon Bridges concert",
@@ -183,7 +168,7 @@ const initialStateOffers = {
             category: "Vacations",
             image: "https://www.thebalancecareers.com/thmb/CiTDz6Wil7NCP66UF5d1_pZgoRI=/3865x2576/filters:no_upscale()/high-angle-view-of-lower-east-side-manhattan-downtown--new-york-city--usa-640006562-5ae52a273de423003776ae2e.jpg"
         },
-        {
+        {   
             id: 9,
             name: "Tokyo",
             description: "The home of technology giants, ancient culture and manga for a special prize",
@@ -202,6 +187,54 @@ export const offerReducer = (state = initialStateOffers, action) => {
             return (
                 {...state, filtered : action.filtered}
             ) ;
+        }
+        default: return state;
+    }
+}
+
+
+const initialStateVouchers =  {
+
+    voucherList : [],
+    orderedList : []
+
+};
+
+export const voucherReducer= (state = initialStateVouchers, action) => {
+
+    switch (action.type) {
+     
+
+        case MARK_AS_USED : {
+
+            const newState = {...state};
+            const newVoucherList=[...newState.voucherList];
+            const indexVoucher = newVoucherList.findIndex(v => v.number === action.voucherNumber);
+          
+            newVoucherList[indexVoucher].isUsed = true;
+            newState.voucherList = newVoucherList;
+
+            return newState;
+        }
+        case ORDERD : {
+            const newState = {...state};
+            const neworderedList = newState.orderedList;
+            neworderedList.push(action.orderdVoucher);
+            newState.orderedList = neworderedList;
+
+            return newState;
+        }
+        case ADD_VOUCHER : {
+            const newState = {...state};
+            const newOrderedList = newState.orderedList;
+            const index = newOrderedList.findIndex(o=> o.number === action.orderedVoucherNumber)
+            const voucher = {...newOrderedList[index], isUsed : false}
+            const newVoucherList = [...newState.voucherList];
+            newVoucherList.push(voucher)
+            newState.voucherList = newVoucherList;
+
+            return newState
+
         }
         default: return state;
     }

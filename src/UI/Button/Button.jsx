@@ -2,7 +2,7 @@ import React from "react";
 import classes from "./Button.module.css";
 
 const button = props => {
-    const cl = console.log(props);
+    // const cl = console.log(props);
   return (      
     <button
       onClick={props.onClick}

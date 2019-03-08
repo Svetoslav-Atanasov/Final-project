@@ -3,6 +3,7 @@ import styles from "./OfferDisplaySingleTemplate.module.css";
 import Button from "../UI/Button/Button";
 import { connect } from "react-redux";
 import { getToCart } from "../Storage/actions/users";
+import { goToOrdered } from "../Storage/actions/vouchers"
 import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
 import Select from "../UI/Select/Select";
@@ -18,17 +19,17 @@ class Offer extends Component {
   };
 
     //tazi funkciq - vzima id na potrebitelq  i slaga v koshnicata mu - vaucher 
-    toGetToCart = (id, offerId, name) => {
+    toGetToCart = (idUser, offerId) => {
         // number shte e unikalen nomer na vauchera
         const number = Math.ceil(Math.random()*10000);
         const broi  =this.state.broi;
-        
-        console.log('broikata e ' + broi)
-        // pravq nov obekt vaucher i go slagam v kolickata na tekushtiq potrebitel
-        const voucher = {broi, number, offerId, isUsed:false, name};
-        //vauchera shte si pazi v sebe si - za kolko broq e, unikalen nomer,
-        //id na ofertata i ime na ofertata, za da moje da se izpolzva pri tyrsene
-        this.props.getToCart(id,voucher);
+        const orderdVoucher = {number, idUser, broi, offerId}
+        // pravq nov obekt PorychanVaucher i go slagam v kolickata na tekushtiq potrebitel
+        // const voucher = {idUser, broi, number, offerId, isUsed:false, name};  
+
+        this.props.getToCart(idUser,orderdVoucher);
+        this.props.goToOrdered(orderdVoucher);
+        // this.props.addVoucher(voucher)
       } 
 
   //tazi funkciq change() - shte vzima value ot inputa i shte go slaga v state, za da se zapzi
@@ -60,7 +61,11 @@ class Offer extends Component {
     const dayRandom = Math.floor(Math.random() * 29 + 1);
     // const monthRandom = Math.floor(Math.random() * 8 + 4);
     var expDate = new Date(2019, 2, dayRandom);
-    console.log(expDate);
+    console.log(this.props)
+    console.log('novodobavenoto :')
+    console.log(this.props.test);
+    console.log('cena :')
+    console.log(this.props.price);
 
 
     return (
@@ -102,7 +107,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getToCart: (id, voucher) => dispatch(getToCart(id, voucher))
+    getToCart: (idUser,orderdVoucher) => dispatch(getToCart(idUser,orderdVoucher)),
+    goToOrdered: (orderdVoucher) => dispatch(goToOrdered(orderdVoucher))
+    // addVoucher: (voucher) => dispatchEvent(addVoucher(voucher))
   };
 };
 

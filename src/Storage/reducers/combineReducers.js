@@ -1,11 +1,13 @@
 import { combineReducers } from 'redux'
 import { userReducer } from './userReducer'
 import { offerReducer } from './userReducer'
+import { voucherReducer } from './userReducer'
 
 const reducers = combineReducers({
     user: userReducer,
     //kogato izpolzvame user - state shte byde tozi na user i obratnoto
-    offer: offerReducer
+    offer: offerReducer,
+    voucher: voucherReducer
 })
 export default reducers;
 

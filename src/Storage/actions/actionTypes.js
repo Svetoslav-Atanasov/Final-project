@@ -9,3 +9,5 @@ export const REMOVE_VOUCHER_FROM_SHOPPING_CART = "REMOVE_VOUCHER_FROM_SHOPPING_C
 export const BUY = "BUY";
 export const MARK_AS_USED = "MARK_AS_USED";
 export const SET_FILTERED = "SET_FILTERED";
+export const ADD_VOUCHER = "ADD_VOUCHER";
+export const ORDERD = "ORDERD";

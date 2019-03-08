@@ -7,14 +7,29 @@ import VoucherTemplate from "../VoucherTemplate/VoucherTemplate";
 
  const myvouchers = props => {
 
-    const vouchers = props.userVouchers;
+    const boughtVouchers = []
+
+    const naUsera = props.currernt.bought
+    const allVouchers = props.vouchers
+    for (let i=0; i < naUsera.length; i++){
+        for(let index=0; index < allVouchers.length; index ++){
+            if (naUsera[i].number === allVouchers[index].number){
+                if(allVouchers[index].isUsed){
+                    boughtVouchers.push(allVouchers[index])
+                }else{
+                    boughtVouchers.unshift(allVouchers[index])
+                }
+               
+            }
+        }
+    }
     return (
         <>
         <div >
             <h1>Tuk shte vidish zakupenite ot teb vaucheri</h1>
         </div>
-        {vouchers.length === 0 ? <h2>Nqmate izbrani vaucheri</h2> : 
-        vouchers.map(v => 
+        {naUsera.length === 0 ? <h2>Nqmate izbrani vaucheri</h2> : 
+        boughtVouchers.map(v => 
             <VoucherTemplate 
                 key={v.number}
                 {...v}
@@ -27,7 +42,8 @@ import VoucherTemplate from "../VoucherTemplate/VoucherTemplate";
 const mapStateToProps = state => {
     return {
     
-      userVouchers: state.user.currentUser.bought
+        currernt : state.user.currentUser,
+        vouchers: state.voucher.voucherList
     };
   };
 

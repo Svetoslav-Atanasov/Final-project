@@ -33,12 +33,11 @@ export const removeCurrentUser = () => {
        
     }
 }
-export const getToCart = (id,voucher) =>{
+export const getToCart = (idUser,orderdVoucher) =>{
     return {
         type: VOUCHER_TO_CART,
-        id,
-        voucher
-       
+        idUser,
+        orderdVoucher      
     }
 }
 export const removeFromCart = voucherNumber => {
@@ -47,10 +46,10 @@ export const removeFromCart = voucherNumber => {
         voucherNumber
     }
 }
-export const buy = voucherNumber => {
+export const userBuy = orderedVoucherNumber => {
     return {
         type: BUY,
-        voucherNumber
+        orderedVoucherNumber
     }
 }
 export const markAsUsed = voucherNumber => {

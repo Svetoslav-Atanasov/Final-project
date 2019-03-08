@@ -19,7 +19,7 @@ class SearchBox extends Component {
 
     state = {
         searchingFor : '',
-        focus : false
+        open : false
     }
 
     setSearch = e =>{
@@ -28,13 +28,13 @@ class SearchBox extends Component {
         this.setState({ searchingFor })
     }
 
-    onFocus = () =>{
-        let focus = false;
-        if (!this.state.focus){
-            focus = true;
-        }
-        this.setState({ focus })
-    }
+    // onFocus = () =>{
+    //     let focus = false;
+    //     if (!this.state.focus){
+    //         focus = true;
+    //     }
+    //     this.setState({ focus })
+    // }
 
     submitSearch = () => {    
 
@@ -52,26 +52,42 @@ class SearchBox extends Component {
         this.props.history.push("/Search/"+param);
 
     }
+    toggle =()=>{
+        const open = !this.state.open
+        this.setState({ open })
+    }
 
     render(){
 
+        let classesInput = [styles.SearchInput]
+        if(this.state.open){
+            classesInput.push(styles.open)
+        }
+        
+
         return(
-            <div className={styles.SearchBox}>            
-            <span data-tip=" Only words separated with space"> 
-                <input 
-                    type = "text" 
-                    maxLength ="20"  
-                    placeholder='Tyrsi vuv vsichki oferti' 
-                    onChange={this.setSearch} 
-                    value = {this.state.searchingFor}
-                    onClick={this.onFocus}
-                    className ={styles.SearchInput}
-                    >
-                </input>
-            </span>
-            <ReactTooltip place="bottom" type="light" effect="float" />
-                <img width="40" height="40" src={search} onClick={()=>this.submitSearch()} />
+            <div className={styles.SearchBox} >                 
+                <form className={styles.SearchContainer} onSubmit={this.submitSearch}>
+            
+                        <input 
+                        data-tip=" Only words separated with space"
+                            type = "text" 
+                            maxLength ="20"  
+                            placeholder='Tyrsi vuv vsichki oferti' 
+                            onChange={this.setSearch} 
+                            value = {this.state.searchingFor}
+                            onClick={this.onFocus}
+                            className ={classesInput.join(" ")}
+                            >
+                        </input>
+                
+                    <ReactTooltip place="bottom" type="light" effect="float" />
+                </form>
+                <div onClick={this.toggle} className={styles.Picture}>  
+                    <img width="50" height="50" src={search} />       
+                </div>
             </div>
+           
         )
     
     }
