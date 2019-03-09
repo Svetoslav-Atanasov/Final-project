@@ -1,16 +1,68 @@
 .singleDiv {
-    border: 2px solid #2E3F51;
+    /* border: 2px solid #2E3F51; */
     text-align: center;
     border-radius: 5px;
     margin-bottom: 20px;
     margin-right: 20px;
     max-width: 300px;
+    background: linear-gradient(to bottom, rgba(226,226,226,1) 0%, rgba(254,254,254,1) 0%, rgba(249,249,249,1) 15%, rgba(221,221,221,1) 92%, rgba(219,219,219,1) 97%, rgba(209,209,209,1) 100%);
+    box-shadow: 10px 11px 47px 0px rgba(214,214,214,1);
 }
 
 .titleMainScreen {
     color: #2E3F51;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .timer {
-    margin-bottom: 10px;
+    margin: 10px;
+}
+.Contend{
+    margin: 0.5em;
+    text-overflow: ellipsis;
+    /* Required for text-overflow to do anything */
+    white-space: nowrap;
+    overflow: hidden;
+}
+.Contend > strong {
+    position: relative;
+
+}
+.discount{
+    top: -186px;
+    left: 114px;
+    font-size: 2.5em;
+    color: red;
+    transform: rotate(38deg) skew(-3deg, 0deg);
+    position: relative;
+    display:block
+}
+.GetingVoucher{
+    justify-content: space-evenly;
+    display: flex;
+}
+.chooseCount{
+    flex: 1;
+}
+.getVoucher{
+    flex:2;
+}
+.label{
+    width: 0px;
+    height: 0px;
+    position: relative;
+    left: 114px;
+    top: -14px;
+}
+.oldPrice{
+    width: 0;
+    height: 0;
+    position: relative;
+    left: 115px;
+    top: -4px;
+}
+.newPrice{
+    font-size: 1.5em;
 }

@@ -22,8 +22,8 @@ body {
     padding: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    color: #6C5B7B;
-    background-color: #F8B195;
+    /* color: #6C5B7B; */
+    background-color: #e9ebee;
     min-height: 100%;
     position: relative;
     padding-bottom: 4em;
@@ -42,6 +42,6 @@ a {
 }
 
 ::placeholder {
-    color: #C06C84;
+    /* color: #C06C84; */
     font-family: "Coves Bold";
 }

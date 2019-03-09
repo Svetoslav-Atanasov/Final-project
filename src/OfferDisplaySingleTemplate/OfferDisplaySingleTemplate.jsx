@@ -10,6 +10,8 @@ import Select from "../UI/Select/Select";
 import Image from "../Image/Image";
 import Countdown, { zeroPad } from "react-countdown-now";
 import Zoom from "react-reveal/Zoom";
+import label from "../assets/images/label.png";
+import redLine from "../assets/images/redLine.png"
 
 class Offer extends Component {
   //ot stateless go pravq na statefull component,
@@ -31,8 +33,8 @@ class Offer extends Component {
         const orderdVoucher = {number, idUser, broi, offerId, offerName}
         // pravq nov obekt PorychanVaucher i go slagam v kolickata na tekushtiq potrebitel
         // const voucher = {idUser, broi, number, offerId, isUsed:false, name};  
-      console.log('GET VUCHER TO CAR BY CLICK ON BUTTON')
-      console.log(orderdVoucher)
+      // console.log('GET VUCHER TO CAR BY CLICK ON BUTTON')
+      // console.log(orderdVoucher)
         this.props.getToCart(idUser,orderdVoucher);
         this.props.goToOrdered(orderdVoucher);
         // this.props.addVoucher(voucher)
@@ -78,47 +80,61 @@ class Offer extends Component {
     var formattedDate = this.props.expirationDate.split('.');
     var expDate = new Date (formattedDate[0], formattedDate[1]-1, formattedDate[2]);
     // console.log(expDate);
-    var formattedDate = this.props.expDate.split(".");
-    var expDate = new Date(
-      formattedDate[0],
-      formattedDate[1] - 1,
-      formattedDate[2]
-    );
+    // var formattedDate = this.props.expirationDate.split(".");
+    // var expDate = new Date(
+    //   formattedDate[0],
+    //   formattedDate[1] - 1,
+    //   formattedDate[2]
+    // );
     // console.log(expDate);
 
     // console.log(expDate - Date.now());
     // console.log(Date.now() - expDate);
+    const disc = ((this.props.oldPrice - this.props.price) /this.props.oldPrice).toFixed(2)*100 ;
+    const discount ="-"+disc+"%"
+ 
     return (
       <Zoom>
         <div className={styles.singleDiv}>
-          <h1 className={styles.titleMainScreen}>{this.props.name}</h1>
+          <div className={styles.label}>
+            <img width="200" height="200" src={label} />
+            <span className={styles.discount}>  {discount}  </span>    
+           
+          </div>
           <div>
             <Link to={"/offerDetails/" + this.props.id}>
               <Image image={this.props.image} />
             </Link>
           </div>
-          <div>{this.props.description}</div>
-          <div>{this.props.price}<span> BGN</span></div>
-          <div>{this.props.category}</div>
+          <h1 className={styles.titleMainScreen}>{this.props.name}</h1>
+          <div className={styles.Contend}> {this.props.description}</div>
+          <div className={styles.Contend}>
+            <div className={styles.oldPrice}>
+              <img width="35" height="35" src={redLine} /> 
+            </div>
+            <div >{this.props.oldPrice}<span> BGN</span></div>
+            <div className={styles.Contend }><strong>{this.props.price}<span> BGN</span></strong></div>
+          </div>
+          <div className={styles.Contend}>{this.props.category}</div>
           {/* months are counted from 0-11; +1 to start from the month of March */}
-          <div>
+          <div className={styles.Contend}>
             Offer expires:{" "}
             {`${expDate.getDate()}.${expDate.getMonth() +
               1}.${expDate.getFullYear()}`}
           </div>
-          <div>
-            <Select onChange={this.change} value={this.state.value} />
-            {/* console.log(expDate - Date.now()); */}
-
-            <Button
-              //tuk proverqvam dali ima lognat user -> ako nqma - da go preprashta na login stranicata
-              // ako ima da gi sloji v kolichkata
-              // timerOut={() => (Date.now() - expDate > 0) ?
-              // moreStyles={(Date.now() - expDate  0) ? {} : { display: 'none' }} />
-              // // }
+          <div className={styles.GetingVoucher}>
+            <div className={styles.chooseCount}>
+              <Select onChange={this.change} value={this.state.value} />
+            </div>
+            <div className={styles.getVoucher}>
+              <Button
                 onClick={this.onClickGetVoucher}
                 title="GET VOUCHER"
-            />
+              />
+            </div>
+            {/* console.log(expDate - Date.now()); */}
+
+            
           </div>
 
           <div className={styles.timer}>

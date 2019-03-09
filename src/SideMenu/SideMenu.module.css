@@ -3,7 +3,7 @@
     /* za mobilnite ustroistva */
     max-width: 15em;
     background-image: linear-gradient(#355C7D, #355C7D);
-    box-shadow: 40px 40px 300px 45px rgba(192, 108, 132, 0.7);
+    /* box-shadow: 40px 40px 300px 45px rgba(192, 108, 132, 0.7); */
     /* to stay in one place when scrolled */
     position: fixed;
     top: 9em;
