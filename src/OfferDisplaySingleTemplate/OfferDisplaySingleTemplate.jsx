@@ -10,6 +10,8 @@ import Select from "../UI/Select/Select";
 import Image from "../Image/Image";
 import Countdown, { zeroPad } from "react-countdown-now";
 import Fade from "react-reveal/Fade";
+import label from "../assets/images/label.png";
+import redLine from "../assets/images/redLine.png";
 
 class Offer extends Component {
   //ot stateless go pravq na statefull component,
@@ -36,6 +38,26 @@ class Offer extends Component {
     // const voucher = {idUser, broi, number, offerId, isUsed:false, name};
     console.log("GET VUCHER TO CAR BY CLICK ON BUTTON");
     console.log(orderdVoucher);
+    this.props.getToCart(idUser, orderdVoucher);
+    this.props.goToOrdered(orderdVoucher);
+    // this.props.addVoucher(voucher)
+  };
+  onClickGetVoucher = () => {
+    const user = this.props.current;
+    user
+      ? this.toGetToCart(user.id, this.props.id, this.props.name)
+      : this.props.history.push("/loginPage");
+  };
+  //tazi funkciq - vzima id na potrebitelq  i slaga v koshnicata mu - vaucher
+  toGetToCart = (idUser, offerId, offerName) => {
+    // number shte e unikalen nomer na vauchera
+    const number = Math.ceil(Math.random() * 10000);
+    const broi = this.state.broi;
+    const orderdVoucher = { number, idUser, broi, offerId, offerName };
+    // pravq nov obekt PorychanVaucher i go slagam v kolickata na tekushtiq potrebitel
+    // const voucher = {idUser, broi, number, offerId, isUsed:false, name};
+    // console.log('GET VUCHER TO CAR BY CLICK ON BUTTON')
+    // console.log(orderdVoucher)
     this.props.getToCart(idUser, orderdVoucher);
     this.props.goToOrdered(orderdVoucher);
     // this.props.addVoucher(voucher)
@@ -75,6 +97,7 @@ class Offer extends Component {
 
   render() {
     // takes date from userReducer's offerList
+
     var formattedDate = this.props.expirationDate.split(".");
     var expDate = new Date(
       formattedDate[0],
@@ -82,53 +105,76 @@ class Offer extends Component {
       formattedDate[2]
     );
 
+    const disc =
+      ((this.props.oldPrice - this.props.price) / this.props.oldPrice).toFixed(
+        2
+      ) * 100;
+    const discount = "-" + disc + "%";
+
     return (
       <Fade cascade>
         <div className={styles.singleDiv}>
-          <h1 className={styles.titleMainScreen}>{this.props.name}</h1>
+          <div className={styles.label}>
+            <img width="200" height="200" src={label} />
+            <span className={styles.discount}> {discount} </span>
+          </div>
           <div>
             <Link to={"/offerDetails/" + this.props.id}>
               <Image image={this.props.image} />
             </Link>
           </div>
-          <div>{this.props.description}</div>
-          <div>
-            {this.props.price}
-            <span> BGN</span>
+          <h1 className={styles.titleMainScreen}>{this.props.name}</h1>
+          <div className={styles.Contend}> {this.props.description}</div>
+          <div className={styles.Contend}>
+            <div className={styles.oldPrice}>
+              <img width="35" height="35" src={redLine} />
+            </div>
+            <div>
+              {this.props.oldPrice}
+              <span> BGN</span>
+            </div>
+            <div className={styles.Contend}>
+              <strong>
+                {this.props.price}
+                <span> BGN</span>
+              </strong>
+            </div>
           </div>
-          <div>{this.props.category}</div>
+          <div className={styles.Contend}>{this.props.category}</div>
           {/* months are counted from 0-11; +1 to start from the month of March */}
-          <div>
+          <div className={styles.Contend}>
             Offer expires:{" "}
             {`${expDate.getDate()}.${expDate.getMonth() +
               1}.${expDate.getFullYear()}`}
           </div>
           <div>
             <Select onChange={this.change} value={this.state.value} />
-            {/* console.log(expDate - Date.now()); */}
 
             <Button
-              //tuk proverqvam dali ima lognat user -> ako nqma - da go preprashta na login stranicata
-              // ako ima da gi sloji v kolichkata
               timerDisabled={this.state.timerExpired}
               onClick={this.onClickGetVoucher}
               title="GET VOUCHER"
             />
-          </div>
+            <div className={styles.GetingVoucher}>
+              <div className={styles.chooseCount} />
+              {/* console.log(expDate - Date.now()); */}
+            </div>
 
-          <div className={styles.timer}>
-            Time left:{" "}
-            <Countdown
-              date={expDate}
-              renderer={this.renderer}
-              onComplete={this.onComplete}
-            />
+            <div className={styles.timer}>
+              Time left:{" "}
+              <Countdown
+                date={expDate}
+                renderer={this.renderer}
+                onComplete={this.onComplete}
+              />
+            </div>
           </div>
         </div>
       </Fade>
     );
   }
 }
+
 const mapStateToProps = state => {
   return {
     current: state.user.currentUser

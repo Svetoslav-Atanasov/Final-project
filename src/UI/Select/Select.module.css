@@ -1,11 +1,10 @@
 .quantitySelect {
     border-radius: 3px;
-    height: 2em;
-    border: 1px solid #F67280;
+    height: 3em;
+    width: 4em;
     background-color: #F67280;
     color: #355C7D;
     font-family: "Coves Bold";
-    box-shadow: 40px 40px 300px 45px rgba(192, 108, 132, 0.7);
 }
 
 .quantitySelect:hover {
