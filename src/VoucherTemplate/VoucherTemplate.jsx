@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styles from './VoucherTemplate.module.css';
 import { connect } from "react-redux";
 import Button from '../UI/Button/Button'
-import { markAsUsed } from '../Storage/actions/users'
+import { markAsUsed } from '../Storage/actions/vouchers'
 import { withRouter } from "react-router";
 
 //po daden vaucher shte nameri, koq e ofertata i s nejnite danni shte popylni formata,
@@ -15,9 +15,9 @@ class VoucherTemplate extends Component {
         return nextProps.isUsed !== this.props.isUsed ? true : false
     }
 
-    // checkIfIsUsed = (voucherNumber) =>{    
-    //     return !this.props.isUsed ? this.props.markAsUsed(voucherNumber) : null
-    // }
+    checkIfIsUsed = (voucherNumber) =>{    
+        return !this.props.isUsed ? this.props.markAsUsed(voucherNumber) : null
+    }
 
     render(){ 
         const title = "MARK AS USED";
@@ -33,16 +33,20 @@ class VoucherTemplate extends Component {
     const offer = offerArr[0]
 
     const voucherNumber = this.props.number
-    console.log('Номера на ваучера за показване е' + voucherNumber)
+    // console.log('Номера на ваучера за показване е' + voucherNumber)
     // trqbva da podam nomera na vouchera
     // sled koeto popylvame templeita s neshtata za ofertata
+    console.log(this.props)
+    console.log('ima li neshto tuk izob]o za is used')
+    console.log(this.props.isUsed)
     let statusForUse = null;
         if (this.props.isUsed){
             statusForUse = <div><p>Voucher is used!</p></div>
         } else{
             statusForUse = <Button 
                 title={ title }
-                onClick={ ()=>this.props.markAsUsed(voucherNumber) } />
+                onClick={ ()=>this.checkIfIsUsed(voucherNumber)
+                     } />
         }
     
   

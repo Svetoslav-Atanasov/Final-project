@@ -7,8 +7,11 @@ import { withRouter } from "react-router";
 const searched = props => {
 
     //razdelqme url
+    console.log('matche params')
+    console.log(props.match)
     const keyWords = props.match.params.param.split('-')
-
+  console.log('keywords:')
+  console.log(keyWords)
     const offersSet = new Set();
     const allOffers = props.allOffers;
 
@@ -33,7 +36,9 @@ const searched = props => {
                 <div>
                 <h1>Tuk shte sa tyrsenite - kluchovi dumi : {keyWords.map(word => <strong>{word} </strong> )}</h1>
                 {filteredOffers.map( offer =>
-             <SingleOfferTemp key={offer.id} {...offer}/>)}
+             <SingleOfferTemp 
+             key={offer.id} 
+             {...offer}/>)}
              
                 </div>
               );

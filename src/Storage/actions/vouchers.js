@@ -11,10 +11,11 @@ export const goToOrdered = orderdVoucher =>{
         orderdVoucher      
     }
 }
-export const voucherBuy = orderedVoucherNumber => {
+export const voucherBuy = (voucherNumber,idUser) => {
     return{
         type: ADD_VOUCHER,
-        orderedVoucherNumber
+        idUser,
+        voucherNumber
     }
 }
 export const markAsUsed = voucherNumber => {

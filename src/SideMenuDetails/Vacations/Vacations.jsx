@@ -13,17 +13,17 @@ const vacations = props => {
   return (
     <div className={styles.theDiv}>
       {offersCulture.map(offer => (
-        // <SingleOfferTemp key={offer.id} {...offer}/>
-        <SingleOfferTemp
-          key={offer.id}
-          id={offer.id}
-          name={offer.name}
-          image={offer.image}
-          description={offer.description}
-          price={offer.price + " BGN"}
-          category={offer.category}
-          expDate={offer.expirationDate}
-        />
+        <SingleOfferTemp key={offer.id} {...offer}/>
+        // <SingleOfferTemp
+        //   key={offer.id}
+        //   id={offer.id}
+        //   name={offer.name}
+        //   image={offer.image}
+        //   description={offer.description}
+        //   price={offer.price + " BGN"}
+        //   category={offer.category}
+        //   expirationDate={offer.expirationDate}
+        // />
       ))}
     </div>
   );

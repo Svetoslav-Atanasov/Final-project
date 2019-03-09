@@ -4,18 +4,19 @@ import { withRouter } from 'react-router-dom';
 import OrderTemplate from "../VoucherTemplate/OrderTemplate";
 
 const shoppingCart = props => {
+console.log('TUKA E KARTATAAAAAAA')
+console.log(props)
+console.log(props.userVouchers)
 
-
-    let ordered = props.current.vouchersInCart
-    ordered = ordered.filter(o => o.idUser === props.current.id)
+    const vouchers = props.userVouchers;
 
     return (
         <>
-        {ordered.length === 0 ? <h2>Nqmate izbrani vaucheri</h2> : 
-        ordered.map(o => 
+        {vouchers.length === 0 ? <h2>Nqmate izbrani vaucheri</h2> : 
+        vouchers.map(v => 
             <OrderTemplate 
-                key={o.number}
-                {...o}
+                key={v.number}
+                {...v}
                 />)}
         </>
     )
@@ -24,7 +25,8 @@ const shoppingCart = props => {
 
 const mapStateToProps = state => {
     return {
-      current: state.user.currentUser,
+    
+      userVouchers: state.user.currentUser.vouchersInCart
     };
   };
 

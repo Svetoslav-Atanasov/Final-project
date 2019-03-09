@@ -18,7 +18,7 @@ import MyVouchers from "../MyVouchers/MyVouchers";
 import Profile from "../Profile/profile";
 import Footer from "../Footer/Footer";
 import OfferDetails from "../OfferDetails/OfferDetails";
-import ShoppingCartPage from '../ShoppingCartPage/ShoppingCartPage';
+import ShoppingCart from '../ShoppingCartPage/ShoppingCartPage';
 import Serched from "../Serched/Serched"
 
 
@@ -66,7 +66,7 @@ class App extends Component {
                 <>
                   <Route exact path="/myProfile" component={Profile} />
                   <Route exact path="/myVouchers" component={MyVouchers} />
-                  <Route exact path="/myShoppingCart" component={ShoppingCartPage} />
+                  <Route exact path="/myShoppingCart" component={ShoppingCart} />
                 </>
                 :null}
               }

@@ -17,9 +17,9 @@ class OfferTemplate extends Component {
     //     return nextProps.isUsed !== this.props.isUsed ? true : false
     // }
 
-    ToBuy = (orderedVoucherNumber) => {
-        this.props.userBuy(orderedVoucherNumber);
-        this.props.voucherBuy(orderedVoucherNumber)
+    ToBuy = (voucherNumber,idUser) => {
+        this.props.userBuy(voucherNumber,idUser);
+        this.props.voucherBuy(voucherNumber,idUser);
     }
 
     render(){ 
@@ -34,7 +34,9 @@ class OfferTemplate extends Component {
     const offerArr = this.props.vsichkiOferti.filter( offer => offer.id === offerId);
     // tyj kato oferitte sa v masiv a na nas ni trqbva 1
     const offer = offerArr[0]
-    const orderedVoucherNumber = this.props.number
+    const voucherNumber = this.props.number
+    const idUser = this.props.idUser
+    console.log('na buy, remove i kakvoto tam se vikat vaucher nomer = '+ voucherNumber + 'id user '+ idUser)
   
     // trqbva da podam nomera na vouchera
     // sled koeto popylvame templeita s neshtata za ofertata
@@ -53,8 +55,8 @@ class OfferTemplate extends Component {
             </div>
             <div><span>Count : {this.props.broi}</span><span>Total: {offer.price*this.props.broi}</span></div>
 
-                <Button onClick={()=> this.props.removeFromCart(orderedVoucherNumber)} title="REMOVE" />
-                <Button onClick={()=> this.ToBuy(orderedVoucherNumber)} title="BUY" />
+                <Button onClick={()=> this.props.removeFromCart(voucherNumber,idUser)} title="REMOVE" />
+                <Button onClick={()=> this.ToBuy(voucherNumber,idUser)} title="BUY" />
 
             
         </div>
@@ -71,9 +73,9 @@ const mapStateToProps = state => {
 
   const mapDispatchToProps = dispatch => {
     return {
-        removeFromCart: orderedVoucherNumber => dispatch(removeFromCart(orderedVoucherNumber)),
-        userBuy : orderedVoucherNumber => dispatch(userBuy(orderedVoucherNumber)),
-        voucherBuy : orderedVoucherNumber => dispatch(voucherBuy(orderedVoucherNumber)),
+        removeFromCart: (voucherNumber,idUser) => dispatch(removeFromCart(voucherNumber,idUser)),
+        userBuy : (voucherNumber,idUser) => dispatch(userBuy(voucherNumber,idUser)),
+        voucherBuy : (voucherNumber,idUser) => dispatch(voucherBuy(voucherNumber,idUser)),
     };
   };
 

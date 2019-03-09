@@ -28,16 +28,9 @@ class SearchBox extends Component {
         this.setState({ searchingFor })
     }
 
-    // onFocus = () =>{
-    //     let focus = false;
-    //     if (!this.state.focus){
-    //         focus = true;
-    //     }
-    //     this.setState({ focus })
-    // }
-
-    submitSearch = () => {    
-
+    ///chupi se, zashtoto eventa prezarejda stranicata
+    submitSearch = () => {  
+        
         //pri tyrseneto pravim vsichko s malki bukvi, zashtoto malkite i golemite ne sa ==
         const searchingFor = this.state.searchingFor
         

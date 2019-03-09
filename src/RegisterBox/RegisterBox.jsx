@@ -57,7 +57,7 @@ class RegisterBox extends Component {
         }
       ]
     }));
-    console.log("noviq state  " + this.state.errors.length);
+    // console.log("noviq state  " + this.state.errors.length);
   };
   hideValidationErr = elm => {
     const errors = this.state.errors.filter(err => err.elm !== elm);
@@ -193,13 +193,13 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-const mapStateToProps = (state) => {
-  return {
-    user: state.user.currentUser
-  }
-}
+// const mapStateToProps = (state) => {
+//   return {
+//     user: state.user.currentUser
+//   }
+// }
 
 export default connect(
-  mapStateToProps,
+ null,
   mapDispatchToProps
 )(withRouter(RegisterBox));

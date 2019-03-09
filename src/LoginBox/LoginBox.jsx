@@ -53,6 +53,8 @@ class LoginBox extends Component {
     // console.log(this.props.userList)
   
     //proverqvame v storidja dali ima takyv user
+    // console.log('tuk kydeto kazva can not read FIND from undefine : ')
+    // console.log(this.props.userList)
     let user = this.props.userList.find(
       user =>
         user.email === this.state.email && user.password === this.state.password
@@ -63,10 +65,16 @@ class LoginBox extends Component {
       this.showValidationErr("password", "Wrong or forgotten password");
     } else {
       //ако съществува такъв регистриран юзер, го вкарваме в сториджа, като текущ
-      console.log(user);
+      
+      // sessionStorage.setItem('currentUser',JSON.stringify(user))
       this.props.setCurrentUser(user);
 
       // sessionStorage.setItem("currentUser", user.email);
+
+      console.log('propsovete sa:')
+      console.log(this.props)
+      console.log('historito e:')
+      console.log(this.props.history)
       this.props.history.push("/");
     }
   };

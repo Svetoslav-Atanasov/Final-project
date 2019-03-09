@@ -12,56 +12,90 @@ import {
     ORDERD
 } from '../actions/actionTypes';
 
-const initialStateUser = {
-    currentUser: null,
-    userList: [
-        { id: 0, email: 'test@abv.bg', password: 'test', vouchersInCart: [], bought: [] }
-    ],
-    didUserRegisterd: false
-};
+
+
+    const initialStateUser =  {
+        userList: [
+            { id: 0, email: 'test@abv.bg', password: 'test', vouchersInCart: [], bought: [] }
+        ],
+        currentUser: false
+    };
+    if(sessionStorage.getItem('userList')){
+        initialStateUser.userList = JSON.parse(sessionStorage.getItem('userList'))
+    }
+    // if (sessionStorage.getItem('currentUser')){
+    //     initialStateUser.currentUser = JSON.parse(sessionStorage.getItem('currentUser'))
+    // }
+    
+
 
 // if sessionstorage has bought items -> put into initial state
 
+
 export const userReducer = (state = initialStateUser, action) => {
+    // sessionStorage.setItem('initialStateUser',JSON.stringify(state));
+
+
+    console.log('INITIAL state e VECHE VYV FUNKCIQTA E:')
+    console.log(initialStateUser)
+    console.log('A USERLISTA E state e VECHE VYV FUNKCIQTA E:')
+    console.log(state.userList)
+
+
+
     switch (action.type) {
         case ADD_USER:
-            {
-                return ({...state, userList: [...state.userList, action.user] });
+
+             {   const newState = {...state};
+                const newUserList = newState.userList;
+                newUserList.push(action.user);
+                newState.userList = newUserList;
+                
+                sessionStorage.setItem('userList',JSON.stringify(newUserList));
+
+                return newState;
+
+
             }
         case LET_USER_BE_LOGGED:
             {
-                return ({...state, currentUser: action.user })
+                    return(
+                        {...state, currentUser: action.user}
+                    )
+            
             }
         case DID_USER_REGISTERED:
             {
-                return ({...state, didUserRegisterd: action.is })
+                return ({...state, didUserRegisterd: action.is });
             }
-        case REMOVE_LOGGED_USER:
-            {
-
-                const newState = {...state, currentUser: null }
+            case REMOVE_LOGGED_USER : {
+            
+                const newState = {...state, currentUser:null}
                 return newState;
         }
+       
         case VOUCHER_TO_CART :{
             const newState = {...state};
             const newUserList=[...newState.userList];
-
             const index = newUserList.findIndex(user=>user.id === action.idUser);
             const newUser = newUserList[index];
 
             
-            newUser.vouchersInCart.push(action.orderdVoucher);     
+            newUser.vouchersInCart.push(action.orderdVoucher);         
             newUserList[index] = newUser;
             newState.userList = newUserList;
+            // const newCurrentUser = newUser; 
             newState.currentUser = newUser;
+            sessionStorage.setItem('userList',JSON.stringify(newUserList))
             return newState;
         }
+        
         case REMOVE_VOUCHER_FROM_SHOPPING_CART : {
        
             const newState = {...state};
             const newCurrentUser = {...newState.currentUser};
             const newUserList = [...newState.userList];
-            const indexUser = newUserList.findIndex(user => user.id === newCurrentUser.id);
+            const indexUser = newUserList.findIndex(user => user.id === newCurrentUser.idUser);
             let newVouchersInCart = [...newCurrentUser.vouchersInCart];
             const indexVoucher = newVouchersInCart.findIndex(v=>v.number === action.voucherNumber);
             
@@ -70,19 +104,21 @@ export const userReducer = (state = initialStateUser, action) => {
             newUserList[indexUser] = newCurrentUser;
             newState.userList = newUserList;
             newState.currentUser = newCurrentUser;
+            sessionStorage.setItem('userList',JSON.stringify(newUserList));
             return newState; 
         }
         case BUY : {
+          
+            //put into session storage
             const newState = {...state};
             const newCurrentUser = {...newState.currentUser};
             const newUserList = [...newState.userList];
             const indexUser = newUserList.findIndex(user => user.id === newCurrentUser.id);
             let newVouchersInCart = [...newCurrentUser.vouchersInCart];
             let newBought = [...newCurrentUser.bought]
-            const indexVoucher = newVouchersInCart.findIndex(v=>v.number === action.orderedVoucherNumber);
-            const boughtVoucher = newVouchersInCart[indexVoucher];      
+            const indexVoucher = newVouchersInCart.findIndex(v=>v.number === action.voucherNumber);
+            const boughtVoucher = newVouchersInCart[indexVoucher];
             
-
             newVouchersInCart.splice(indexVoucher,1);
             newBought.push(boughtVoucher);
             newCurrentUser.vouchersInCart = newVouchersInCart;
@@ -90,8 +126,7 @@ export const userReducer = (state = initialStateUser, action) => {
             newUserList[indexUser]=newCurrentUser;
             newState.userList = newUserList;
             newState.currentUser = newCurrentUser;
-
-            //put into session storage
+            sessionStorage.setItem('userList',JSON.stringify(newUserList));
             return newState;
         }
        
@@ -205,16 +240,26 @@ export const offerReducer = (state = initialStateOffers, action) => {
             }
         default:
             return state;
-    }
+    };
+};
+
+const initialStateVouchers= {
+
+        voucherList : [],
+        orderedList : []
+
+    };
+if(sessionStorage.getItem('voucherList')){
+    initialStateVouchers.voucherList = JSON.parse(sessionStorage.getItem('voucherList'))
+}else{
+    initialStateVouchers.voucherList = []
+}
+if(sessionStorage.getItem('orderedList')){
+    initialStateVouchers.orderedList = JSON.parse(sessionStorage.getItem('orderedList'))
+}else{
+    initialStateVouchers.orderedList = []
 }
 
-
-const initialStateVouchers =  {
-
-    voucherList : [],
-    orderedList : []
-
-};
 
 export const voucherReducer= (state = initialStateVouchers, action) => {
 
@@ -228,8 +273,12 @@ export const voucherReducer= (state = initialStateVouchers, action) => {
             const indexVoucher = newVoucherList.findIndex(v => v.number === action.voucherNumber);
           
             newVoucherList[indexVoucher].isUsed = true;
+            const used = newVoucherList[indexVoucher]
+            newVoucherList.splice(indexVoucher,1)
+            newVoucherList.push(used)
             newState.voucherList = newVoucherList;
 
+            sessionStorage.setItem('voucherList',JSON.stringify(newVoucherList));
             return newState;
         }
         case ORDERD : {
@@ -237,19 +286,22 @@ export const voucherReducer= (state = initialStateVouchers, action) => {
             const neworderedList = newState.orderedList;
             neworderedList.push(action.orderdVoucher);
             newState.orderedList = neworderedList;
-
+            sessionStorage.setItem('orderedList',JSON.stringify(neworderedList));
             return newState;
         }
         case ADD_VOUCHER : {
             const newState = {...state};
             const newOrderedList = newState.orderedList;
-            const index = newOrderedList.findIndex(o=> o.number === action.orderedVoucherNumber)
-            const voucher = {...newOrderedList[index], isUsed : false}
+            const index = newOrderedList.findIndex(o=> o.number === action.voucherNumber);
+            const voucher = {...newOrderedList[index], isUsed : false};
             const newVoucherList = [...newState.voucherList];
-            newVoucherList.push(voucher)
-            newState.voucherList = newVoucherList;
+            console.log('noviq vaucherList ')
+            console.log(newVoucherList)
+            newVoucherList.push(voucher);
 
-            return newState
+            newState.voucherList = newVoucherList;
+            sessionStorage.setItem('voucherList',JSON.stringify(newVoucherList));
+            return newState;
 
         }
         default: return state;

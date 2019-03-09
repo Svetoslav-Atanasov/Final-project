@@ -12,14 +12,19 @@ const OffersDisplay = props => {
       {props.allOffers.map(offer => (
         <SingleOfferTemp
           key={offer.id}
-          id={offer.id}
-          name={offer.name}
-          image={offer.image}
-          description={offer.description}
-          price={offer.price + " BGN"}
-          category={offer.category}
-          expDate={offer.expirationDate}
-        />
+          {...offer}
+           />
+
+        //   id={offer.id}
+        //   name={offer.name}
+        //   image={offer.image}
+        //   description={offer.description}
+        //   //nqma smisyl da si izpisva vsichko zaradi BGN
+        //   // moje da se dobavi v templata
+        //   price={offer.price + " BGN"}
+        //   category={offer.category}
+        //  expirationDate={offer.expirationDate}
+        // />
 
         // <SingleOfferTemp
         //   key={offer.id}

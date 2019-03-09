@@ -40,24 +40,21 @@ export const getToCart = (idUser,orderdVoucher) =>{
         orderdVoucher      
     }
 }
-export const removeFromCart = voucherNumber => {
+export const removeFromCart = (voucherNumber,idUser) => {
     return {
         type: REMOVE_VOUCHER_FROM_SHOPPING_CART,
+        idUser,
         voucherNumber
     }
 }
-export const userBuy = orderedVoucherNumber => {
+export const userBuy = (voucherNumber,idUser) => {
     return {
         type: BUY,
-        orderedVoucherNumber
-    }
-}
-export const markAsUsed = voucherNumber => {
-    return {
-        type: MARK_AS_USED,
+        idUser,
         voucherNumber
     }
 }
+
 
 
 
