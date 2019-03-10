@@ -9,21 +9,6 @@ import SingleOfferTemp from "../OfferDisplaySingleTemplate/OfferDisplaySingleTem
 import { addOffer } from "../Storage/actions/offers";
 import DatePicker from "react-datepicker";
 
-<<<<<<< HEAD
-let id = 100;
-class AddOffer extends Component {
-  state = {
-    isExpired: false,
-    name: "",
-    description: "",
-    fullDescription: "",
-    oldPrice: 0,
-    price: 0,
-    category: "Culture",
-    expirationDate: "",
-    image: ""
-  };
-=======
 let id =100;
 const NAME = "name";
 const DESCRIPTION = "description";
@@ -131,7 +116,6 @@ checkDate = date =>{
   const isValid = /^[0-9.]*$/.test(date)
   return isValid
 }
->>>>>>> be055c1a6f5eae8b36143fbf6864ce70867e115f
 
   setSomething = (e, smg) => {
     const value = e.target.value;
