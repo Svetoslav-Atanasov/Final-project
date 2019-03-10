@@ -124,8 +124,8 @@ class Offer extends Component {
             </Link>
           </div>
           <h1 className={styles.titleMainScreen}>{this.props.name}</h1>
-          <div className={styles.Contend}> {this.props.description}</div>
-          <div className={styles.Contend}>
+          <div className={styles.Content}> {this.props.description}</div>
+          <div className={styles.Content}>
             <div className={styles.oldPrice}>
               <img width="35" height="35" src={redLine} />
             </div>
@@ -133,16 +133,16 @@ class Offer extends Component {
               {this.props.oldPrice}
               <span> BGN</span>
             </div>
-            <div className={styles.Contend}>
+            <div className={styles.Content}>
               <strong>
                 {this.props.price}
                 <span> BGN</span>
               </strong>
             </div>
           </div>
-          <div className={styles.Contend}>{this.props.category}</div>
+          <div className={styles.Content}>{this.props.category}</div>
           {/* months are counted from 0-11; +1 to start from the month of March */}
-          <div className={styles.Contend}>
+          <div className={styles.Content}>
             Offer expires:{" "}
             {`${expDate.getDate()}.${expDate.getMonth() +
               1}.${expDate.getFullYear()}`}

@@ -20,7 +20,7 @@
     margin: 10px;
 }
 
-.Contend {
+.Content {
     margin: 0.5em;
     text-overflow: ellipsis;
     /* Required for text-overflow to do anything */
@@ -28,7 +28,7 @@
     overflow: hidden;
 }
 
-.Contend>strong {
+.Content>strong {
     position: relative;
 }
 
