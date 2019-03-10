@@ -83,6 +83,7 @@ class App extends Component {
                     </>
                     :
                     <>
+                    <Route exact path="/myProfile" component={Profile} />
                     <Route exact path="/myVouchers" component={MyVouchers} />
                     <Route exact path="/myShoppingCart" component={ShoppingCart} />
                     </>}

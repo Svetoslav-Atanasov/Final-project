@@ -75,3 +75,9 @@
 .newPrice {
     font-size: 1.5em;
 }
+.enableClick{
+    cursor:pointer;
+}
+.disableClick{
+    cursor: default;
+}

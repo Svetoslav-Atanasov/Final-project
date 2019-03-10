@@ -6,7 +6,7 @@ import {
     VOUCHER_TO_CART,
     REMOVE_VOUCHER_FROM_SHOPPING_CART,
     BUY,
-    MARK_AS_USED
+    ADD_TO_SEEN
 } from './actionTypes';
 
 export const addUser = user => {
@@ -52,6 +52,12 @@ export const userBuy = (voucherNumber,idUser) => {
         type: BUY,
         idUser,
         voucherNumber
+    }
+}
+export const getToSeen = offerId =>{
+    return {
+        type: ADD_TO_SEEN,
+        offerId
     }
 }
 

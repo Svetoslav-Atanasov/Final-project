@@ -10,15 +10,16 @@ import {
     SET_FILTERED,
     ADD_VOUCHER,
     ORDERD,
-    ADD_OFFER
+    ADD_OFFER,
+    ADD_TO_SEEN
 } from '../actions/actionTypes';
 
 
 
     const initialStateUser =  {
         userList: [
-            { id: 0, email: 'admin@admin.bg', password: 'admin', vouchersInCart: [], bought: [] },
-            { id: 1, email: 'test@abv.bg', password: 'test', vouchersInCart: [], bought: [] }
+            { id: 0, email: 'admin@admin.bg', password: 'admin', vouchersInCart: [], bought: [], lastSeen:[] },
+            { id: 1, email: 'test@abv.bg', password: 'test', vouchersInCart: [], bought: [], lastSeen:[] }
         ],
         currentUser: false
     };
@@ -125,6 +126,25 @@ export const userReducer = (state = initialStateUser, action) => {
                 newState.currentUser = newCurrentUser;
                 sessionStorage.setItem('userList', JSON.stringify(newUserList));
                 return newState;
+            }
+            case ADD_TO_SEEN : {
+                const newState = {...state };
+                const newCurrentUser = {...newState.currentUser };
+                const newUserList = [...newState.userList];
+                const indexUser = newUserList.findIndex(user => user.id === newCurrentUser.id);
+                const newLastSeen = [...newCurrentUser.lastSeen];
+                
+                newLastSeen.unshift(action.offerId);
+                if(newLastSeen.length > 6){
+                    newLastSeen.pop();
+                }
+                newCurrentUser.lastSeen = newLastSeen;
+                newUserList[indexUser] = newCurrentUser;
+                newState.userList = newUserList;
+                newState.currentUser = newCurrentUser;
+                sessionStorage.setItem('userList', JSON.stringify(newUserList));
+                return newState;
+
             }
 
         default:
