@@ -11,3 +11,4 @@ export const MARK_AS_USED = "MARK_AS_USED";
 export const SET_FILTERED = "SET_FILTERED";
 export const ADD_VOUCHER = "ADD_VOUCHER";
 export const ORDERD = "ORDERD";
+export const ADD_OFFER = "ADD_OFFER"

@@ -9,7 +9,8 @@ import {
     MARK_AS_USED,
     SET_FILTERED,
     ADD_VOUCHER,
-    ORDERD
+    ORDERD,
+    ADD_OFFER
 } from '../actions/actionTypes';
 
 
@@ -253,9 +254,19 @@ export const offerReducer = (state = initialStateOffers, action) => {
             {
                 return ({...state, filtered: action.filtered });
             }
+        case ADD_OFFER : {
+            const newState = {...state };
+            const newOfferList = newState.offerList
+
+            newOfferList.unshift(action.newOffer)
+            newState.offerList = newOfferList;
+            return newState
+        }
         default:
             return state;
+        
     };
+    
 };
 
 const initialStateVouchers = {

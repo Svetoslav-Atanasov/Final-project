@@ -21,6 +21,7 @@ import OfferDetails from "../OfferDetails/OfferDetails";
 import ShoppingCart from '../ShoppingCartPage/ShoppingCartPage';
 import Serched from "../Serched/Serched"
 import Statistic from "../Admin/Statistic"
+import AddOffer from "../Admin/addOffer"
 
 
 // import { NavLink} from "react-router-dom";
@@ -62,6 +63,7 @@ class App extends Component {
               <Route exact path="/category/culture" component={Culture} />
               <Route exact path="/category/eating-оut" component={Eating} />
               <Route exact path="/category/vacations" component={Vacations} />
+              <Route exact path="/addOffer" component={AddOffer} />
               {/* <Route exact path="/category/:categoryType" component={Home} /> */}
               {this.props.currentUser ? 
                 <>
@@ -69,6 +71,7 @@ class App extends Component {
                   <Route exact path="/myVouchers" component={MyVouchers} />
                   <Route exact path="/myShoppingCart" component={ShoppingCart} />
                   <Route exact path="/statistic" component={Statistic} />
+                  {/* <Route exact path="/addOffer" component={AddOffer} /> */}
                 </>
                 :null}
               }

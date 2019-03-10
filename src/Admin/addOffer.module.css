@@ -1,0 +1,29 @@
+article {
+    flex :1;
+    border: 2px solid red;
+    width: 45%;
+    float: left;
+    justify-content: flex-end
+}
+.button {
+    clear:both;
+    display:block
+}
+.addOffer{
+    /* display: flex; */
+    /* flex-direction: row; */
+}
+label{
+
+    display: inline-block;
+    float: left;
+}
+.addInputs{
+   
+}
+br{
+    clear: both;
+}
+.info{
+    /* justify-content: flex-end */
+}

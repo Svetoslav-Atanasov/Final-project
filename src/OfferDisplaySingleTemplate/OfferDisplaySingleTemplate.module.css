@@ -61,6 +61,7 @@
     position: relative;
     left: 114px;
     top: -14px;
+    z-index: 1;
 }
 
 .oldPrice {
