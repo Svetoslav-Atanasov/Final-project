@@ -59,7 +59,7 @@ setSomething = (e,smg) =>{
             const expirationDate = value;
             return this.setState({ expirationDate });
     case "image" :
-    
+    if (!this.checkUrl(value)){return;}
             const image = value;
             return this.setState({ image });
     default:
@@ -87,8 +87,11 @@ check = str =>{
   const isValid = /^[a-zA-Z0-9,. !?]*$/.test(str)
   return isValid
 }
+checkUrl = str =>{
+  const isValid = /^[0-9./]*$/.test(str)
+  return isValid
+}
 checkDate = date =>{
-
   const isValid = /^[0-9.]*$/.test(date)
   return isValid
 }
@@ -101,6 +104,7 @@ checkDate = date =>{
       <div className={styles.addOffer}>
          <article className={styles.info}>
         <form>
+          <div>
           <label>
             Header name for the offer:
            
@@ -110,7 +114,8 @@ checkDate = date =>{
             onChange={(e)=>{ this.setSomething(e,"name")}}
             value={this.state.name} />
              </label>
-          <br />
+          </div>
+          <div>
           <label>
             Shrot description:
             </label>
@@ -119,7 +124,8 @@ checkDate = date =>{
             maxLength ="40"
              onChange={(e)=>{ this.setSomething(e,"description")}}
             value={this.state.description}/>
-          <br />
+          </div>
+          <div>
           <label>
             Full description:
             </label>
@@ -130,15 +136,17 @@ checkDate = date =>{
               maxLength ="200"
               onChange={(e)=>{ this.setSomething(e,"fullDescription")}}
               value={this.state.fullDescription}></textarea>
-         <br />
+          </div>
+          <div>
           <label>
             Old price:
             </label>
             <Input
             className={styles.addInputs}
             onChange={(e)=>{ this.setSomething(e,"oldPrice")}}
-            value={this.state.oldPrice}/>
-          <br />
+            value={this.state.oldPrice}/> 
+          </div>
+          <div>
           <label>
             New price:
             </label>
@@ -146,7 +154,8 @@ checkDate = date =>{
             className={styles.addInputs}
             onChange={(e)=>{ this.setSomething(e,"price")}}
             value={this.state.price}/>
-        <br />
+          </div>
+          <div>
           <label>Select category</label>
           <select 
           className={styles.addInputs}
@@ -157,7 +166,8 @@ checkDate = date =>{
             <option value="Eating Out">Eating Out</option>
             <option value="Vacations">Vacations</option>
           </select>
-          <br />
+          </div>
+          <div>
           <label>
           Expiration Date:
           </label>
@@ -165,7 +175,8 @@ checkDate = date =>{
             className={styles.addInputs}
             onChange={(e)=>{ this.setSomething(e,"expirationDate")}}
             value={this.state.expirationDate}></Input>
-          <br />
+          </div>
+          <div>
           <label>
           Url image:
           </label>
@@ -173,10 +184,8 @@ checkDate = date =>{
             className={styles.addInputs}
             onChange={(e)=>{ this.setSomething(e,"image")}}
             value={this.state.image}/>
-
-          
+          </div>
         </form>
-        
         </article>
         <article>
         <SingleOfferTemp {...this.state} />

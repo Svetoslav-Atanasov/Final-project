@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import LoginBox from "../LoginBox/LoginBox";
 import RegisterBox from "../RegisterBox/RegisterBox";
 import styles from "./Header.module.css";
-import { withRouter } from 'react-router-dom';
+import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { removeCurrentUser } from "../Storage/actions/users"
+import { removeCurrentUser } from "../Storage/actions/users";
 import BackShadow from "../BackShadow/BackShadow";
 import Logo from "../UI/Logo/Logo";
 import exit from '../assets/images/exit.png'
@@ -14,7 +14,7 @@ import SearchBox from "../UI/SearchBox/SearchBox"
 import Statistic from "../assets/images/statistic.png"
 import Add from "../assets/images/add.png"
 import LiLink from "../UI/LiLink/LiLInk"
-
+import Fade from "react-reveal/Fade";
 
 class Header extends Component {
   state = {
@@ -25,18 +25,18 @@ class Header extends Component {
   };
 
   resetState = () => {
-
     this.setState({
       isLoginOpen: false,
       isRegisterOpen: false,
       isOpen: false,
       commingFrom: null
-    })
-  }
+    });
+  };
 
   showRegisterBox = () => {
-
-    if (this.props.current){return}
+    if (this.props.current) {
+      return;
+    }
     this.setState({ isLoginOpen: false, isRegisterOpen: true });
 
     if (this.state.commingFrom === "login" || !this.state.isOpen) {
@@ -48,7 +48,9 @@ class Header extends Component {
   };
 
   showLoginBox = () => {
-    if (this.props.current){return}
+    if (this.props.current) {
+      return;
+    }
     this.setState({ isLoginOpen: true, isRegisterOpen: false });
 
     if (this.state.commingFrom === "register" || !this.state.isOpen) {
@@ -64,14 +66,13 @@ class Header extends Component {
   };
 
   logOut = () => {
-    this.resetState()
-   this.props.removeCurrentUser();
-  // sessionStorage.removeItem('currentUser')
-   this.props.history.push("/")
-  }
+    this.resetState();
+    this.props.removeCurrentUser();
+    // sessionStorage.removeItem('currentUser')
+    this.props.history.push("/");
+  };
 
   render() {
-    
     let currentUser = this.props.current;
     let classesWhenOpenLogReg = [styles.login];
     let classesForControllerLogin = [styles.controller];
@@ -188,4 +189,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps,mapDispatchToProps)(withRouter(Header));
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(Header));

@@ -73,7 +73,7 @@ class SearchBox extends Component {
                         data-tip=" Only words separated with space"
                             type = "text" 
                             maxLength ="20"  
-                            placeholder='Tyrsi vuv vsichki oferti' 
+                            placeholder='Search all offers' 
                             onChange={this.setSearch} 
                             value = {this.state.searchingFor}
                             onClick={this.onFocus}

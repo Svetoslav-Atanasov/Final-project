@@ -92,7 +92,7 @@ class Offer extends Component {
     const discount = "-" + disc + "%";
 
     return (
-      <Fade cascade>
+      <Fade cascade duration={1500}>
         <div className={styles.singleDiv}>
           <Link to={"/offerDetails/" + this.props.id}>
           <div className={styles.label}>

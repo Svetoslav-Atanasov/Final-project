@@ -10,7 +10,8 @@
 }
 
 .ActiveLink {
-    border-bottom: 3px solid #F67280;
+    /* border-bottom: 3px solid #F67280; */
+    border-bottom: 3px solid #2A363B;
 }
 
 .categoryName {
@@ -22,5 +23,6 @@ li>a {
     width: 100%;
     justify-content: space-between;
     padding: 0.5em 0;
-    color: #C06C84;
+    /* color: #C06C84; */
+    color: #FFFAF0;
 }
