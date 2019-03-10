@@ -72,10 +72,16 @@
     display: flex;
     flex-direction: row;
 }
+
 .link {
     text-decoration: none;
 }
 
+.liNav {
+    color: #FFFAF0;
+    display: flex;
+    width: 7em;
+}
 
 
 /* .linkNav {
@@ -84,11 +90,16 @@
     height: 100%;
     font-size: 16px;
     /* text-decoration: none; */
-    /* text-transform: uppercase; */
-    /* display: flex;
+
+
+/* text-transform: uppercase; */
+
+
+/* display: flex;
     align-items: center;
     padding: 0 3px;
-} */ 
+} */
+
 
 /* .linkNav:hover {
     color: #ffaa3b;
@@ -99,6 +110,7 @@
     border-top: 4px solid #ffaa3b;
     font-weight: 700;
 } */
+
 
 /* .ActiveLink {
     background: green;

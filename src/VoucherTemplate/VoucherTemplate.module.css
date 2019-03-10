@@ -1,13 +1,54 @@
-.BorderTemplate{
-    border: 2px solid red
-}
-.Contend {
-    border : 2px solid purple;
-    flex-direction:row;
-}
-.VoucherTitle {
-    margin: 0 auto;
-}
-.More{
+    .BorderTemplate {
+        border: 3px solid #2A363B;
+        margin-bottom: 10px;
+        background-color: #FECEAB;
+        border-radius: 6px;
+        padding: 0px 20px;
+    }
     
-}
+    .Content {
+        border: 2px solid #2A363B;
+        border-radius: 5px;
+        padding: 4px 8px;
+        display: flex;
+        justify-content: space-evenly;
+    }
+    
+    .VoucherTitle {
+        margin: 0 auto;
+        padding-left: 10px;
+    }
+    
+    .grabItVoucher {
+        color: #FECEAB;
+        background-color: #2A363B;
+        padding-left: 5px;
+    }
+    
+    .voucherImage {
+        border: 2px solid #2A363B;
+        border-radius: 8px;
+        width: 250px;
+        margin-top: 5px;
+    }
+    
+    .voucherCartParagraph {
+        padding-left: 20px;
+        text-align: justify;
+        margin-top: 10px;
+        margin-right: 10px;
+    }
+    
+    .lowerParagraph {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        padding-left: 5px;
+    }
+    
+    .priceBorder {
+        border: 2px solid #2A363B;
+        border-radius: 5px;
+        padding: 10px 4px;
+        margin: 15px 5px 15px 0px;
+    }
