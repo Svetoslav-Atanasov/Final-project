@@ -14,57 +14,37 @@ import label from "../assets/images/label.png";
 import redLine from "../assets/images/redLine.png";
 
 class Offer extends Component {
-  //ot stateless go pravq na statefull component,
-  //za da moje da si pazi informaciqta ot input-a  kolko vauchera da bydat kupeni
-  // i syotvetno s funkciqta toGetToCart() - da vleznat v kolichkata na tekushtiq user
+
+
   state = {
     broi: "1",
     timerExpired: this.props.isExpired
   };
 
   onClickGetVoucher = () => {
+  
     const user = this.props.current;
+    if (user.id == '0'){
+      return;
+    }
     user
       ? this.toGetToCart(user.id, this.props.id, this.props.name)
       : this.props.history.push("/loginPage");
-  };
-  //tazi funkciq - vzima id na potrebitelq  i slaga v koshnicata mu - vaucher
-  toGetToCart = (idUser, offerId, offerName) => {
-    // number shte e unikalen nomer na vauchera
-    const number = Math.ceil(Math.random() * 10000);
-    const broi = this.state.broi;
-    const orderdVoucher = { number, idUser, broi, offerId, offerName };
-    // pravq nov obekt PorychanVaucher i go slagam v kolickata na tekushtiq potrebitel
-    // const voucher = {idUser, broi, number, offerId, isUsed:false, name};
-    console.log("GET VUCHER TO CAR BY CLICK ON BUTTON");
-    console.log(orderdVoucher);
-    this.props.getToCart(idUser, orderdVoucher);
-    this.props.goToOrdered(orderdVoucher);
-    // this.props.addVoucher(voucher)
-  };
-  onClickGetVoucher = () => {
-    const user = this.props.current;
-    user
-      ? this.toGetToCart(user.id, this.props.id, this.props.name)
-      : this.props.history.push("/loginPage");
-  };
-  //tazi funkciq - vzima id na potrebitelq  i slaga v koshnicata mu - vaucher
-  toGetToCart = (idUser, offerId, offerName) => {
-    // number shte e unikalen nomer na vauchera
-    const number = Math.ceil(Math.random() * 10000);
-    const broi = this.state.broi;
-    const orderdVoucher = { number, idUser, broi, offerId, offerName };
-    // pravq nov obekt PorychanVaucher i go slagam v kolickata na tekushtiq potrebitel
-    // const voucher = {idUser, broi, number, offerId, isUsed:false, name};
-    // console.log('GET VUCHER TO CAR BY CLICK ON BUTTON')
-    // console.log(orderdVoucher)
-    this.props.getToCart(idUser, orderdVoucher);
-    this.props.goToOrdered(orderdVoucher);
-    // this.props.addVoucher(voucher)
   };
 
-  //tazi funkciq change() - shte vzima value ot inputa i shte go slaga v state, za da se zapzi
-  // i da moje da byde izprateno
+  //tazi funkciq - vzima id na potrebitelq  i slaga v koshnicata mu - vaucher
+  toGetToCart = (idUser, offerId, offerName) => {
+    // number shte e unikalen nomer na vauchera
+    const number = Math.ceil(Math.random() * 10000);
+    const broi = this.state.broi;
+    const orderdVoucher = { number, idUser, broi, offerId, offerName };
+  
+    this.props.getToCart(idUser, orderdVoucher);
+    this.props.goToOrdered(orderdVoucher);
+    
+  };
+
+
   change = e => {
     console.log(e.target.value);
     this.setState({ broi: e.target.value });
@@ -114,10 +94,12 @@ class Offer extends Component {
     return (
       <Fade cascade duration={1500}>
         <div className={styles.singleDiv}>
+          <Link to={"/offerDetails/" + this.props.id}>
           <div className={styles.label}>
             <img width="200" height="200" src={label} />
             <span className={styles.discount}> {discount} </span>
           </div>
+          </Link>
           <div>
             <Link to={"/offerDetails/" + this.props.id}>
               <Image image={this.props.image} />

@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import Input from "../UI/Input/Input"
-import Button from "../UI/Button/Button"
-import styles from "./addOffer.module.css"
+import Input from "../UI/Input/Input";
+import Button from "../UI/Button/Button";
+import styles from "./addOffer.module.css";
 import { connect } from "react-redux";
 import ReactTooltip from 'react-tooltip'
-import SingleOfferTemp from '../OfferDisplaySingleTemplate/OfferDisplaySingleTemplate'
-import { addOffer } from '../Storage/actions/offers'
+import SingleOfferTemp from '../OfferDisplaySingleTemplate/OfferDisplaySingleTemplate';
+import { addOffer } from '../Storage/actions/offers';
+import DatePicker from "react-datepicker";
 
 let id =100;
 class AddOffer extends Component {
@@ -58,7 +59,7 @@ setSomething = (e,smg) =>{
             const expirationDate = value;
             return this.setState({ expirationDate });
     case "image" :
-    
+    if (!this.checkUrl(value)){return;}
             const image = value;
             return this.setState({ image });
     default:
@@ -80,22 +81,14 @@ submit = e =>{
     image: this.state.image
   }
 
-//   const state={
-//     isExpired: false,
-//     name: "",
-//     description: "",
-//     fullDescription: '',
-//     oldPrice: 0,
-//     price: 0,
-//     category: "Culture",
-//     expirationDate: "",
-//     image: ""
-// }
-//   this.setState({ state })
 }
 
 check = str =>{
   const isValid = /^[a-zA-Z0-9,. !?]*$/.test(str)
+  return isValid
+}
+checkUrl = str =>{
+  const isValid = /^[0-9./]*$/.test(str)
   return isValid
 }
 checkDate = date =>{
@@ -109,8 +102,9 @@ checkDate = date =>{
  
     return(
       <div className={styles.addOffer}>
-         <article>
+         <article className={styles.info}>
         <form>
+          <div>
           <label>
             Header name for the offer:
            
@@ -120,7 +114,8 @@ checkDate = date =>{
             onChange={(e)=>{ this.setSomething(e,"name")}}
             value={this.state.name} />
              </label>
-          <br />
+          </div>
+          <div>
           <label>
             Shrot description:
             </label>
@@ -129,7 +124,8 @@ checkDate = date =>{
             maxLength ="40"
              onChange={(e)=>{ this.setSomething(e,"description")}}
             value={this.state.description}/>
-          <br />
+          </div>
+          <div>
           <label>
             Full description:
             </label>
@@ -140,15 +136,17 @@ checkDate = date =>{
               maxLength ="200"
               onChange={(e)=>{ this.setSomething(e,"fullDescription")}}
               value={this.state.fullDescription}></textarea>
-         <br />
+          </div>
+          <div>
           <label>
             Old price:
             </label>
             <Input
             className={styles.addInputs}
             onChange={(e)=>{ this.setSomething(e,"oldPrice")}}
-            value={this.state.oldPrice}/>
-          <br />
+            value={this.state.oldPrice}/> 
+          </div>
+          <div>
           <label>
             New price:
             </label>
@@ -156,7 +154,8 @@ checkDate = date =>{
             className={styles.addInputs}
             onChange={(e)=>{ this.setSomething(e,"price")}}
             value={this.state.price}/>
-        <br />
+          </div>
+          <div>
           <label>Select category</label>
           <select 
           className={styles.addInputs}
@@ -167,7 +166,8 @@ checkDate = date =>{
             <option value="Eating Out">Eating Out</option>
             <option value="Vacations">Vacations</option>
           </select>
-          <br />
+          </div>
+          <div>
           <label>
           Expiration Date:
           </label>
@@ -175,7 +175,8 @@ checkDate = date =>{
             className={styles.addInputs}
             onChange={(e)=>{ this.setSomething(e,"expirationDate")}}
             value={this.state.expirationDate}></Input>
-          <br />
+          </div>
+          <div>
           <label>
           Url image:
           </label>
@@ -183,10 +184,8 @@ checkDate = date =>{
             className={styles.addInputs}
             onChange={(e)=>{ this.setSomething(e,"image")}}
             value={this.state.image}/>
-
-          
+          </div>
         </form>
-        
         </article>
         <article>
         <SingleOfferTemp {...this.state} />

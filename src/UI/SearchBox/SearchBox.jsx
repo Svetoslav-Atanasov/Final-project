@@ -29,22 +29,27 @@ class SearchBox extends Component {
     }
 
     ///chupi se, zashtoto eventa prezarejda stranicata
-    submitSearch = () => {  
-        
-        //pri tyrseneto pravim vsichko s malki bukvi, zashtoto malkite i golemite ne sa ==
-        const searchingFor = this.state.searchingFor
-        
+    submitSearch = e => {  
+        e.preventDefault()
+                  //pri tyrseneto pravim vsichko s malki bukvi, zashtoto malkite i golemite ne sa ==
+        let searchingFor = this.state.searchingFor
+        searchingFor = searchingFor.trim()
+        if(searchingFor.length === 0){
+            return;
+        }
+
         let searchArray = searchingFor.split(' ')
-        console.log('searchBox searchArray:');
-        console.log(searchArray)
+
         //filtrirai tezi, koito ne sydyrjat razlichno ot bukvi
         searchArray = searchArray.filter(word => (/^[a-zA-Z0-9]*$/.test(word)  === true))
+        if(searchArray.length === 0){this.props.history.push("/")}
         let param = searchArray.join('-');
-      console.log('search box param sa :')
-      console.log(param)
-        this.props.history.push("/Search/"+param);
-
+        console.log('search box param sa :')
+        console.log(param)
+        
+        this.props.history.push("/Search/"+param)
     }
+
     toggle =()=>{
         const open = !this.state.open
         this.setState({ open })
@@ -60,7 +65,9 @@ class SearchBox extends Component {
 
         return(
             <div className={styles.SearchBox} >                 
-                <form className={styles.SearchContainer} onSubmit={this.submitSearch}>
+                <form className={styles.SearchContainer} 
+                onSubmit={(e)=>this.submitSearch(e)}
+                >
             
                         <input 
                         data-tip=" Only words separated with space"
