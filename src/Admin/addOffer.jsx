@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import Input from "../UI/Input/Input"
-import Button from "../UI/Button/Button"
-import styles from "./addOffer.module.css"
+import Input from "../UI/Input/Input";
+import Button from "../UI/Button/Button";
+import styles from "./addOffer.module.css";
 import { connect } from "react-redux";
 import ReactTooltip from 'react-tooltip'
-import SingleOfferTemp from '../OfferDisplaySingleTemplate/OfferDisplaySingleTemplate'
-import { addOffer } from '../Storage/actions/offers'
+import SingleOfferTemp from '../OfferDisplaySingleTemplate/OfferDisplaySingleTemplate';
+import { addOffer } from '../Storage/actions/offers';
+import DatePicker from "react-datepicker";
 
 let id =100;
 class AddOffer extends Component {
@@ -80,18 +81,6 @@ submit = e =>{
     image: this.state.image
   }
 
-//   const state={
-//     isExpired: false,
-//     name: "",
-//     description: "",
-//     fullDescription: '',
-//     oldPrice: 0,
-//     price: 0,
-//     category: "Culture",
-//     expirationDate: "",
-//     image: ""
-// }
-//   this.setState({ state })
 }
 
 check = str =>{
@@ -99,6 +88,7 @@ check = str =>{
   return isValid
 }
 checkDate = date =>{
+
   const isValid = /^[0-9.]*$/.test(date)
   return isValid
 }
@@ -109,7 +99,7 @@ checkDate = date =>{
  
     return(
       <div className={styles.addOffer}>
-         <article>
+         <article className={styles.info}>
         <form>
           <label>
             Header name for the offer:

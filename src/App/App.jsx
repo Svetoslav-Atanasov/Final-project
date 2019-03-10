@@ -11,6 +11,7 @@ import SideMenu from "../SideMenu/SideMenu";
 import BackShadow from "../BackShadow/BackShadow";
 import Home from "../Home/Home";
 import LoginPage from "../LoginPage/LoginPage";
+import RegisterPage from '../RegisterPage/RegisterPage'
 import Culture from "../SideMenuDetails/Culture/Culture";
 import Eating from "../SideMenuDetails/Eating/Eating";
 import Vacations from "../SideMenuDetails/Vacations/Vacations";
@@ -19,7 +20,7 @@ import Profile from "../Profile/profile";
 import Footer from "../Footer/Footer";
 import OfferDetails from "../OfferDetails/OfferDetails";
 import ShoppingCart from '../ShoppingCartPage/ShoppingCartPage';
-import Serched from "../Serched/Serched"
+import Searched from "../Searched/Searched"
 import Statistic from "../Admin/Statistic"
 import AddOffer from "../Admin/addOffer"
 
@@ -44,6 +45,10 @@ class App extends Component {
     if (this.state.sideMenuOpen) {
       backShadow = <BackShadow onClick={this.sideMenuBack} />;
     }
+    let isAdmin = false;
+    if(this.props.currentUser && this.props.currentUser.email === "admin@admin.bg"){
+      isAdmin = true;
+    }
     return (
       <BrowserRouter>
         <div>
@@ -60,25 +65,30 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/loginPage" component={LoginPage} />
+              <Route exact path="/Register" component={RegisterPage} />
               <Route exact path="/category/culture" component={Culture} />
               <Route exact path="/category/eating-оut" component={Eating} />
               <Route exact path="/category/vacations" component={Vacations} />
+              <Route path="/Search/:param" component={Searched} />
+              <Route exact path="/offerDetails/:id" component={OfferDetails} />
               <Route exact path="/addOffer" component={AddOffer} />
+              
               {/* <Route exact path="/category/:categoryType" component={Home} /> */}
               {this.props.currentUser ? 
                 <>
-                  <Route exact path="/myProfile" component={Profile} />
-                  <Route exact path="/myVouchers" component={MyVouchers} />
-                  <Route exact path="/myShoppingCart" component={ShoppingCart} />
-                  <Route exact path="/statistic" component={Statistic} />
-                  {/* <Route exact path="/addOffer" component={AddOffer} /> */}
+                  {isAdmin ? 
+                    <>
+                      <Route exact path="/statistic" component={Statistic} />
+                      {/* <Route exact path="/addOffer" component={AddOffer} /> */}
+                    </>
+                    :
+                    <>
+                    <Route exact path="/myVouchers" component={MyVouchers} />
+                    <Route exact path="/myShoppingCart" component={ShoppingCart} />
+                    </>}
                 </>
                 :null}
-              }
-              {/* here */}
-              <Route exact path="/offerDetails/:id" component={OfferDetails} />
-              <Route path="/Search/:param" component={Serched} />
-
+              
               {/* Page Not Found */}
               <Route
                 render={() => <p className="pageNotFound"> Page Not Found</p>}

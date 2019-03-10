@@ -7,14 +7,13 @@ import { connect } from "react-redux";
 import { removeCurrentUser } from "../Storage/actions/users"
 import BackShadow from "../BackShadow/BackShadow";
 import Logo from "../UI/Logo/Logo";
-import LiNavLink from '../UI/Li-NavLink/LiNavLink'
 import exit from '../assets/images/exit.png'
-import UserProfile from '../assets/images/UserProfile.png'
 import voucher from '../assets/images/voucher.png'
 import ShoppingCart from "../UI/ShoppingCart/ShoppingCart"
 import SearchBox from "../UI/SearchBox/SearchBox"
 import Statistic from "../assets/images/statistic.png"
 import Add from "../assets/images/add.png"
+import LiLink from "../UI/LiLink/LiLInk"
 
 
 class Header extends Component {
@@ -78,27 +77,31 @@ class Header extends Component {
     let classesForControllerLogin = [styles.controller];
     let classesForControllerReg = [styles.controller];
     let notSelectedControler = null;
-    let loginPage = this.props.history.location.pathname === "/loginPage" ? true : false ;
-
+    let loginRegPage = 
+      this.props.history.location.pathname === "/loginPage" 
+      || this.props.history.location.pathname === "/Register" 
+      ? 
+      true : false ;
+      
     let isAdmin = false;
-    console.log('AAAAAAAAAAAAAAAAAAA')
-    console.log(this.props.current)
+
     if(this.props.current && this.props.current.email === "admin@admin.bg"){
       isAdmin = true;
-      console.log(this.props.current.email)
-      console.log(isAdmin)
-      console.log(this.props.current.email)
+     
     }
-    
-    
- 
+  
+    // if (this.state.isLoginOpen && this.state.isOpen){
+    //       if(LoginPage){
+    //         classesForControllerLogin.push
+    //       }
+    // }
     classesForControllerLogin.push(
-      this.state.isLoginOpen && this.state.isOpen
+      this.state.isLoginOpen && this.state.isOpen && !loginRegPage
         ? styles.selectedController
         : notSelectedControler
     );
     classesForControllerReg.push(
-      this.state.isRegisterOpen && this.state.isOpen
+      this.state.isRegisterOpen && this.state.isOpen && !loginRegPage
         ? styles.selectedController
         : notSelectedControler
     );
@@ -120,29 +123,30 @@ class Header extends Component {
     let whenHasUser = (!isAdmin ?
       <>    
          <ul className={styles.ulNav}>
-          <LiNavLink to="/myProfile" src={UserProfile} />
-          <LiNavLink to="/myVouchers"  src={voucher}/>
-          <LiNavLink to="/myShoppingCart" otherComponent = {<ShoppingCart />}></LiNavLink>
-          <LiNavLink to="/"  src={exit} onClick={()=>this.logOut()}/>
+          {/* <LiNavLink to="/myProfile" src={UserProfile} /> */}
+       
+          <LiLink to="/myVouchers" activeClassName={styles.link} src={voucher}/>
+          <LiLink to="/myShoppingCart" otherComponent = {<ShoppingCart />}></LiLink>
+           <LiLink to="/"  activeClassName={styles.link} src={exit} onClick={()=>this.logOut()}/>
          </ul>
       </>
       :
       <>
-      <LiNavLink to="/statistic" src={Statistic} />
-      <LiNavLink to="/addOffer"  src={Add}/>
-      <LiNavLink to="/"  src={exit} onClick={()=>this.logOut()}/>
+      <LiLink to="/statistic" activeClassName={" "} src={Statistic} />
+      <LiLink to="/addOffer"  activeClassName={" "} src={Add}/>
+      <LiLink to="/" activeClassName={" "} src={exit} onClick={()=>this.logOut()}/>
       </>)
     return (
       <>
         {" "}
-        {this.state.isOpen && !loginPage && !currentUser ? <BackShadow onClick={this.hideForm} /> : null}{" "}
+        {this.state.isOpen && !loginRegPage && !currentUser ? <BackShadow onClick={this.hideForm} /> : null}{" "}
         <nav className={styles.Header}>
         <Logo />
 
           <div className={classesWhenOpenLogReg.join(" ")}>
             <div className={styles.loginNav}>
               
-              {!loginPage && !currentUser ? 
+              {!currentUser ? 
                 <>
                 {loginBar} 
                 {RegisterBar}
@@ -157,10 +161,10 @@ class Header extends Component {
             </div>
 
             <div
-              className={this.state.isOpen && !loginPage && !currentUser ? styles.form : styles.formHidden}
+              className={this.state.isOpen && !loginRegPage && !currentUser ? styles.form : styles.formHidden}
             >
               {" "}
-              {!loginPage && !currentUser ? 
+              {!loginRegPage && !currentUser ? 
                 <>
                 {this.state.isLoginOpen ? <LoginBox /> : <RegisterBox />}
                 </> : null }
