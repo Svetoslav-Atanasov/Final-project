@@ -13,7 +13,8 @@ class RegisterBox extends Component {
       email: "",
       password: "",
       vouchersInCart: [],
-      bought : []
+      bought : [],
+      lastSeen:[]
     },
     errors: [],
     pswdStrength: "",
@@ -21,6 +22,9 @@ class RegisterBox extends Component {
   };
   setEmail = e => {
     const value = e.target.value;
+    if (!/^[a-zA-Z0-9._@]*$/.test(value)){
+      return;
+    }
     const newUser = { ...this.state.newUser };
     newUser.email = value;
     this.setState({ newUser });
@@ -28,6 +32,9 @@ class RegisterBox extends Component {
   };
   setPassword = e => {
     const value = e.target.value;
+    if (!/^[a-zA-Z0-9]*$/.test(value)){
+      return;
+    }
     const newUser = { ...this.state.newUser };
     newUser.password = value;
     this.setState({ newUser });
@@ -43,11 +50,7 @@ class RegisterBox extends Component {
   };
 
   showValidationErr = (elm, msg) => {
-    //  const errors = [...this.state.errors]
 
-    //  errors.push({elm, msg})
-    //  console.log('noviq masiv  '+ errors.length)
-    //  this.setState({ errors })
     this.setState(prevState => ({
       errors: [
         ...prevState.errors,
@@ -57,8 +60,8 @@ class RegisterBox extends Component {
         }
       ]
     }));
-    // console.log("noviq state  " + this.state.errors.length);
   };
+
   hideValidationErr = elm => {
     const errors = this.state.errors.filter(err => err.elm !== elm);
     this.setState({ errors });
@@ -156,9 +159,9 @@ class RegisterBox extends Component {
     const additionalButtonStyle= {margin: "20px auto", display: "block"};
 
     return (
-      <div className="innerContainer">
-        <div className="boxHeader" />{" "}
-        <div className="inputGroup">
+      <div>
+        <div/>{" "}
+        <div>
           <Input
             type="text"
             placeholder="Email"
@@ -167,7 +170,7 @@ class RegisterBox extends Component {
           />{" "}
           <p className={styles.RegErr}> {emailErr ? emailErr : ""} </p>{" "}
         </div>
-        <div className="inputGroup">
+        <div>
           {" "}
           <Input
             type="password"

@@ -9,6 +9,7 @@ import BackShadow from "../BackShadow/BackShadow";
 import Logo from "../UI/Logo/Logo";
 import exit from '../assets/images/exit.png'
 import voucher from '../assets/images/voucher.png'
+import UserProfile from "../assets/images/UserProfile.png"
 import ShoppingCart from "../UI/ShoppingCart/ShoppingCart"
 import SearchBox from "../UI/SearchBox/SearchBox"
 import Statistic from "../assets/images/statistic.png"
@@ -125,7 +126,7 @@ class Header extends Component {
       <>    
          <ul className={styles.ulNav}>
           {/* <LiNavLink to="/myProfile" src={UserProfile} /> */}
-       
+          <LiLink to="/myProfile" src={UserProfile} />
           <LiLink to="/myVouchers" activeClassName={styles.link} src={voucher}/>
           <LiLink to="/myShoppingCart" otherComponent = {<ShoppingCart />}></LiLink>
            <LiLink to="/"  activeClassName={styles.link} src={exit} onClick={()=>this.logOut()}/>

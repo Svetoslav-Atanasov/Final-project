@@ -12,6 +12,7 @@ import Countdown, { zeroPad } from "react-countdown-now";
 import Fade from "react-reveal/Fade";
 import label from "../assets/images/label.png";
 import redLine from "../assets/images/redLine.png";
+import { getToSeen }  from "../Storage/actions/users";
 
 class Offer extends Component {
 
@@ -52,10 +53,13 @@ class Offer extends Component {
 
   // function - shows format of timer + message after it has reached 0
   renderer = ({ days, hours, minutes, seconds, completed }) => {
+    
     var daysFormatted = zeroPad(days, 2);
     var hoursFormatted = zeroPad(hours, 2);
     var minutesFormatted = zeroPad(minutes, 2);
     var secondsFormatted = zeroPad(seconds, 2);
+   
+
     if (completed) {
       // Render a complete state
       return <span>Offer expired </span>;
@@ -75,6 +79,10 @@ class Offer extends Component {
     this.setState({ timerExpired: true });
   };
 
+  getToSeen = () =>{
+    this.props.getToSeen(this.props.id)
+  }
+
   render() {
     // takes date from userReducer's offerList
 
@@ -90,18 +98,37 @@ class Offer extends Component {
         2
       ) * 100;
     const discount = "-" + disc + "%";
+    
+    const adminEmail = "admin@admin.bg";
+    const isAdmin = this.props.current && this.props.current.email === adminEmail ? true : false;
+    const addingPage = this.props.history.location.pathname === "/addOffer" ? true : false;
 
+ 
     return (
       <Fade cascade duration={1500}>
         <div className={styles.singleDiv}>
-          <Link to={"/offerDetails/" + this.props.id}>
-          <div className={styles.label}>
-            <img width="200" height="200" src={label} />
-            <span className={styles.discount}> {discount} </span>
-          </div>
+          <Link 
+              onClick={
+                isAdmin && addingPage ? 
+                e => e.preventDefault() 
+                :
+                this.props.current ? this.getToSeen
+                :null}
+              to={"/offerDetails/" + this.props.id}>
+            <div className={styles.label}>
+              <img width="200" height="200" src={label} />
+              <span className={styles.discount}> {discount} </span>
+            </div>
           </Link>
           <div>
-            <Link to={"/offerDetails/" + this.props.id}>
+            <Link 
+              onClick={
+                isAdmin && addingPage ? 
+                e => e.preventDefault() 
+                :
+                this.props.current ? this.getToSeen
+                :null}
+              to={"/offerDetails/" + this.props.id}>
               <Image image={this.props.image} />
             </Link>
           </div>
@@ -167,7 +194,8 @@ const mapDispatchToProps = dispatch => {
   return {
     getToCart: (idUser, orderdVoucher) =>
       dispatch(getToCart(idUser, orderdVoucher)),
-    goToOrdered: orderdVoucher => dispatch(goToOrdered(orderdVoucher))
+    goToOrdered: orderdVoucher => dispatch(goToOrdered(orderdVoucher)),
+    getToSeen: offerId => dispatch(getToSeen(offerId))
     // addVoucher: (voucher) => dispatchEvent(addVoucher(voucher))
   };
 };

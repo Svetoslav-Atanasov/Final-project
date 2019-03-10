@@ -16,15 +16,22 @@ class LoginBox extends Component {
   setEmail = e => {
     const value = e.target.value;
     const email = value;
+    if (!/^[a-zA-Z0-9._@]*$/.test(value)){
+      return;
+    }
     this.setState({
       email
     });
     this.hideValidationErr("email");
   };
 
+ 
   setPassword = e => {
     const value = e.target.value;
     const password = value;
+    if (!/^[a-zA-Z0-9]*$/.test(value)){
+      return;
+    }
     this.setState({
       password
     });
@@ -66,15 +73,10 @@ class LoginBox extends Component {
     } else {
       //ако съществува такъв регистриран юзер, го вкарваме в сториджа, като текущ
       
-      // sessionStorage.setItem('currentUser',JSON.stringify(user))
+
       this.props.setCurrentUser(user);
 
-      // sessionStorage.setItem("currentUser", user.email);
-
-      console.log('propsovete sa:')
-      console.log(this.props)
-      console.log('historito e:')
-      console.log(this.props.history)
+  
       this.props.history.push("/");
     }
   };
