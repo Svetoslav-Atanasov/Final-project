@@ -2,17 +2,22 @@ import React from "react";
 import classes from "./Button.module.css";
 
 const button = props => {
-    // const cl = console.log(props);
-  return (      
+ //  const cl = console.log(props);
+  return props.timerDisabled ? (
     <button
       onClick={props.onClick}
       className={`${classes.Button} ${props.className}`}
-      //className={classes.Button}
       style={props.style}
-      disabled={props.diabled || false}
-      // timerOut={props.timerOut}
-      moreStyles={props.moreStyles}
-      timerOut={props.timerOut}
+      disabled
+    >
+      {" "}
+      {props.title}{" "}
+    </button>
+  ) : (
+    <button
+      onClick={props.onClick}
+      className={`${classes.Button} ${props.className}`}
+      style={props.style}
     >
       {" "}
       {props.title}{" "}

@@ -5,8 +5,8 @@
     margin-bottom: 20px;
     margin-right: 20px;
     max-width: 300px;
-    background: linear-gradient(to bottom, rgba(226,226,226,1) 0%, rgba(254,254,254,1) 0%, rgba(249,249,249,1) 15%, rgba(221,221,221,1) 92%, rgba(219,219,219,1) 97%, rgba(209,209,209,1) 100%);
-    box-shadow: 10px 11px 47px 0px rgba(214,214,214,1);
+    background: linear-gradient(to bottom, rgba(226, 226, 226, 1) 0%, rgba(254, 254, 254, 1) 0%, rgba(249, 249, 249, 1) 15%, rgba(221, 221, 221, 1) 92%, rgba(219, 219, 219, 1) 97%, rgba(209, 209, 209, 1) 100%);
+    box-shadow: 10px 11px 47px 0px rgba(214, 214, 214, 1);
 }
 
 .titleMainScreen {
@@ -19,50 +19,58 @@
 .timer {
     margin: 10px;
 }
-.Contend{
+
+.Contend {
     margin: 0.5em;
     text-overflow: ellipsis;
     /* Required for text-overflow to do anything */
     white-space: nowrap;
     overflow: hidden;
 }
-.Contend > strong {
-    position: relative;
 
+.Contend>strong {
+    position: relative;
 }
-.discount{
+
+.discount {
     top: -186px;
     left: 114px;
     font-size: 2.5em;
     color: red;
     transform: rotate(38deg) skew(-3deg, 0deg);
     position: relative;
-    display:block
+    display: block
 }
-.GetingVoucher{
+
+.GetingVoucher {
     justify-content: space-evenly;
     display: flex;
 }
-.chooseCount{
+
+.chooseCount {
     flex: 1;
 }
-.getVoucher{
-    flex:2;
+
+.getVoucher {
+    flex: 2;
 }
-.label{
+
+.label {
     width: 0px;
     height: 0px;
     position: relative;
     left: 114px;
     top: -14px;
 }
-.oldPrice{
+
+.oldPrice {
     width: 0;
     height: 0;
     position: relative;
     left: 115px;
     top: -4px;
 }
-.newPrice{
+
+.newPrice {
     font-size: 1.5em;
 }
