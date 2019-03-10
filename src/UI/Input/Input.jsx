@@ -7,7 +7,7 @@ const input = props => {
       //tuk mojem da slojim cqlata logika, ako ima errori da swetne cherveno ...
 
       className={classes.Input}
-      type={props.type}
+
       // onChange={props.onShange}
       // style={props.style}
       // //style - za da mogat horata dopylnitelno da go stilizirat

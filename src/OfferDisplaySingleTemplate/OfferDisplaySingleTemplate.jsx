@@ -12,20 +12,17 @@ import Countdown, { zeroPad } from "react-countdown-now";
 import Fade from "react-reveal/Fade";
 import label from "../assets/images/label.png";
 import redLine from "../assets/images/redLine.png";
-import { getToSeen }  from "../Storage/actions/users";
+import { getToSeen } from "../Storage/actions/users";
 
 class Offer extends Component {
-
-
   state = {
     broi: "1",
     timerExpired: this.props.isExpired
   };
 
   onClickGetVoucher = () => {
-  
     const user = this.props.current;
-    if (user.id == '0'){
+    if (user.id == "0") {
       return;
     }
     user
@@ -39,12 +36,10 @@ class Offer extends Component {
     const number = Math.ceil(Math.random() * 10000);
     const broi = this.state.broi;
     const orderdVoucher = { number, idUser, broi, offerId, offerName };
-  
+
     this.props.getToCart(idUser, orderdVoucher);
     this.props.goToOrdered(orderdVoucher);
-    
   };
-
 
   change = e => {
     console.log(e.target.value);
@@ -53,12 +48,10 @@ class Offer extends Component {
 
   // function - shows format of timer + message after it has reached 0
   renderer = ({ days, hours, minutes, seconds, completed }) => {
-    
     var daysFormatted = zeroPad(days, 2);
     var hoursFormatted = zeroPad(hours, 2);
     var minutesFormatted = zeroPad(minutes, 2);
     var secondsFormatted = zeroPad(seconds, 2);
-   
 
     if (completed) {
       // Render a complete state
@@ -79,9 +72,9 @@ class Offer extends Component {
     this.setState({ timerExpired: true });
   };
 
-  getToSeen = () =>{
-    this.props.getToSeen(this.props.id)
-  }
+  getToSeen = () => {
+    this.props.getToSeen(this.props.id);
+  };
 
   render() {
     // takes date from userReducer's offerList
@@ -93,42 +86,66 @@ class Offer extends Component {
       formattedDate[2]
     );
 
+    let formattedExpirationDate = null;
+    let countdown = null;
+    if (this.props.expirationDate) {
+      formattedExpirationDate = `${expDate.getDate()}.${expDate.getMonth() +
+        1}.${expDate.getFullYear()}`;
+      countdown = (
+        <Countdown
+          date={expDate}
+          renderer={this.renderer}
+          onComplete={this.onComplete}
+        />
+      );
+    } else {
+      formattedExpirationDate = "-";
+      countdown = "-";
+    }
+
     const disc =
       ((this.props.oldPrice - this.props.price) / this.props.oldPrice).toFixed(
         2
       ) * 100;
     const discount = "-" + disc + "%";
-    
-    const adminEmail = "admin@admin.bg";
-    const isAdmin = this.props.current && this.props.current.email === adminEmail ? true : false;
-    const addingPage = this.props.history.location.pathname === "/addOffer" ? true : false;
 
- 
+    const adminEmail = "admin@admin.bg";
+    const isAdmin =
+      this.props.current && this.props.current.email === adminEmail
+        ? true
+        : false;
+    const addingPage =
+      this.props.history.location.pathname === "/addOffer" ? true : false;
+
     return (
       <Fade cascade duration={1500}>
         <div className={styles.singleDiv}>
-          <Link 
-              onClick={
-                isAdmin && addingPage ? 
-                e => e.preventDefault() 
-                :
-                this.props.current ? this.getToSeen
-                :null}
-              to={"/offerDetails/" + this.props.id}>
+          <Link
+            onClick={
+              isAdmin && addingPage
+                ? e => e.preventDefault()
+                : this.props.current
+                ? this.getToSeen
+                : null
+            }
+            to={"/offerDetails/" + this.props.id}
+          >
             <div className={styles.label}>
               <img width="200" height="200" src={label} />
               <span className={styles.discount}> {discount} </span>
             </div>
           </Link>
           <div>
-            <Link 
+            <Link
               onClick={
-                isAdmin && addingPage ? 
-                e => e.preventDefault() 
-                :
-                this.props.current ? this.getToSeen
-                :null}
-              to={"/offerDetails/" + this.props.id}>
+                isAdmin && addingPage
+                  ? e => e.preventDefault()
+                  : this.props.current
+                  ? this.getToSeen
+                  : null
+              }
+              to={"/offerDetails/" + this.props.id}
+            >
               <Image image={this.props.image} />
             </Link>
           </div>
@@ -152,9 +169,7 @@ class Offer extends Component {
           <div className={styles.Content}>{this.props.category}</div>
           {/* months are counted from 0-11; +1 to start from the month of March */}
           <div className={styles.Content}>
-            Offer expires:{" "}
-            {`${expDate.getDate()}.${expDate.getMonth() +
-              1}.${expDate.getFullYear()}`}
+            Offer expires: {formattedExpirationDate}
           </div>
           <div>
             <Select onChange={this.change} value={this.state.value} />
@@ -169,14 +184,7 @@ class Offer extends Component {
               {/* console.log(expDate - Date.now()); */}
             </div>
 
-            <div className={styles.timer}>
-              Time left:{" "}
-              <Countdown
-                date={expDate}
-                renderer={this.renderer}
-                onComplete={this.onComplete}
-              />
-            </div>
+            <div className={styles.timer}>Time left: {countdown}</div>
           </div>
         </div>
       </Fade>
