@@ -112,7 +112,7 @@ class Offer extends Component {
     const discount = "-" + disc + "%";
 
     return (
-      <Fade cascade>
+      <Fade cascade duration={1500}>
         <div className={styles.singleDiv}>
           <div className={styles.label}>
             <img width="200" height="200" src={label} />

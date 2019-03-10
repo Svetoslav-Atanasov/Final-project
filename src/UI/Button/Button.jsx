@@ -1,18 +1,19 @@
 import React from "react";
 import classes from "./Button.module.css";
+import Bounce from "react-reveal/Fade";
 
 const button = props => {
- //  const cl = console.log(props);
+  //  const cl = console.log(props);
   return props.timerDisabled ? (
-    <button
-      onClick={props.onClick}
-      className={`${classes.Button} ${props.className}`}
-      style={props.style}
-      disabled
-    >
-      {" "}
-      {props.title}{" "}
-    </button>
+      <button
+        onClick={props.onClick}
+        className={`${classes.Button} ${props.className}`}
+        style={props.style}
+        disabled
+      >
+        {" "}
+        {props.title}{" "}
+      </button>
   ) : (
     <button
       onClick={props.onClick}

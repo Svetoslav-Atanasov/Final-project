@@ -1,33 +1,31 @@
-/* .Button {
-    font-family: "Coves Bold";
-    background-color: #355C7D;
-    color: #F67280;
-    border-radius: 5px;
-    padding: 4px 0;
-    margin: 15px;
-    outline: none;
-    cursor: pointer;
-    border: 1px solid #355C7D;
-    /* box-shadow: 40px 40px 300px 45px rgba(192, 108, 132, 0.7); */
-
-
-/* width: 8em;
-} */
-
-
-/* .Button:hover {
-    opacity: 0.85;
-} */
-
-.Button {
+    .Button {
+        font-family: "Coves Bold";
+        /* background-color: #355C7D; */
+        background-color: #2A363B;
+        /* color: #F67280; */
+        color: #FECEAB;
+        border-radius: 5px;
+        padding: 4px 0;
+        margin: 15px;
+        outline: none;
+        cursor: pointer;
+        border: 1px solid #2A363B;
+        /* box-shadow: 40px 40px 300px 45px rgba(192, 108, 132, 0.7); */
+        box-shadow: 40px 40px 300px 45px rgba(233, 235, 238, 0.7);
+        width: 8em;
+        height: 3em;
+    }
+    
+    .Button:hover {
+        opacity: 0.85;
+    }
+    /* .Button {
     background-image: linear-gradient(to bottom, #00B800, #007504);
     border-radius: 15px;
     height: 18px;
     line-height: 18px;
     color: #FFFFFF;
-    /* width: 86px; */
-    /* font-size: 19px;
-font-weight: 200; */
+
     padding: 20px;
     box-shadow: 0px 1px 7px 0px #000000;
     text-shadow: 1px 1px 20px #000000;
@@ -39,4 +37,4 @@ font-weight: 200; */
 .Button:hover {
     background: #15D034;
     text-decoration: none;
-}
+} */

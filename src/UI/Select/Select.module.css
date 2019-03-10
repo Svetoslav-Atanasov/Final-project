@@ -2,9 +2,12 @@
     border-radius: 3px;
     height: 3em;
     width: 4em;
-    background-color: #F67280;
-    color: #355C7D;
+    /* background-color: #F67280; */
+    background-color: #FECEAB;
+    /* color: #E84A5F; */
+    color: #2A363B;
     font-family: "Coves Bold";
+    border: #FECEAB;
 }
 
 .quantitySelect:hover {

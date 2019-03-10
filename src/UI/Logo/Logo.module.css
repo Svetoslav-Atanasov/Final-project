@@ -8,7 +8,8 @@
 .logo {
     font-family: 'Break';
     font-size: 50px;
-    color: #F67280;
+    /* color: #F67280; */
+    color: #2A363B;
     margin-left: 50px;
 }
 
@@ -17,7 +18,8 @@
     /* margin-top: 5px;
     margin-left: 10px; */
     border-radius: 2px;
-    border: 1px solid #F67280;
+    /* border: 1px solid #F67280; */
+    border: 1 px solid #2A363B;
     position: relative;
     top: 4px;
     left: 30px;

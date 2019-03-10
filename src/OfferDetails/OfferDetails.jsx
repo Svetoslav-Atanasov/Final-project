@@ -69,7 +69,7 @@ class OfferDetails extends React.Component {
     );
 
     return (
-      <Zoom>
+      <Zoom duration={1500}>
         <div className={styles.singleDiv}>
           <div className={styles.topFlex}>
             <div>
