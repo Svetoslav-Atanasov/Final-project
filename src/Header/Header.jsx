@@ -13,6 +13,8 @@ import UserProfile from '../assets/images/UserProfile.png'
 import voucher from '../assets/images/voucher.png'
 import ShoppingCart from "../UI/ShoppingCart/ShoppingCart"
 import SearchBox from "../UI/SearchBox/SearchBox"
+import Statistic from "../assets/images/statistic.png"
+import Add from "../assets/images/add.png"
 
 
 class Header extends Component {
@@ -77,6 +79,17 @@ class Header extends Component {
     let classesForControllerReg = [styles.controller];
     let notSelectedControler = null;
     let loginPage = this.props.history.location.pathname === "/loginPage" ? true : false ;
+
+    let isAdmin = false;
+    console.log('AAAAAAAAAAAAAAAAAAA')
+    console.log(this.props.current)
+    if(this.props.current && this.props.current.email === "admin@admin.bg"){
+      isAdmin = true;
+      console.log(this.props.current.email)
+      console.log(isAdmin)
+      console.log(this.props.current.email)
+    }
+    
     
  
     classesForControllerLogin.push(
@@ -103,7 +116,9 @@ class Header extends Component {
                           {" "}
                           <p className={styles.navPanelButtons}> REGISTER </p>
                         </div>)
-  const whenHasUser = <>    
+    
+    let whenHasUser = (!isAdmin ?
+      <>    
          <ul className={styles.ulNav}>
           <LiNavLink to="/myProfile" src={UserProfile} />
           <LiNavLink to="/myVouchers"  src={voucher}/>
@@ -111,6 +126,12 @@ class Header extends Component {
           <LiNavLink to="/"  src={exit} onClick={()=>this.logOut()}/>
          </ul>
       </>
+      :
+      <>
+      <LiNavLink to="/statistic" src={Statistic} />
+      <LiNavLink to="/addOffer"  src={Add}/>
+      <LiNavLink to="/"  src={exit} onClick={()=>this.logOut()}/>
+      </>)
     return (
       <>
         {" "}

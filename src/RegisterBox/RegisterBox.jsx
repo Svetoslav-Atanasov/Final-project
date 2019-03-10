@@ -6,7 +6,7 @@ import { withRouter } from "react-router";
 import { connect } from "react-redux";
 import { addUser } from "../Storage/actions/users";
 
-var id = 1;
+var id = 2;
 class RegisterBox extends Component {
   state = {
     newUser: {
@@ -75,6 +75,10 @@ class RegisterBox extends Component {
         this.showValidationErr("email", "Invalid email");
         return;
       }
+    }
+    if(this.props.userList.some(u=> u.email === this.state.newUser.email)){
+      this.showValidationErr("email", "Email is registered");
+      return;
     }
 
     if (this.state.newUser.password.trim() === "") {
@@ -193,13 +197,13 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-// const mapStateToProps = (state) => {
-//   return {
-//     user: state.user.currentUser
-//   }
-// }
+const mapStateToProps = (state) => {
+  return {
+    userList: state.user.userList
+  }
+}
 
 export default connect(
- null,
+  mapStateToProps,
   mapDispatchToProps
 )(withRouter(RegisterBox));

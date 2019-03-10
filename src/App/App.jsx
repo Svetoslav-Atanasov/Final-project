@@ -20,6 +20,7 @@ import Footer from "../Footer/Footer";
 import OfferDetails from "../OfferDetails/OfferDetails";
 import ShoppingCart from '../ShoppingCartPage/ShoppingCartPage';
 import Serched from "../Serched/Serched"
+import Statistic from "../Admin/Statistic"
 
 
 // import { NavLink} from "react-router-dom";
@@ -67,6 +68,7 @@ class App extends Component {
                   <Route exact path="/myProfile" component={Profile} />
                   <Route exact path="/myVouchers" component={MyVouchers} />
                   <Route exact path="/myShoppingCart" component={ShoppingCart} />
+                  <Route exact path="/statistic" component={Statistic} />
                 </>
                 :null}
               }

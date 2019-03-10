@@ -17,6 +17,7 @@ html {
     height: 100%;
 }
 
+
 body {
     margin: 0;
     padding: 0;
@@ -27,6 +28,7 @@ body {
     min-height: 100%;
     position: relative;
     padding-bottom: 4em;
+    color: black
 }
 
 code {

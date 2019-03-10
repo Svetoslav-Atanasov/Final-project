@@ -16,7 +16,8 @@ import {
 
     const initialStateUser =  {
         userList: [
-            { id: 0, email: 'test@abv.bg', password: 'test', vouchersInCart: [], bought: [] }
+            { id: 0, email: 'admin@admin.bg', password: 'admin', vouchersInCart: [], bought: [] },
+            { id: 1, email: 'test@abv.bg', password: 'test', vouchersInCart: [], bought: [] }
         ],
         currentUser: false
     };
@@ -34,14 +35,6 @@ import {
 
 export const userReducer = (state = initialStateUser, action) => {
     // sessionStorage.setItem('initialStateUser',JSON.stringify(state));
-
-
-    console.log('INITIAL state e VECHE VYV FUNKCIQTA E:')
-    console.log(initialStateUser)
-    console.log('A USERLISTA E state e VECHE VYV FUNKCIQTA E:')
-    console.log(state.userList)
-
-
 
     switch (action.type) {
         case ADD_USER:
