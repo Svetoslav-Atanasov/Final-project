@@ -1,29 +1,19 @@
-article {
-    flex :1;
-    border: 2px solid red;
-    width: 45%;
-    float: left;
-    justify-content: flex-end
-}
-.button {
-    clear:both;
-    display:block
-}
-.addOffer{
-    /* display: flex; */
-    /* flex-direction: row; */
-}
-label{
-
-    display: inline-block;
-    float: left;
-}
-.addInputs{
-   
-}
-br{
-    clear: both;
-}
-.info{
-    /* justify-content: flex-end */
-}
+    .articleOfferLeft {
+        flex: 1;
+        border: 2px solid #2A363B;
+        width: 45%;
+        float: left;
+        justify-content: flex-end;
+        border-radius: 5px;
+        margin-right: 20px;
+        height: 500px;
+    }
+    
+    .articleOfferRight {
+        flex: 1;
+        width: 45%;
+        float: left;
+        justify-content: flex-end;
+        border-radius: 5px;
+        margin-left: 50px;
+    }

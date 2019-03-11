@@ -15,6 +15,9 @@ class LoginBox extends Component {
 
   setEmail = e => {
     const value = e.target.value;
+    if (!/^[a-zA-Z0-9._@]*$/.test(value)){
+      return;
+    }
     const email = value;
   
     this.setState({
@@ -26,6 +29,9 @@ class LoginBox extends Component {
  
   setPassword = e => {
     const value = e.target.value;
+    if (!/^[a-zA-Z0-9]*$/.test(value)){
+      return;
+    }
     const password = value;
 
     this.setState({

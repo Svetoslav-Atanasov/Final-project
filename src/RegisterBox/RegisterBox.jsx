@@ -22,7 +22,9 @@ class RegisterBox extends Component {
   };
   setEmail = e => {
     const value = e.target.value;
-
+    if (!/^[a-zA-Z0-9._@]*$/.test(value)){
+      return;
+    }
     const newUser = { ...this.state.newUser };
     newUser.email = value;
     this.setState({ newUser });
@@ -30,6 +32,9 @@ class RegisterBox extends Component {
   };
   setPassword = e => {
     const value = e.target.value;
+    if (!/^[a-zA-Z0-9]*$/.test(value)){
+      return;
+    }
     const newUser = { ...this.state.newUser };
     newUser.password = value;
     this.setState({ newUser });
