@@ -69,7 +69,7 @@ class OfferDetails extends React.Component {
     // console.log(offer);
 
     // used in - Expires:
-    var formattedDate = offer.expirationDate.split(".");
+    var formattedDate = offer.expirationDate.split("/");
     var expDate = new Date(
       formattedDate[0],
       formattedDate[1] - 1,

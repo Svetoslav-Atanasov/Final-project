@@ -37,7 +37,7 @@ class AddOffer extends Component {
     image: ""
   };
 
-  setSomething = (e, smg) => {
+  setSomething = (e, smg, date) => {
     const value = e.target.value;
     // if (!this.check(value)){return;}
     switch (smg) {
@@ -77,12 +77,13 @@ class AddOffer extends Component {
         }
         const category = value;
         return this.setState({ category });
-      case EXP_DATE:
-        if (!this.checkDate(value)) {
-          return;
-        }
-        const expirationDate = value;
-        return this.setState({ expirationDate });
+      // case EXP_DATE:
+      // e.preventDefault()
+      // //   // if (!this.checkDate(value)) {
+      // //   //   return;
+      // //   // }
+      //   const expirationDate = date;
+      //   return this.setState({ expirationDate });
       case IMAGE:
         // if (!this.checkUrl(value)) {
         //   return;
@@ -93,6 +94,11 @@ class AddOffer extends Component {
         return;
     }
   };
+  // setExpDate = (e,date) =>{
+  //   const expirationDate = value;
+  //    return this.setState({ expirationDate });
+  // }
+
   submit = e => {
     e.preventDefault();
     let newOffer = {
@@ -127,10 +133,16 @@ class AddOffer extends Component {
 
   //   return isValid
   // }
-  checkDate = date => {
-    const isValid = /^[0-9.]*$/.test(date);
-    return isValid;
-  };
+  // checkDate = date => {
+  //   const isValid = /^[0-9.]*$/.test(date);
+  //   return isValid;
+  // };
+  handleChange = this.handleChange.bind(this);
+  handleChange(date) {
+    this.setState({
+      expirationDate: date
+    });
+  }
 
   render() {
     return (
@@ -240,17 +252,9 @@ class AddOffer extends Component {
                   <DatePicker
                     dateFormat="yyyy/MM/dd"
                     selected={this.state.expirationDate}
-                    onChange={e => this.setSomething(e, EXP_DATE)}
+                    onChange={this.handleChange}
                   />
                 </div>
-
-                {/* <Input
-                className={styles.addInputs}
-                onChange={e => {
-                  this.setSomething(e, EXP_DATE);
-                }}
-                value={this.state.expirationDate}
-              /> */}
               </div>
               <div className={styles.formDivs}>
                 <div>

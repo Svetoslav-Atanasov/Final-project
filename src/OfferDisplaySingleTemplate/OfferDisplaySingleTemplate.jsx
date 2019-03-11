@@ -46,7 +46,7 @@ class Offer extends Component {
   }
 
   change = e => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     this.setState({ broi: e.target.value });
   };
 
@@ -92,14 +92,16 @@ convertDate = (date) => {
 
   render() {
     // takes date from userReducer's offerList
-    const otriginalDate = this.props.expirationDate
+    let originalDate = this.props.expirationDate
+
     var formattedDate = '';
-    if (otriginalDate.length>10){
-      formattedDate =  this.props.convertDate(otriginalDate.split("/"))
-    }
-    
-    formattedDate.split("/") ;
-     
+    if (originalDate.toString().length>10){
+
+      formattedDate = this.convertDate(originalDate).split("/")
+
+      
+    }else {formattedDate = originalDate.split("/");}
+
     var expDate = new Date(
       formattedDate[0],
       formattedDate[1] - 1,
@@ -108,7 +110,7 @@ convertDate = (date) => {
 
     let formattedExpirationDate = null;
     let countdown = null;
-    if (this.props.expirationDate) {
+    if (originalDate) {
       formattedExpirationDate = `${expDate.getDate()}.${expDate.getMonth() +
         1}.${expDate.getFullYear()}`;
       countdown = (
