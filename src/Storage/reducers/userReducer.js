@@ -168,7 +168,7 @@ const initialStateOffers = {
             oldPrice: 30,
             price: 10,
             category: "Culture",
-            expirationDate: "2019/03,09",
+            expirationDate: "2019/03/09",
             image: "https://scontent.fsof3-1.fna.fbcdn.net/v/t1.0-9/cp0/e15/q65/p960x960/51794288_10157216040984548_6390627658153066496_o.jpg?_nc_cat=101&efg=eyJpIjoidCJ9&_nc_ht=scontent.fsof3-1.fna&oh=a0d2751197940e5b20073a5ec3cbef1f&oe=5CDAE943"
         },
         {
@@ -270,6 +270,9 @@ const initialStateOffers = {
     ],
     filtered: []
 };
+if(sessionStorage.getItem('offerList')){
+    initialStateOffers.offerList = JSON.parse(sessionStorage.getItem('offerList'))
+}
 
 export const offerReducer = (state = initialStateOffers, action) => {
 
@@ -284,6 +287,7 @@ export const offerReducer = (state = initialStateOffers, action) => {
 
             newOfferList.unshift(action.newOffer)
             newState.offerList = newOfferList;
+            sessionStorage.setItem('offerList', JSON.stringify(newOfferList));
             return newState
         }
         default:

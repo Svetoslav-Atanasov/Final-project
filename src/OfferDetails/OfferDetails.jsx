@@ -16,9 +16,9 @@ class OfferDetails extends React.Component {
     broi: "1"
   };
 
-  //tazi funkciq - vzima id na potrebitelq  i slaga v koshnicata mu - vaucher
+
   toGetToCart = (idUser, offerId, offerName) => {
-    // number shte e unikalen nomer na vauchera
+
     const number = Math.ceil(Math.random() * 10000);
     const broi = this.state.broi;
     const orderdVoucher = { number, idUser, broi, offerId, offerName };
@@ -26,6 +26,15 @@ class OfferDetails extends React.Component {
     this.props.getToCart(idUser, orderdVoucher);
     this.props.goToOrdered(orderdVoucher);
     
+  };
+  onClickGetVoucher = (offerId,offerName) => {
+    const user = this.props.current;
+    if (user.id == "0") {
+      return;
+    }
+    user
+      ? this.toGetToCart(user.id, offerId, offerName)
+      : this.props.history.push("/loginPage");
   };
 
 
@@ -35,6 +44,7 @@ class OfferDetails extends React.Component {
     this.setState({ broi: e.target.value });
   };
 
+  
   // function - shows format of timer + message after it has reached 0
   renderer = ({ days, hours, minutes, seconds, completed }) => {
     var daysFormatted = zeroPad(days, 2);
@@ -55,21 +65,42 @@ class OfferDetails extends React.Component {
     }
   };
 
-  render() {
+  convertDate = (date) => {
 
+    var yyyy = date.getFullYear().toString();
+    var mm = (date.getMonth()+1).toString();
+    var dd  = date.getDate().toString();
   
-    const id = this.props.match.params.id;
-    // console.log("detaili za ofertata");
-    // console.log(id);
-    // if(this.props.current && this.props.current.id !== adminId){
-    //     this.props.getToSeen(id)
-    // }
+    var mmChars = mm.split('');
+    var ddChars = dd.split('');
+  
+    return yyyy + '/' + (mmChars[1]?mm:"0"+mmChars[0]) + '/' + (ddChars[1]?dd:"0"+ddChars[0]);
+  }
 
-    var offer = this.props.offerList.find(o => o.id == id);
-    // console.log(offer);
+  render() {
+    const id = this.props.match.params.id;
+    let offer = this.props.offerList.find(o => o.id == id);
+    console.log(offer)
+    console.log('TOVA GORE E OFERTATA')
+
+    let originalDate = offer.expirationDate
+    console.log('TOVA  E ORIGINALDATE')
+    console.log(originalDate)
+
+    console.log('TOVA  E ORIGINALDATE TO STRING')
+    console.log(originalDate.toString())
+
+    let formattedDate = '';
+    if (originalDate.toString().length>10){
+      formattedDate = this.convertDate(originalDate).split("/")
+    }else {
+      formattedDate = originalDate.split("/");
+    }
+    
+   
+
 
     // used in - Expires:
-    var formattedDate = offer.expirationDate.split(".");
     var expDate = new Date(
       formattedDate[0],
       formattedDate[1] - 1,
@@ -123,11 +154,7 @@ class OfferDetails extends React.Component {
                 //tuk proverqvam dali ima lognat user -> ako nqma - da go preprashta na login stranicata
                 // ako ima da gi sloji v kolichkata
                 className={styles.buttonMod}
-                onClick={() =>
-                  !this.props.current
-                    ? this.props.history.push("/loginPage")
-                    : this.toGetToCart(this.props.current.id, this.props.id)
-                }
+                onClick={()=>this.onClickGetVoucher(offer.id,offer.name)}
                 title="GET VOUCHER"
               />
             </div>
@@ -153,6 +180,7 @@ class OfferDetails extends React.Component {
 const mapStateToProps = state => {
   return {
     offerList: state.offer.offerList,
+    current: state.user.currentUser
   };
 };
 const mapDispatchToProps = dispatch => {

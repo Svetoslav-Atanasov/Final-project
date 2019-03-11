@@ -28,7 +28,8 @@ class OrderTemplate extends Component {
 
   render() {
     const title = (this.props.isUsed ? "USED" : "MARK AS USED")
-
+    console.log('PROPSOWETE NA OFERTATA V TEMPLEJTA ZA VAUCHERI')
+    console.log(this.props)
     //    const isShoppingCart = "/myShoppingCart"
     // -id-to na ofertata se pazi vyv vauchera
     //namirame tozi vaucher, koito e renderiran za koq oferta e
@@ -40,6 +41,8 @@ class OrderTemplate extends Component {
     );
     // tyj kato oferitte sa v masiv a na nas ni trqbva 1
     const offer = offerArr[0];
+    console.log('namerenta OFERTA ')
+    console.log(offer)
     const voucherNumber = this.props.number;
     const idUser = this.props.idUser;
 
