@@ -16,20 +16,20 @@ import {
 
 
 
-    const initialStateUser =  {
-        userList: [
-            { id: 0, email: 'admin@admin.bg', password: 'admin', vouchersInCart: [], bought: [], lastSeen:[] },
-            { id: 1, email: 'test@abv.bg', password: 'test', vouchersInCart: [], bought: [], lastSeen:[] }
-        ],
-        currentUser: false
-    };
-    if(sessionStorage.getItem('userList')){
-        initialStateUser.userList = JSON.parse(sessionStorage.getItem('userList'))
-    }
-    // if (sessionStorage.getItem('currentUser')){
-    //     initialStateUser.currentUser = JSON.parse(sessionStorage.getItem('currentUser'))
-    // }
-    
+const initialStateUser = {
+    userList: [
+        { id: 0, email: 'admin@admin.bg', password: 'admin', vouchersInCart: [], bought: [], lastSeen: [] },
+        { id: 1, email: 'test@abv.bg', password: 'test', vouchersInCart: [], bought: [], lastSeen: [] }
+    ],
+    currentUser: false
+};
+if (sessionStorage.getItem('userList')) {
+    initialStateUser.userList = JSON.parse(sessionStorage.getItem('userList'))
+}
+// if (sessionStorage.getItem('currentUser')){
+//     initialStateUser.currentUser = JSON.parse(sessionStorage.getItem('currentUser'))
+// }
+
 
 
 // if sessionstorage has bought items -> put into initial state
@@ -127,19 +127,20 @@ export const userReducer = (state = initialStateUser, action) => {
                 sessionStorage.setItem('userList', JSON.stringify(newUserList));
                 return newState;
             }
-            case ADD_TO_SEEN : {
+        case ADD_TO_SEEN:
+            {
                 const newState = {...state };
                 const newCurrentUser = {...newState.currentUser };
                 const newUserList = [...newState.userList];
                 const indexUser = newUserList.findIndex(user => user.id === newCurrentUser.id);
                 const newLastSeen = [...newCurrentUser.lastSeen];
-                const indexSeen = newLastSeen.findIndex( seen => seen === action.offerId)
-                
-                if (indexSeen !== -1){
-                    newLastSeen.splice(indexSeen,1)
+                const indexSeen = newLastSeen.findIndex(seen => seen === action.offerId)
+
+                if (indexSeen !== -1) {
+                    newLastSeen.splice(indexSeen, 1)
                 }
                 newLastSeen.unshift(action.offerId);
-                if(newLastSeen.length > 6){
+                if (newLastSeen.length > 6) {
                     newLastSeen.pop();
                 }
                 newCurrentUser.lastSeen = newLastSeen;
@@ -281,20 +282,28 @@ export const offerReducer = (state = initialStateOffers, action) => {
             {
                 return ({...state, filtered: action.filtered });
             }
-        case ADD_OFFER : {
-            const newState = {...state };
-            const newOfferList = newState.offerList
+        case ADD_OFFER:
+            {
+                const newState = {...state };
+                const newOfferList = newState.offerList
 
+<<<<<<< HEAD
             newOfferList.unshift(action.newOffer)
             newState.offerList = newOfferList;
             sessionStorage.setItem('offerList', JSON.stringify(newOfferList));
             return newState
         }
+=======
+                newOfferList.unshift(action.newOffer)
+                newState.offerList = newOfferList;
+                return newState
+            }
+>>>>>>> 7f1ebed458136b27b07eb7f0666db71209f81755
         default:
             return state;
-        
+
     };
-    
+
 };
 
 const initialStateVouchers = {
