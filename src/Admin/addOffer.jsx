@@ -9,6 +9,7 @@ import SingleOfferTemp from "../OfferDisplaySingleTemplate/OfferDisplaySingleTem
 import { addOffer } from "../Storage/actions/offers";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Fade from "react-reveal/Fade";
 
 let id = 100;
 const NAME = "name";
@@ -110,137 +111,171 @@ class AddOffer extends Component {
     this.props.history.push("/");
   };
 
-check = str =>{
-  const isValid = /^[a-zA-Z0-9,. !?]*$/.test(str)
-  return isValid
-}
-checkPrice(str){
-  const isValid = /^[a-zA-Z0-9.,]*$/.test(str)
-  return isValid
-}
-// checkUrl = str =>{
-//   // const isValid = /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/.test(str)
-//   // const isValid = /^(?:\w+:)?\/\/([^\s\.]+\.\S{2}|localhost[\:?\d]*)\S*$/.test(str)
-//   // ne pozvolqva
-//   // const isValid = /^[a-zA-Z0-9,.?/:-=%]*$/.test(str)
+  check = str => {
+    const isValid = /^[a-zA-Z0-9,. !?]*$/.test(str);
+    return isValid;
+  };
+  checkPrice(str) {
+    const isValid = /^[a-zA-Z0-9.,]*$/.test(str);
+    return isValid;
+  }
+  // checkUrl = str =>{
+  //   // const isValid = /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/.test(str)
+  //   // const isValid = /^(?:\w+:)?\/\/([^\s\.]+\.\S{2}|localhost[\:?\d]*)\S*$/.test(str)
+  //   // ne pozvolqva
+  //   // const isValid = /^[a-zA-Z0-9,.?/:-=%]*$/.test(str)
 
-//   return isValid
-// }
+  //   return isValid
+  // }
   checkDate = date => {
     const isValid = /^[0-9.]*$/.test(date);
     return isValid;
   };
 
-  
   render() {
     return (
-      <div className={styles.addOffer}>
-        <div className={styles.articleOfferLeft}>
-          <form>
-            <div>
-              Header name for the offer:
-              <Input
-                className={styles.addInputs}
-                maxLength="40"
-                onChange={e => {
-                  this.setSomething(e, NAME);
-                }}
-                value={this.state.name}
-              />
-            </div>
-            <div>
-              <label>Short description:</label>
-              <Input
-                className={styles.addInputs}
-                maxLength="40"
-                onChange={e => {
-                  this.setSomething(e, DESCRIPTION);
-                }}
-                value={this.state.description}
-              />
-            </div>
-            <div>
-              <label>Full description:</label>
-              <textarea
-                className={styles.addInputs}
-                rows="4"
-                cols="50"
-                maxLength="200"
-                onChange={e => {
-                  this.setSomething(e, FULL_DESCRIPTION);
-                }}
-                value={this.state.fullDescription}
-              />
-            </div>
-            <div>
-              <label>Old price:</label>
-              <Input
-                className={styles.addInputs}
-                onChange={e => {
-                  this.setSomething(e, OLD_PRICE);
-                }}
-                value={this.state.oldPrice}
-              />
-            </div>
-            <div>
-              <label>New price:</label>
-              <Input
-                className={styles.addInputs}
-                onChange={e => {
-                  this.setSomething(e, NEW_PRICE);
-                }}
-                value={this.state.price}
-              />
-            </div>
-            <div>
-              <label>Select category</label>
-              <select
-                className={styles.addInputs}
-                onChange={e => {
-                  this.setSomething(e, CATEGORY);
-                }}
-                value={this.state.category}
-              >
-                {/* Select category */}
-                <option value={CULTURE}>Culture</option>
-                <option value={EATING_OUT}>Eating Out</option>
-                <option value={VACATIONS}>Vacations</option>
-              </select>
-            </div>
-            <div>
-              <label>Expiration Date:</label>
-              <DatePicker
-                  dateFormat="yyyy/MM/dd"
-                  selected={this.state.expirationDate}
-                  onChange={e => this.setSomething(e, EXP_DATE)} />
-              
-              {/* <Input
+      <Fade cascade duration={1500}>
+        <div className={styles.articleOfferBoth}>
+          <div className={styles.articleOfferLeft}>
+            <div className={styles.formStyle}>
+              <div className={styles.formDivs}>
+                <div>
+                  <label>Offer name:</label>
+                </div>
+                <div>
+                  <Input
+                    className={styles.addInputs}
+                    maxLength="40"
+                    onChange={e => {
+                      this.setSomething(e, NAME);
+                    }}
+                    value={this.state.name}
+                  />
+                </div>
+              </div>
+              <div className={styles.formDivs}>
+                <div>
+                  <label>Short description:</label>
+                </div>
+                <div>
+                  <Input
+                    className={styles.addInputs}
+                    maxLength="40"
+                    onChange={e => {
+                      this.setSomething(e, DESCRIPTION);
+                    }}
+                    value={this.state.description}
+                  />
+                </div>
+              </div>
+              <div className={styles.formDivs}>
+                <div>
+                  <label>Full description:</label>
+                </div>
+                <div>
+                  <textarea
+                    className={styles.addInputs}
+                    rows="4"
+                    cols="50"
+                    maxLength="200"
+                    onChange={e => {
+                      this.setSomething(e, FULL_DESCRIPTION);
+                    }}
+                    value={this.state.fullDescription}
+                  />
+                </div>
+              </div>
+              <div className={styles.formDivs}>
+                <div>
+                  <label>Old price:</label>
+                </div>
+                <div>
+                  <Input
+                    className={styles.addInputs}
+                    onChange={e => {
+                      this.setSomething(e, OLD_PRICE);
+                    }}
+                    value={this.state.oldPrice}
+                  />
+                </div>
+              </div>
+              <div className={styles.formDivs}>
+                <div>
+                  <label>New price:</label>
+                </div>
+                <div>
+                  <Input
+                    className={styles.addInputs}
+                    onChange={e => {
+                      this.setSomething(e, NEW_PRICE);
+                    }}
+                    value={this.state.price}
+                  />
+                </div>
+              </div>
+              <div className={styles.formDivs}>
+                <div>
+                  <label>Select category</label>
+                </div>
+                <div>
+                  <select
+                    className={styles.articleSelect}
+                    onChange={e => {
+                      this.setSomething(e, CATEGORY);
+                    }}
+                    value={this.state.category}
+                  >
+                    {/* Select category */}
+                    <option value={CULTURE}>Culture</option>
+                    <option value={EATING_OUT}>Eating Out</option>
+                    <option value={VACATIONS}>Vacations</option>
+                  </select>
+                </div>
+              </div>
+              <div className={styles.formDivs}>
+                <div>
+                  <label>Expiration Date:</label>
+                </div>
+                <div>
+                  <DatePicker
+                    dateFormat="yyyy/MM/dd"
+                    selected={this.state.expirationDate}
+                    onChange={e => this.setSomething(e, EXP_DATE)}
+                  />
+                </div>
+
+                {/* <Input
                 className={styles.addInputs}
                 onChange={e => {
                   this.setSomething(e, EXP_DATE);
                 }}
                 value={this.state.expirationDate}
               /> */}
+              </div>
+              <div className={styles.formDivs}>
+                <div>
+                  <label>Url image:</label>
+                </div>
+                <div>
+                  <Input
+                    className={styles.addInputs}
+                    onChange={e => {
+                      this.setSomething(e, IMAGE);
+                    }}
+                    value={this.state.image}
+                  />
+                </div>
+              </div>
             </div>
-            <div>
-              <label>Url image:</label>
-              <Input
-                className={styles.addInputs}
-                onChange={e => {
-                  this.setSomething(e, IMAGE);
-                }}
-                value={this.state.image}
-              />
+            <div className={styles.readyButton} disabled="disabled">
+              <Button onClick={this.submit} title="READY" />
             </div>
-          </form>
-          <div className={styles.button} disabled="disabled">
-            <Button onClick={this.submit} title="READY" />
+          </div>
+          <div className={styles.articleOfferRight}>
+            <SingleOfferTemp {...this.state} />
           </div>
         </div>
-        <div className={styles.articleOfferRight}>
-          <SingleOfferTemp {...this.state} />
-        </div>
-      </div>
+      </Fade>
     );
   }
 }
