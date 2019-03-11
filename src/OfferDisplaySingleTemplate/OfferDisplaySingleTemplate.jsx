@@ -77,10 +77,29 @@ class Offer extends Component {
   };
 
 
+convertDate = (date) => {
+
+  var yyyy = date.getFullYear().toString();
+  var mm = (date.getMonth()+1).toString();
+  var dd  = date.getDate().toString();
+
+  var mmChars = mm.split('');
+  var ddChars = dd.split('');
+
+  return yyyy + '/' + (mmChars[1]?mm:"0"+mmChars[0]) + '/' + (ddChars[1]?dd:"0"+ddChars[0]);
+}
+
+
   render() {
     // takes date from userReducer's offerList
-
-    var formattedDate = this.props.expirationDate.split(".");
+    const otriginalDate = this.props.expirationDate
+    var formattedDate = '';
+    if (otriginalDate.length>10){
+      formattedDate =  this.props.convertDate(otriginalDate.split("/"))
+    }
+    
+    formattedDate.split("/") ;
+     
     var expDate = new Date(
       formattedDate[0],
       formattedDate[1] - 1,

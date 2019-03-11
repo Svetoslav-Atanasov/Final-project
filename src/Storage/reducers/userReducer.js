@@ -168,7 +168,7 @@ const initialStateOffers = {
             oldPrice: 30,
             price: 10,
             category: "Culture",
-            expirationDate: "2019.03.09",
+            expirationDate: "2019/03,09",
             image: "https://scontent.fsof3-1.fna.fbcdn.net/v/t1.0-9/cp0/e15/q65/p960x960/51794288_10157216040984548_6390627658153066496_o.jpg?_nc_cat=101&efg=eyJpIjoidCJ9&_nc_ht=scontent.fsof3-1.fna&oh=a0d2751197940e5b20073a5ec3cbef1f&oe=5CDAE943"
         },
         {
@@ -180,7 +180,7 @@ const initialStateOffers = {
             oldPrice: 150,
             price: 54,
             category: "Culture",
-            expirationDate: "2019.03.12",
+            expirationDate: "2019/03/12",
             image: "http://thekey.xpn.org/aatk/files/2015/10/LeonBridges-18.jpg"
         },
         {
@@ -192,7 +192,7 @@ const initialStateOffers = {
             oldPrice: 17,
             price: 8,
             category: "Culture",
-            expirationDate: "2019.03.10",
+            expirationDate: "2019/03/10",
             image: "https://www.whats-on-netflix.com/wp-content/uploads/2019/01/io-netflix-ending-explained.jpg"
         },
         {
@@ -204,7 +204,7 @@ const initialStateOffers = {
             oldPrice: 55,
             price: 32,
             category: "Eating Out",
-            expirationDate: "2019.03.08",
+            expirationDate: "2019/03/08",
             image: "https://ecs7.tokopedia.net/img/product-1/2018/12/5/45119439/45119439_7495e541-32aa-4f83-a8b0-755f731b6e60_1920_1080.jpg"
         },
         {
@@ -216,7 +216,7 @@ const initialStateOffers = {
             oldPrice: 20,
             price: 12,
             category: "Eating Out",
-            expirationDate: "2019.03.11",
+            expirationDate: "2019/03/11",
             image: "https://static01.nyt.com/images/2016/08/15/dining/15COOKING-PASTA/15COOKING-PASTA-threeByTwoMediumAt2X-v2.jpg"
         },
         {
@@ -228,7 +228,7 @@ const initialStateOffers = {
             oldPrice: 16,
             price: 8,
             category: "Eating Out",
-            expirationDate: "2019.04.01",
+            expirationDate: "2019/04/01",
             image: "https://assets.bonappetit.com/photos/5ad51b07ff795274c43a0f58/16:9/w_1200,c_limit/20180403_Basically_122.jpg"
         },
         {
@@ -240,7 +240,7 @@ const initialStateOffers = {
             oldPrice: 980,
             price: 333,
             category: "Vacations",
-            expirationDate: "2019.03.20",
+            expirationDate: "2019/03/20",
             image: "http://www.alriyadh.com/media/thumb/08/06/1000_86966d469e.jpg"
         },
         {
@@ -252,7 +252,7 @@ const initialStateOffers = {
             oldPrice: 1270,
             price: 654,
             category: "Vacations",
-            expirationDate: "2019.04.05",
+            expirationDate: "2019/04/05",
             image: "https://strandmag.com/wp-content/uploads/2017/08/From-Hidden-Tunnels-to-History...Eight-Ways-to-Get-Your-Non-Food-Kicks-in-Chinatown--1024x682.jpg"
         },
         {
@@ -264,7 +264,7 @@ const initialStateOffers = {
             oldPrice: 3400,
             price: 1256,
             category: "Vacations",
-            expirationDate: "2019.05.29",
+            expirationDate: "2019/05/29",
             image: "https://cdn.fodors.com/wp-content/uploads/2018/07/shutterstock_1012724596.jpg"
         }
     ],

@@ -8,6 +8,7 @@ import ReactTooltip from "react-tooltip";
 import SingleOfferTemp from "../OfferDisplaySingleTemplate/OfferDisplaySingleTemplate";
 import { addOffer } from "../Storage/actions/offers";
 import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 let id = 100;
 const NAME = "name";
@@ -31,7 +32,7 @@ class AddOffer extends Component {
     oldPrice: 0,
     price: 0,
     category: CULTURE,
-    expirationDate: "",
+    expirationDate: new Date(),
     image: ""
   };
 

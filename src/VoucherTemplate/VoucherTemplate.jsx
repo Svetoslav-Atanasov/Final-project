@@ -40,6 +40,7 @@ class VoucherTemplate extends Component {
     console.log(this.props);
     console.log("ima li neshto tuk izob]o za is used");
     console.log(this.props.isUsed);
+    
     let statusForUse = null;
     if (this.props.isUsed) {
       statusForUse = (
