@@ -93,3 +93,21 @@
         font-size: 2em;
         text-align: center;
     }
+    
+    @media only screen and (max-width: 1024px) {
+        .topFlex {
+            flex-direction: column;
+        }
+        .upperFlex {
+            flex-direction: column;
+        }
+        .middleFlex {
+            flex-direction: column;
+        }
+        .bottomFlex {
+            flex-direction: column;
+        }
+        .singleDisplayImage {
+            width: 340px;
+        }
+    }

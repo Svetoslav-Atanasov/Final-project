@@ -25,3 +25,21 @@
     top: 4px;
     left: 30px;
 }
+
+@media only screen and (max-width: 1024px) {
+    .logo {
+        /* font-size: 40px; */
+        visibility: hidden;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .logo {
+        /* font-size: 40px; */
+        visibility: hidden;
+    }
+    .logoMainImage {
+        height: 40px !important;
+        width: 40px !important;
+    }
+}

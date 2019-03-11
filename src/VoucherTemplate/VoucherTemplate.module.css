@@ -52,3 +52,9 @@
         padding: 10px 4px;
         margin: 15px 5px 15px 0px;
     }
+    
+    @media only screen and (max-width: 1024px) {
+        .Content {
+            flex-direction: column;
+        }
+    }

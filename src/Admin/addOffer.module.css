@@ -46,3 +46,29 @@
         font-family: "Coves";
         font-size: 1.03em;
     }
+    
+    @media only screen and (max-width: 1366px) {
+        .articleOfferBoth {
+            flex-direction: column;
+            width: 450px;
+        }
+        .articleOfferLeft {
+            margin-bottom: 50px;
+        }
+    }
+    
+    @media only screen and (max-width: 1024px) {
+        .articleOfferBoth {
+            width: 300px;
+            margin-left: 50px;
+        }
+        .articleOfferLeft {
+            width: 220px;
+        }
+        .articleOfferLeft textarea {
+            width: 200px;
+        }
+        .readyButton {
+            margin-left: 40px
+        }
+    }

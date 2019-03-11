@@ -26,9 +26,21 @@ ul {
 }
 
 
-/* sidemenu paragraphs */
+/*  paragraphs */
 
 ul p {
     cursor: pointer;
     outline: none;
+}
+
+@media only screen and (max-width: 1024px) {
+    .sideMenu {
+        max-width: 12em;
+    }
+}
+
+@media only screen and (max-width: 812px) {
+    .sideMenu {
+        display: none;
+    }
 }
