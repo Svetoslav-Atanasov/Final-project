@@ -9,8 +9,9 @@
     font-family: 'Break';
     font-size: 50px;
     /* color: #F67280; */
-    color: #2A363B;
+    color: #FECEAB;
     margin-left: 50px;
+    font-weight: 550;
 }
 
 .logoMainImage {
@@ -19,7 +20,7 @@
     margin-left: 10px; */
     border-radius: 2px;
     /* border: 1px solid #F67280; */
-    border: 1 px solid #2A363B;
+    border: 1px solid #FECEAB;
     position: relative;
     top: 4px;
     left: 30px;

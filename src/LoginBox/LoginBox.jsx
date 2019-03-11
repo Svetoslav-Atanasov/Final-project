@@ -15,21 +15,20 @@ class LoginBox extends Component {
 
   setEmail = e => {
     const value = e.target.value;
-    if (!/^[a-zA-Z0-9._@]*$/.test(value)){
+    if (!/^[a-zA-Z0-9._@]*$/.test(value)) {
       return;
     }
     const email = value;
-  
+
     this.setState({
       email
     });
     this.hideValidationErr("email");
   };
 
- 
   setPassword = e => {
     const value = e.target.value;
-    if (!/^[a-zA-Z0-9]*$/.test(value)){
+    if (!/^[a-zA-Z0-9]*$/.test(value)) {
       return;
     }
     const password = value;
@@ -60,7 +59,7 @@ class LoginBox extends Component {
     e.preventDefault();
     // console.log('tekushtiq userList e:')
     // console.log(this.props.userList)
-  
+
     //proverqvame v storidja dali ima takyv user
     // console.log('tuk kydeto kazva can not read FIND from undefine : ')
     // console.log(this.props.userList)
@@ -74,17 +73,14 @@ class LoginBox extends Component {
       this.showValidationErr("password", "Wrong or forgotten password");
     } else {
       //ако съществува такъв регистриран юзер, го вкарваме в сториджа, като текущ
-      
 
       this.props.setCurrentUser(user);
 
-  
       this.props.history.push("/");
     }
   };
 
   render() {
-  
     let emailErr = null;
     let passwordErr = null;
 
@@ -100,16 +96,12 @@ class LoginBox extends Component {
     }
 
     // const additionalButtonStyle= {marginTop: "20px", marginLeft: "80px"}
-    const additionalButtonStyle= {margin: "20px auto", display: "block"};
-
-
-
+    const additionalButtonStyle = { margin: "20px auto", display: "block" };
 
     return (
-
       <div className="innerContainer">
         <div className="boxHeader"> </div>{" "}
-        <div className="inputGroup">
+        <div>
           <Input
             type="text"
             placeholder="Email"
@@ -130,7 +122,8 @@ class LoginBox extends Component {
         </div>{" "}
         <Button
           onClick={this.submitLogin}
-          title="Login" style={additionalButtonStyle}
+          title="Login"
+          style={additionalButtonStyle}
         />
       </div>
     );

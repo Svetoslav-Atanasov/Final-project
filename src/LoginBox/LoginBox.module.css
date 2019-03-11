@@ -1,7 +1,11 @@
 .LogErr {
     /* color: #F67280; */
-    color: #2A363B;
+    color: #FF4E50;
     font-size: 0.8em;
     margin: 0 auto;
     width: 17em;
+}
+
+.boxFontSize {
+    font-size: 1.2em;
 }

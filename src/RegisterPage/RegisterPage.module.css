@@ -2,3 +2,16 @@
     margin: 0 auto;
     width: 20em;
 }
+
+.registerBox {
+    border: 2px solid #2E3F51;
+    width: 500px;
+    padding: 20px 0px;
+    border-radius: 5px;
+    background-color: #FECEAB;
+}
+
+.mainDiv {
+    display: flex;
+    justify-content: center;
+}

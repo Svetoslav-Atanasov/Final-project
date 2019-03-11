@@ -1,6 +1,6 @@
 .RegErr {
     /* color: #F67280; */
-    color: #2A363B;
+    color: #FF4E50;
     font-size: 0.8em;
     margin: 0 auto;
     width: 17em;
@@ -19,16 +19,16 @@
 }
 
 .pswdWeak {
-    background-color: #FECEAB;
+    background-color: #9DE0AD;
     margin-left: 37px;
 }
 
 .pswdMedium {
-    background-color: #FF847C;
+    background-color: #45ADA8;
 }
 
 .pswdStrong {
-    background-color: #E84A5F;
+    background-color: #547980;
     margin-right: 37px;
 }
 
