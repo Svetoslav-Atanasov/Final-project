@@ -106,9 +106,9 @@ check = str =>{
 checkUrl = str =>{
   // const isValid = /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/.test(str)
   const isValid = /^(?:\w+:)?\/\/([^\s\.]+\.\S{2}|localhost[\:?\d]*)\S*$/.test(str)
+  // ne pozvolqva
   // const isValid = /^[a-zA-Z0-9,.?/:-=%]*$/.test(str)
-  console.log('ZA URL_AAAAAAAAAAAAAAAAAAAAAA')
-  console.log(isValid)
+
   return isValid
 
 }

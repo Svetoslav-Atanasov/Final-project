@@ -14,6 +14,7 @@ import label from "../assets/images/label.png";
 import redLine from "../assets/images/redLine.png";
 import { getToSeen }  from "../Storage/actions/users";
 
+
 class Offer extends Component {
 
 
@@ -44,7 +45,9 @@ class Offer extends Component {
     this.props.goToOrdered(orderdVoucher);
     
   };
-
+  goToSeen =()=>{
+    this.props.getToSeen(this.props.id)
+  }
 
   change = e => {
     console.log(e.target.value);
@@ -79,9 +82,6 @@ class Offer extends Component {
     this.setState({ timerExpired: true });
   };
 
-  getToSeen = () =>{
-    this.props.getToSeen(this.props.id)
-  }
 
   render() {
     // takes date from userReducer's offerList
@@ -102,18 +102,17 @@ class Offer extends Component {
     const adminEmail = "admin@admin.bg";
     const isAdmin = this.props.current && this.props.current.email === adminEmail ? true : false;
     const addingPage = this.props.history.location.pathname === "/addOffer" ? true : false;
+    const imaLiLognat = this.props.current ? true : false;
+    console.log(imaLiLognat)
 
  
     return (
       <Fade cascade duration={1500}>
         <div className={styles.singleDiv}>
           <Link 
-              onClick={
-                isAdmin && addingPage ? 
-                e => e.preventDefault() 
-                :
-                this.props.current ? this.getToSeen
-                :null}
+            onClick={addingPage ? e => e.preventDefault() : 
+              (imaLiLognat && !isAdmin )? this.goToSeen : null}
+     
               to={"/offerDetails/" + this.props.id}>
             <div className={styles.label}>
               <img width="200" height="200" src={label} />
@@ -122,12 +121,9 @@ class Offer extends Component {
           </Link>
           <div>
             <Link 
-              onClick={
-                isAdmin && addingPage ? 
-                e => e.preventDefault() 
-                :
-                this.props.current ? this.getToSeen
-                :null}
+                onClick={addingPage ? e => e.preventDefault() : null}
+                //   :
+                //   (this.props.current && isAdmin) ? null : this.getToSeen}
               to={"/offerDetails/" + this.props.id}>
               <Image image={this.props.image} />
             </Link>

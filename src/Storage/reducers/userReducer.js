@@ -133,7 +133,11 @@ export const userReducer = (state = initialStateUser, action) => {
                 const newUserList = [...newState.userList];
                 const indexUser = newUserList.findIndex(user => user.id === newCurrentUser.id);
                 const newLastSeen = [...newCurrentUser.lastSeen];
+                const indexSeen = newLastSeen.findIndex( seen => seen === action.offerId)
                 
+                if (indexSeen !== -1){
+                    newLastSeen.splice(indexSeen,1)
+                }
                 newLastSeen.unshift(action.offerId);
                 if(newLastSeen.length > 6){
                     newLastSeen.pop();

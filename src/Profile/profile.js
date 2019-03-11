@@ -9,27 +9,24 @@ const profile = props => {
 
   let seenOffers =[]
 
-    const offersSet = new Set();
+    // const offersSet = new Set();
     const allOffers = props.offerList;
     const lastSeen = props.user.lastSeen;
-    console.log('LASTSEEEEEEEN')
-    console.log(props)
-    console.log(props.user)
-    console.log(props.user.lastSeen)
+    console.log(lastSeen)
+    console.log('tova bqha last seen')
 
-
-    for(let index = 0; index < allOffers.length ; index++){
-      for(let i=0; i< lastSeen.length; i++ ){
-           if (allOffers[index].id === lastSeen[i] ){
-               offersSet.add(allOffers[index].id)
+    for(let index = 0; index < lastSeen.length; index++){
+      for(let i=0; i< allOffers.length; i++ ){
+           if (lastSeen[index] === allOffers[i].id ){
+            seenOffers.push(allOffers[i])
            }
       }
     }
 
-    for (var id of offersSet) {
-      const index = allOffers.findIndex(offer => offer.id === id)
-      seenOffers.push(allOffers[index])
-    }
+    // for (var id of offersSet) {
+    //   const index = allOffers.findIndex(offer => offer.id === id)
+    //   seenOffers.push(allOffers[index])
+    // }
 
       return ( <div>
                  <h2>Last offers you have seen : </h2>

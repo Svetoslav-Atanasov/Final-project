@@ -1,5 +1,7 @@
 import React from "react";
 import styles from "./OfferDetails.module.css";
+import { getToCart } from "../Storage/actions/users";
+import { goToOrdered } from "../Storage/actions/vouchers";
 
 import { withRouter } from "react-router";
 import { connect } from "react-redux";
@@ -15,16 +17,17 @@ class OfferDetails extends React.Component {
   };
 
   //tazi funkciq - vzima id na potrebitelq  i slaga v koshnicata mu - vaucher
-  toGetToCart = (id, offerId) => {
+  toGetToCart = (idUser, offerId, offerName) => {
     // number shte e unikalen nomer na vauchera
     const number = Math.ceil(Math.random() * 10000);
     const broi = this.state.broi;
-
-    console.log("broikata e " + broi);
-    // pravq nov obekt vaucher i go slagam v kolickata na tekushtiq potrebitel
-    const voucher = { broi, number, offerId, isUsed: false };
-    this.props.getToCart(id, voucher);
+    const orderdVoucher = { number, idUser, broi, offerId, offerName };
+  
+    this.props.getToCart(idUser, orderdVoucher);
+    this.props.goToOrdered(orderdVoucher);
+    
   };
+
 
   //tazi funkciq change() - shte vzima value ot inputa i shte go slaga v state, za da se zapzi
   // i da moje da byde izprateno
@@ -53,12 +56,17 @@ class OfferDetails extends React.Component {
   };
 
   render() {
+
+  
     const id = this.props.match.params.id;
-    console.log("detaili za ofertata");
-    console.log(id);
+    // console.log("detaili za ofertata");
+    // console.log(id);
+    // if(this.props.current && this.props.current.id !== adminId){
+    //     this.props.getToSeen(id)
+    // }
 
     var offer = this.props.offerList.find(o => o.id == id);
-    console.log(offer);
+    // console.log(offer);
 
     // used in - Expires:
     var formattedDate = offer.expirationDate.split(".");
@@ -69,6 +77,7 @@ class OfferDetails extends React.Component {
     );
 
     return (
+    
       <Zoom duration={1500}>
         <div className={styles.singleDiv}>
           <div className={styles.topFlex}>
@@ -143,11 +152,18 @@ class OfferDetails extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    offerList: state.offer.offerList
+    offerList: state.offer.offerList,
   };
 };
+const mapDispatchToProps = dispatch => {
+  return {
+    getToCart: (idUser, orderdVoucher) => dispatch(getToCart(idUser, orderdVoucher)),
+    goToOrdered: orderdVoucher => dispatch(goToOrdered(orderdVoucher)),
 
+  
+  };
+};
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(withRouter(OfferDetails));

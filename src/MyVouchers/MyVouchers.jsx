@@ -1,15 +1,13 @@
 import React, { Component } from "react";
 import styles from "./MyVoucers.module.css";
 import { connect } from "react-redux";
-import VoucherTemplate from "../VoucherTemplate/VoucherTemplate";
+import OrderTemplate from "../VoucherTemplate/OrderTemplate";
 import Zoom from "react-reveal/Zoom";
 
 
 const myvouchers = props => {
   const vouchers = [];
-  console.log("AAAAAAAAAAAAAAAAAAAAAAA");
-  console.log(props.allVouchers);
-  console.log(props.userVouchers);
+
 
   for (let index = 0; index < props.allVouchers.length; index++) {
     for (let i = 0; i < props.userVouchers.length; i++) {
@@ -18,7 +16,7 @@ const myvouchers = props => {
       }
     }
   }
-  console.log(vouchers);
+
   return (
     <Zoom>
       <>
@@ -28,7 +26,7 @@ const myvouchers = props => {
         {vouchers.length === 0 ? (
           <h2>You haven't purchased any vouchers</h2>
         ) : (
-          vouchers.map(v => <VoucherTemplate key={v.number} {...v} />)
+          vouchers.map(v => <OrderTemplate key={v.number} {...v} />)
         )}
       </>
     </Zoom>

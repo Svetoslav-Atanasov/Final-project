@@ -6,11 +6,12 @@ import { removeFromCart } from "../Storage/actions/users";
 import { userBuy } from "../Storage/actions/users";
 import { voucherBuy } from "../Storage/actions/vouchers";
 import { withRouter } from "react-router";
+import { markAsUsed } from "../Storage/actions/vouchers";
 import Zoom from "react-reveal/Zoom";
 
 //po daden vaucher shte nameri, koq e ofertata i s nejnite danni shte popylni formata,
 // kato dopylnitelno shte dobavi svoqta informaciq za broi
-class OfferTemplate extends Component {
+class OrderTemplate extends Component {
   // shouldComponentUpdate(nextProps,nextState){
   //         console.log('shouldupdate')
   //         console.log(nextProps.isUsed !== this.props.isUsed ? true : false)
@@ -21,9 +22,12 @@ class OfferTemplate extends Component {
     this.props.userBuy(voucherNumber, idUser);
     this.props.voucherBuy(voucherNumber, idUser);
   };
+  checkIfIsUsed = voucherNumber => {
+    return !this.props.isUsed ? this.props.markAsUsed(voucherNumber) : null;
+  };
 
   render() {
-    // const title = (this.props.isUsed ? "USED" : "MARK AS USED")
+    const title = (this.props.isUsed ? "USED" : "MARK AS USED")
 
     //    const isShoppingCart = "/myShoppingCart"
     // -id-to na ofertata se pazi vyv vauchera
@@ -38,12 +42,25 @@ class OfferTemplate extends Component {
     const offer = offerArr[0];
     const voucherNumber = this.props.number;
     const idUser = this.props.idUser;
-    console.log(
-      "na buy, remove i kakvoto tam se vikat vaucher nomer = " +
-        voucherNumber +
-        "id user " +
-        idUser
-    );
+
+    let statusForUse = null;
+    if (this.props.isUsed) {
+      statusForUse = (
+        <div className={styles.priceBorder}>
+          <span>Voucher is used!</span>
+        </div>
+      );
+    } else {
+      statusForUse = (
+        <Button
+          title={title}
+          onClick={() => this.checkIfIsUsed(voucherNumber)}
+        />
+      );
+    }
+    const isItBought = this.props.history.location.pathname === "/myVouchers" ? true : false;
+
+
 
     // trqbva da podam nomera na vouchera
     // sled koeto popylvame templeita s neshtata za ofertata
@@ -76,6 +93,10 @@ class OfferTemplate extends Component {
               </div>
             </div>
             <div>
+              {isItBought ? 
+                statusForUse
+                :
+            <>
               <Button
                 onClick={() => this.props.removeFromCart(voucherNumber, idUser)}
                 title="REMOVE"
@@ -84,6 +105,8 @@ class OfferTemplate extends Component {
                 onClick={() => this.ToBuy(voucherNumber, idUser)}
                 title="BUY"
               />
+            </>
+            }  
             </div>
           </div>
         </div>
@@ -105,11 +128,13 @@ const mapDispatchToProps = dispatch => {
     userBuy: (voucherNumber, idUser) =>
       dispatch(userBuy(voucherNumber, idUser)),
     voucherBuy: (voucherNumber, idUser) =>
-      dispatch(voucherBuy(voucherNumber, idUser))
+      dispatch(voucherBuy(voucherNumber, idUser)),
+    markAsUsed: voucherNumber => 
+      dispatch(markAsUsed(voucherNumber))
   };
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withRouter(OfferTemplate));
+)(withRouter(OrderTemplate));

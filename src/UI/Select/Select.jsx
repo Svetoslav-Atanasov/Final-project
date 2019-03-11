@@ -3,7 +3,8 @@ import styles from "./Select.module.css";
 
 const Select = props => {
   return (
-    <select className={`${styles.quantitySelect} ${props.className}`}>
+    <select className={`${styles.quantitySelect} ${props.className}`}
+    onChange={props.onChange}>
       <option value="1">1</option>
       <option value="2">2</option>
       <option value="3">3</option>
