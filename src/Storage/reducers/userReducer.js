@@ -287,18 +287,11 @@ export const offerReducer = (state = initialStateOffers, action) => {
                 const newState = {...state };
                 const newOfferList = newState.offerList
 
-<<<<<<< HEAD
             newOfferList.unshift(action.newOffer)
             newState.offerList = newOfferList;
             sessionStorage.setItem('offerList', JSON.stringify(newOfferList));
             return newState
         }
-=======
-                newOfferList.unshift(action.newOffer)
-                newState.offerList = newOfferList;
-                return newState
-            }
->>>>>>> 7f1ebed458136b27b07eb7f0666db71209f81755
         default:
             return state;
 
