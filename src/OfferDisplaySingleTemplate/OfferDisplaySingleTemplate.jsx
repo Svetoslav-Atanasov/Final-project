@@ -22,8 +22,8 @@ class Offer extends Component {
   };
 
   onClickGetVoucher = () => {
-    console.log('TYPOTIIITE ZA PORYCHKATA SA EI TUKA')
-    console.log(this.props)
+    // console.log('TYPOTIIITE ZA PORYCHKATA SA EI TUKA')
+    // console.log(this.props)
     const user = this.props.current;
     if (user.id == "0") {
       return;

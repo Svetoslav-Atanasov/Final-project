@@ -70,7 +70,10 @@ class Header extends Component {
     this.resetState();
     this.props.removeCurrentUser();
     // sessionStorage.removeItem('currentUser')
+    console.log('ЦУУУУУУУРЕНТТ')
+    console.log('ЦУУУУУУУРЕНТТ')
     this.props.history.push("/");
+ 
   };
 
   render() {

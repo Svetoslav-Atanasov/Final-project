@@ -71,15 +71,15 @@ class App extends Component {
               <Route exact path="/category/vacations" component={Vacations} />
               <Route path="/Search/:param" component={Searched} />
               <Route exact path="/offerDetails/:id" component={OfferDetails} />
-              <Route exact path="/addOffer" component={AddOffer} />
+              {/* <Route exact path="/addOffer" component={AddOffer} /> */}
               
-              {/* <Route exact path="/category/:categoryType" component={Home} /> */}
+           
               {this.props.currentUser ? 
                 <>
                   {isAdmin ? 
                     <>
                       <Route exact path="/statistic" component={Statistic} />
-                      {/* <Route exact path="/addOffer" component={AddOffer} /> */}
+                      <Route exact path="/addOffer" component={AddOffer} />
                     </>
                     :
                     <>

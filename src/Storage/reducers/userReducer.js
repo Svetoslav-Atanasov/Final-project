@@ -65,7 +65,7 @@ export const userReducer = (state = initialStateUser, action) => {
         case REMOVE_LOGGED_USER:
             {
 
-                const newState = {...state, currentUser: null }
+                const newState = {...state, currentUser: false }
                 return newState;
             }
 
@@ -289,7 +289,7 @@ export const offerReducer = (state = initialStateOffers, action) => {
 
             newOfferList.unshift(action.newOffer)
             newState.offerList = newOfferList;
-            sessionStorage.setItem('offerList', JSON.stringify(newOfferList));
+            // sessionStorage.setItem('offerList', JSON.stringify(newOfferList));
             return newState
         }
         default:
