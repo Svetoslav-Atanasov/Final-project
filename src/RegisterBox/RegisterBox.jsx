@@ -6,10 +6,11 @@ import { withRouter } from "react-router";
 import { connect } from "react-redux";
 import { addUser } from "../Storage/actions/users";
 
-var id = 2;
+let id = 2;
 class RegisterBox extends Component {
   state = {
     newUser: {
+      id:2,
       email: "",
       password: "",
       vouchersInCart: [],
@@ -97,8 +98,16 @@ class RegisterBox extends Component {
   };
 
   makeNewUser = () => {
-    this.state.newUser.id = ++id;
-    this.props.addUser(this.state.newUser);
+    
+    const newOne = {
+      id:++id,
+      email: this.state.newUser.email,
+      password: this.state.newUser.password,
+      vouchersInCart: [],
+      bought : [],
+      lastSeen:[]
+    }
+    this.props.addUser(newOne);
 
     const newUser = { email: "", password: "" };
     this.setState({ newUser: newUser });

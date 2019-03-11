@@ -271,6 +271,9 @@ const initialStateOffers = {
     ],
     filtered: []
 };
+if(sessionStorage.getItem('offerList')){
+    initialStateOffers.offerList = JSON.parse(sessionStorage.getItem('offerList'))
+}
 
 export const offerReducer = (state = initialStateOffers, action) => {
 
@@ -284,10 +287,11 @@ export const offerReducer = (state = initialStateOffers, action) => {
                 const newState = {...state };
                 const newOfferList = newState.offerList
 
-                newOfferList.unshift(action.newOffer)
-                newState.offerList = newOfferList;
-                return newState
-            }
+            newOfferList.unshift(action.newOffer)
+            newState.offerList = newOfferList;
+            sessionStorage.setItem('offerList', JSON.stringify(newOfferList));
+            return newState
+        }
         default:
             return state;
 
